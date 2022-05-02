@@ -16,7 +16,7 @@ const ProductPage = (props) => {
         <div className='Product'>
             <img src = {image} />
             <h1 className='productName'> {name} </h1>
-            <h3 className='price'>Price: {price} DKK</h3>
+            <h3 className='price'>{price} DKK</h3>
             <div className='Description'>
                 <div className='shortDescription'> {shortDescription}</div>
                 <div className='longDescription'> {longDescription} </div>
