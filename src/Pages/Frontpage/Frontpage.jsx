@@ -1,9 +1,13 @@
 import React from 'react';
+import Topbar from '../../Components/Topbar/Topbar'
 
 const Frontpage = () => {
 
     return (
-        <h1>Frontpage</h1>
+        <div>
+            <h1>Frontpage</h1>
+            <Topbar />
+        </div>
     )
 }
 

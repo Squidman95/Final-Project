@@ -1,0 +1,64 @@
+.Topbar {
+  background-color: rgba(155, 159, 233, 0.174);
+  color: aqua;
+  display:flex;
+}
+
+.Topbar-left-container {
+  float:left;
+  width:33.33vw;
+}
+
+.Topbar-middle-container {
+  padding: 14px 16px;
+  width:33.33vw;
+}
+
+.Topbar-right-container {
+  padding: 14px 16px;
+  width:33.33vw;
+}
+
+.Topbar a:hover {
+    background-color: #ddd;
+
+}
+
+.Topbar-right-basketimage {
+    width: 25px;
+}
+
+#logged_out_elements {
+    display: flex;
+    flex-direction: row;
+}
+
+#logged_in_elements {
+    display: flex;
+    flex-direction: row;
+}
+
+.collapse {
+    justify-content: flex-end;
+}
+
+#userNameSpot {
+    margin: auto;
+    padding-left: 30%;
+}
+
+.basket-img {
+    width: 25px;
+}
+
+@media (max-width: 768px) {
+    #sidebar-dropdown {
+        display: flex;
+    }
+}
+
+@media (min-width: 768px) {
+    #sidebar-dropdown {
+        display: none;
+    }
+}
