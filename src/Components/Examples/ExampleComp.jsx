@@ -4,23 +4,13 @@ import FrontPage from '../../Pages/Frontpage/Frontpage'
 import Popup from '../Popup/Popup';
 
 const ExampleComponent = (props) => {
-// Popup code
-    const [visibility, setVisibility] = useState(false);
-    const popupCloseHandler = (e) => {
-        setVisibility(e);
-    };
-// Popup end
+    const [visibility, setVisibility] = useState(false); // For the login/signup popup
 
     return(
         <div>
             <FrontPage />
             <SearchResult/>
-            <Popup
-                onClose={popupCloseHandler}
-                show={visibility}
-                title="Log in to get membership discounts!"
-                >
-            </Popup>
+            <Popup onClose={setVisibility} show={visibility}/>
         </div>
     );
 }

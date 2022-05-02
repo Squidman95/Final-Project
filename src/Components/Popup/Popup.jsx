@@ -5,7 +5,6 @@ import LoginPopup from "./LoginPopup";
 import SignupPopup from "./SignupPopup";
 const Popup = (props) => {
 // Code for inner components, LoginPopup and SignupPopup:
-
     const [loginVis, setLoginVis] = useState(false);
     const onLoginClick = () => {
         setLoginVis(true);
@@ -19,8 +18,8 @@ const Popup = (props) => {
     }
 
 // Overall popup specific
+    let popupMsg = "Log in to get membership discounts!";
     const [show, setShow] = useState(false);
- 
      const closeHandler = (e) => {
         setShow(false);
         props.onClose(true);
@@ -33,14 +32,13 @@ const Popup = (props) => {
   return (
     <div
       style={{
-        // visibility: show ? "hidden" : "visible",
         visibility: show ? "hidden" : "visible",
         opacity: show ? "0" : "1"
       }}
       className={popupStyles.overlay}
     >
       <div className={popupStyles.popup}>
-        <h1>{loginVis || signupVis ? null : props.title}</h1>
+        <h1>{loginVis || signupVis ? null : popupMsg}</h1>
         <span className={popupStyles.close} onClick={closeHandler}>
           &times;
         </span>
@@ -61,7 +59,6 @@ const Popup = (props) => {
 };
  
 Popup.propTypes = {
-  title: PropTypes.string.isRequired,
   show: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired
 };
