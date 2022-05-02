@@ -12,7 +12,7 @@ const Card = (props) => {
 
     return (
         <div className='Card'>
-            <img src={image}/>
+            <img src={`${process.env.PUBLIC_URL}${image}`}/>
             <div className='Card-text'>
                 <div className='Card-Header'>
                     {header}

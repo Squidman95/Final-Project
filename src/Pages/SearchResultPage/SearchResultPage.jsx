@@ -2,26 +2,48 @@ import React from 'react';
 import products from '../../Data/ProductData';
 import Card from '../../Components/Card/Card';
 import './SearchResultPage.scss';
+import CarouselComponent from '../../Components/Carousel/Carousel';
 
-const SearchResult = () => {
+const SearchResult = (props) => {
+    
+    // let {
+    //     products
+    // } = props;
 
-
+    const getCarouselArray = () => {
+        if(products.length > 2){
+            return [products[0].image, products[1].image, products[2].image];
+        } 
+        return [];
+    }
 
     return (
-        <div className='Cards'>
-            {
-                products.map((item, index) => {
-                    return(
-                        <Card 
-                            image = {item.image}
-                            header = {item.name}
-                            subtext = {item.shortDescription}
-                        />
-                    );
-                })
 
-            }
-            
+        <div className='SearchResultPage'>
+            <div className='SearchResultPage-Carousel'>
+                <CarouselComponent
+                    imageArray = {getCarouselArray()}
+                    showIndicators = {false}
+                    showArrows = {true}
+                    autoPlay = {true}
+                    interval = {2000}
+                    showThumbs = {false}
+                    infiniteLoop = {true}
+                />
+            </div>
+            <div className='SearchResultPage-Cards'>
+                {
+                    products.map((item, index) => {
+                        return(
+                            <Card key = {index}
+                                image = {item.image}
+                                header = {item.name}
+                                subtext = {item.shortDescription}
+                            />
+                        );
+                    })
+                }
+            </div>
         </div>
     )
 
