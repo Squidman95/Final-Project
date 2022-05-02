@@ -7,7 +7,6 @@ const Popup = (props) => {
 // Code for inner components, LoginPopup and SignupPopup:
 
     const [loginVis, setLoginVis] = useState(false);
-    const [title, setTitle] = useState(false);
     const onLoginClick = () => {
         setLoginVis(true);
         setSignupVis(false);
@@ -19,26 +18,24 @@ const Popup = (props) => {
         setLoginVis(false);
     }
 
+// Overall popup specific
     const [show, setShow] = useState(false);
  
      const closeHandler = (e) => {
         setShow(false);
-        props.onClose(false);
+        props.onClose(true);
   };
  
   useEffect(() => {
     setShow(props.show);
   }, [props.show]);
-
-//   let title = props.title;
-
-  
  
   return (
     <div
       style={{
-        visibility: show ? "visible" : "hidden",
-        opacity: show ? "1" : "0"
+        // visibility: show ? "hidden" : "visible",
+        visibility: show ? "hidden" : "visible",
+        opacity: show ? "0" : "1"
       }}
       className={popupStyles.overlay}
     >
