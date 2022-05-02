@@ -17,7 +17,7 @@ const Topbar = (props) => {
           
           <ButtonDropdown />
           
-          <a href="#BasketPage"><img className="Topbar-right-basketimage" src='basket-icon.png'></img></a>
+          <a href="#BasketPage"><img className="Topbar-right-basketimage" src={require('./basket-icon.png')}></img></a>
       </div>
     </div>
   );
