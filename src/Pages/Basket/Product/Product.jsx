@@ -1,6 +1,13 @@
 import React from 'react';
 
-const Product = () => {
+const Product = (props) => {
+
+    let {
+        image,
+        header,
+        subtext
+        // and price etc.
+    } = props;
 
     return (
         <div></div>
