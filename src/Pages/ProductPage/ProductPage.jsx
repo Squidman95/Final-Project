@@ -3,9 +3,10 @@ import React from 'react';
 const Product = () => {
 
     return (
-        <div></div>
+        <div className=''>
+            
+        </div>
     )
-
 }
 
 export default Product;
