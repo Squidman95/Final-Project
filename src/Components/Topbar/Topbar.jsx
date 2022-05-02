@@ -1,5 +1,6 @@
 import React from "react";
-import './Topbar.scss'
+import "./Topbar.scss";
+import ButtonDropdown from "../ButtonDropdown/ButtonDropdown";
 
 const Topbar = () => {
   return (
@@ -14,9 +15,7 @@ const Topbar = () => {
       <div className="Topbar-right-container">
           <a>Log out</a>
           
-          <div className="Topbar-dropdown">
-              <a>Options</a>
-          </div>
+          <ButtonDropdown />
           
           <a href="#BasketPage"><img className="Topbar-right-basketimage" src='basket-icon.png'></img></a>
       </div>
