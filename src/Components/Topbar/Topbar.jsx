@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Topbar = () => {
+const Topbar = (props) => {
 
     return (
         <h1>Topbar</h1>
