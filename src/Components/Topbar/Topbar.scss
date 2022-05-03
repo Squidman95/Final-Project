@@ -67,16 +67,19 @@ body {
 .Topbar-left-container {
   display: flex;
   width: 33.33vw;
+  justify-content: left;
 }
 
 .Topbar-middle-container {
   display: flex;
   width: 33.33vw;
+  justify-content: center;
 }
 
 .Topbar-right-container {
   display: flex;
   width: 33.33vw;
+  justify-content: right;
 }
 
 @media (max-width: 768px) {
