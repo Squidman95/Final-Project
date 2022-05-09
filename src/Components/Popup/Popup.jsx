@@ -5,9 +5,7 @@ import LoginPopup from "./LoginPopup";
 import SignupPopup from "./SignupPopup";
 const Popup = (props) => {
 // Code for inner components, LoginPopup and SignupPopup:
-
     const [loginVis, setLoginVis] = useState(false);
-    const [title, setTitle] = useState(false);
     const onLoginClick = () => {
         setLoginVis(true);
         setSignupVis(false);
@@ -19,31 +17,28 @@ const Popup = (props) => {
         setLoginVis(false);
     }
 
+// Overall popup specific
+    let popupMsg = "Log in to get membership discounts!";
     const [show, setShow] = useState(false);
- 
      const closeHandler = (e) => {
         setShow(false);
-        props.onClose(false);
+        props.onClose(true);
   };
  
   useEffect(() => {
     setShow(props.show);
   }, [props.show]);
-
-//   let title = props.title;
-
-  
  
   return (
     <div
       style={{
-        visibility: show ? "visible" : "hidden",
-        opacity: show ? "1" : "0"
+        visibility: show ? "hidden" : "visible",
+        opacity: show ? "0" : "1"
       }}
       className={popupStyles.overlay}
     >
       <div className={popupStyles.popup}>
-        <h1>{loginVis || signupVis ? null : props.title}</h1>
+        <h1>{loginVis || signupVis ? null : popupMsg}</h1>
         <span className={popupStyles.close} onClick={closeHandler}>
           &times;
         </span>
@@ -64,7 +59,6 @@ const Popup = (props) => {
 };
  
 Popup.propTypes = {
-  title: PropTypes.string.isRequired,
   show: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired
 };
