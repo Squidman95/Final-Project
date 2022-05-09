@@ -1,5 +1,4 @@
 .Card{
-    // width: 100%;
     border: 1px solid RGBA(0,0,0,0);
     &:hover{
         border: 1px solid var(--primary-0);
@@ -10,7 +9,6 @@
 
 .Card-text{
     text-align: left;
-    
 }
 
 .Card-Header{
@@ -18,6 +16,12 @@
     color: var(--primary-dark);
     text-decoration: underline;
 }
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
 
 img{
     width: 100%;
