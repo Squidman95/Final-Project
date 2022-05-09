@@ -17,10 +17,6 @@ const SearchResult = (props) => {
         return [];
     }
 
-    const onCardClick = (product) => {
-
-    }
-
     return (
 
         <div className='SearchResultPage'>
