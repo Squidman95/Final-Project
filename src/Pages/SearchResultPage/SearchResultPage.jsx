@@ -17,6 +17,10 @@ const SearchResult = (props) => {
         return [];
     }
 
+    const onCardClick = (product) => {
+
+    }
+
     return (
 
         <div className='SearchResultPage'>
@@ -36,6 +40,7 @@ const SearchResult = (props) => {
                     products.map((item, index) => {
                         return(
                             <Card key = {index}
+                                id = {item.id}
                                 image = {item.image}
                                 header = {item.name}
                                 subtext = {item.shortDescription}

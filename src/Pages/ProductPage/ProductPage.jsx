@@ -1,6 +1,9 @@
 import React from 'react';
 import products from '../../Data/ProductData';
 import './ProductPage.scss';
+import {
+    useParams
+  } from "react-router-dom";
 
 const ProductPage = (props) => {
 
@@ -11,6 +14,10 @@ const ProductPage = (props) => {
         longDescription,
         price
     } = props;
+
+    let { id } = useParams();
+
+    console.log(id);
 
     return (
         <div className='Product'>
