@@ -1,15 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
-import ExampleComponent from './Components/Examples/ExampleComp';
+import BasketPage from './Pages/BasketPage/BasketPage.jsx';
+import Frontpage from './Pages/Frontpage/Frontpage.jsx';
+import ProductPage from './Pages/ProductPage/ProductPage.jsx';
+import SearchResultPage from './Pages/SearchResultPage/SearchResultPage.jsx';
 
-function App() {
+function App(props) {
 
   return (
     <div className="App">
-      <ExampleComponent 
-        prop1 = "This is prop1"
-        prop2 = "This is prop2"
-      />
+      {props.page === "ProductPage" ? <ProductPage /> : null}
+      {props.page === "BasketPage" ? <BasketPage/> : null}
+      {props.page === "SearchResultPage" ? <SearchResultPage /> : null}
+      {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}
+      {props.page === "Frontpage" ? <Frontpage/> : null}
     </div>
   );
 }
