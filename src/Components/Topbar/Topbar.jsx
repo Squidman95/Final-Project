@@ -1,6 +1,7 @@
 import React from "react";
 import "./Topbar.scss";
 import ButtonDropdown from "../ButtonDropdown/ButtonDropdown";
+import BasketButton from "../BasketButton/BasketButton"
 
 function LoggedInTopbar(props) {
   return (
@@ -16,12 +17,7 @@ function LoggedInTopbar(props) {
       <div className="Topbar-right-container">
         <a href="#about">Log out</a>
         <ButtonDropdown />
-        <a href="#about">
-          <img
-            className="Topbar-right-basketimage"
-            src={require("./basket-icon.png")}
-          ></img>
-        </a>
+        <BasketButton/>
       </div>
     </div>
   );
@@ -40,13 +36,7 @@ function LoggedOutTopbar(props) {
       </div>
       <div className="Topbar-right-container">
         <a href="#about">Log in</a>
-        <ButtonDropdown />
-        <a href="#about">
-          <img
-            className="Topbar-right-basketimage"
-            src={require("./basket-icon.png")}
-          ></img>
-        </a>
+        <BasketButton />
       </div>
     </div>
   );
