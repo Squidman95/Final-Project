@@ -5,7 +5,7 @@ const Frontpage = () => {
   return (
     <div>
       <h1>Frontpage</h1>
-      <Topbar isLoggedIn={false} />
+      <Topbar isLoggedIn={true} />
     </div>
   );
 };

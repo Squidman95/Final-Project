@@ -3,16 +3,10 @@ import "./BasketButton.scss";
 
 const BasketButton = (props) => {
   return (
-    <div className="ButtonContainer">
-      <a href="#cart">
-        <img
-          className="Topbar-right-basketimage"
-          src="/assets/images/icons/basket-icon.png"
-          alt="cart"
-        ></img>
+      <a className="ButtonContainer" href="#cart">
+        <span>Cart</span>
         <div id="BasketButtonCounter">0</div>
       </a>
-    </div>
   );
 };
 
