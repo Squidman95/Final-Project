@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './BasketPage.scss';
 import Button from '../../Components/Button/Button';
-import products from '../../Data/ProductData';
+// import products from '../../Data/ProductData';
 import Card from '../../Components/Card/Card';
 import { getBasket, createBasket, removeItemFromBasket } from '../../Service/BasketServices';
 
@@ -14,8 +14,8 @@ const BasketPage = (props) => {
     const [basket, setBasket] = useState([]);
 
     useEffect(() => {
-        getBasket(costumerId).then(function(products) {
-            setBasket(products); // get and save content to state
+        getBasket(costumerId).then(function(basket) {
+            setBasket(basket.items); // get and save content to state
         }).catch(() => {
             createBasket(costumerId); //if we can't get basket, we create one
         });
@@ -30,11 +30,13 @@ const BasketPage = (props) => {
         }); 
     }
 
+    console.log(basket);
+
     return (
         <div className='BasketPage'>
             <div className='Basket-Cards'>
                 {
-                    products.map((item, index) => {
+                    basket.map((item, index) => {
                         return(
                             <Card key = {index}
                                 id = {item.id}
