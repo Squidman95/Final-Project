@@ -15,7 +15,7 @@ const ProductPage = (props) => {
         price
     } = props;
 
-    products[0].name
+    //products[0].name
 
     let { id } = useParams();
     
