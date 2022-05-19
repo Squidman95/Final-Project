@@ -7,6 +7,11 @@
     padding: 0em 1em 1em 1em;
 }
 
+.Card-imagePosition{
+    display: flex;
+    flex-direction: row;
+}
+
 .Card-text{
     text-align: left;
 }
@@ -22,7 +27,7 @@ a{
     color: black;
 }
 
-img{
+.card-img-css{
     width: 100%;
     height: 15vw;
     object-fit: contain;
