@@ -1,12 +1,21 @@
 import React from "react";
 import "./BasketButton.scss";
+import { Link } from "react-router-dom";
 
 const BasketButton = (props) => {
   return (
-      <a className="ButtonContainer" href="#cart">
+    <Link to={`/basket`}>
+      <div className="ButtonContainer">
         <span>Cart</span>
         <div id="BasketButtonCounter">0</div>
-      </a>
+      </div>
+    </Link>
+        
+
+      // <a className="ButtonContainer" href="#cart">
+      //   <span>Cart</span>
+      //   <div id="BasketButtonCounter">0</div>
+      // </a>
   );
 };
 
