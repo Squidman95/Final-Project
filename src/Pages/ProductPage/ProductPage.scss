@@ -1,21 +1,33 @@
 img {
-    scale: 100%;
-    padding: 30px;
+    scale: 150%;
+    padding-top: 30px;
+    padding-bottom: 80px;
 
 }
 
 .columns {
     display: flex;
     flex-direction: row;
-    padding-top: 30px;
+    padding-top: 80px;
 }
 
 .leftColumn {
-    width:50%;
+    width:60%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
 }
 
 .rightColumn {
-    width:50%;
+    width:40%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+
+}
+
+.productName {
+    padding-bottom: 30px;
 }
 
 .ProductButtonContainer {

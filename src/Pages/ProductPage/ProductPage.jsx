@@ -35,11 +35,11 @@ const ProductPage = (props) => {
             <div className='Product'>
                 <div className='columns'>
                     <div className = 'leftColumn'>
-                        <h1 className='productName'> {name} </h1>
                         <img src = {image} />
                         <div className='longDescription'> {longDescription} </div>
                     </div>
                     <div className='rightColumn'>
+                        <h1 className='productName'> {name} </h1>
                         <div className='shortDescription'> {shortDescription}</div>
                         <h3 className='price'>{price} DKK</h3>
                         <div className = "ButtonsContainer">
