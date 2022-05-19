@@ -22,11 +22,12 @@ const BasketPage = (props) => {
     }, []);
 
     function removeBasketItem(productId) {
-        removeItemFromBasket(costumerId, productId); //remove item from backend
-        let basket = basket.filter(function (el) {
-            return el.id !== productId;
-        });
-        setBasket(basket); // remove item from frontend state
+        removeItemFromBasket(costumerId, productId) //remove item from backend
+        .then(function () { // if successful, then also remove from frontend
+            setBasket(basket.filter(function (el) {
+                return el.id !== productId;
+            }));
+        }); 
     }
 
     return (
