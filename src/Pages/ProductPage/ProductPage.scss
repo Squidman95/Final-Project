@@ -1,3 +1,15 @@
 img {
-    scale: 40%;
+    scale: 100%;
 }
+
+.ProductButtonContainer {
+    position: relative;
+    text-align: center;
+    color: white;
+    background-color:rgb(255, 0, 187);
+    padding: 20px;
+  }
+
+  .ButtonsContainer {
+      align-content:space-between;
+  }
