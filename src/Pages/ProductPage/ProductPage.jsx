@@ -39,7 +39,7 @@ const ProductPage = (props) => {
             <div className='Product'>
                 <div className='columns'>
                     <div className = 'leftColumn'>
-                        <img src = {image} />
+                        <img className='prodImg' src = {image} />
                         <div className='longDescription'> {longDescription} </div>
                     </div>
                     <div className='rightColumn'>

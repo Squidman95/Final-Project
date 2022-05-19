@@ -1,7 +1,8 @@
-img {
+.prodImg {
     scale: 150%;
     padding-top: 30px;
     padding-bottom: 80px;
+    max-width: 50%;
 }
 
 .columns {
@@ -15,6 +16,7 @@ img {
     display: flex;
     flex-direction: column;
     align-self: center;
+    align-items: center;
 }
 
 .rightColumn {
