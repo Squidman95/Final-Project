@@ -8,13 +8,14 @@ const Card = (props) => {
         id,
         image,
         header,
-        subtext
+        subtext,
+        imagePosition = 'top', //otherwise 'left'
     } = props;
 
 
     return (
         <Link to={`/product/${id}`}>
-            <div className='Card'>
+            <div className={`Card Card-${imagePosition}`}>
                 <img src={`${process.env.PUBLIC_URL}${image}`} alt={header}/>
                 <div className='Card-text'>
                     <div className='Card-Header'>
