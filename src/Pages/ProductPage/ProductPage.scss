@@ -52,3 +52,18 @@ img {
     text-align: center;
        
   }
+
+  @media (max-width: 800px) {
+    .columns {
+        flex-direction:column-reverse;
+    }
+    .rightColumn {
+        width:100%
+    }
+    .leftColumn {
+        width:100%
+    }
+    .ButtonsContainer {
+        padding-bottom: 80px;
+    }
+}
