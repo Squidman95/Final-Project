@@ -7,6 +7,11 @@ import {
 
 const ProductPage = (props) => {
     
+    let { id } = useParams();
+    
+    console.log(id);
+
+    /*
     let {
         name,
         image,
@@ -14,12 +19,14 @@ const ProductPage = (props) => {
         longDescription,
         price
     } = props;
+    */
 
-    //products[0].name
+    let name = products[id].name;
+    let image = products[id].image;
+    let shortDescription = products[id].shortDescription;
+    let longDescription = products[id].longDescription;
+    let price = products[id].price;
 
-    let { id } = useParams();
-    
-    console.log(id);
 
     return (
         <div className='Product'>
