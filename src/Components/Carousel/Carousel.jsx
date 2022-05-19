@@ -26,7 +26,7 @@ const CarouselComponent = (props) => {
             {imageArray.map((item, index) => {
                 return (
                     <div key={index}>
-                        <img src={item} />
+                        <img src={item} className='card-img-css'/>
                     </div>
                 )
             })}
