@@ -7,7 +7,7 @@ import Card from '../../Components/Card/Card';
 const BasketPage = (props) => {
     return (
         <div className='BasketPage'>
-            {/* <div className='Basket-Cards'>
+            <div className='Basket-Cards'>
                 {
                     products.map((item, index) => {
                         return(
@@ -16,11 +16,12 @@ const BasketPage = (props) => {
                                 image = {item.image}
                                 header = {item.name}
                                 subtext = {item.shortDescription}
+                                imagePosition = 'left'
                             />
                         );
                     })
                 }
-            </div> */}
+            </div>
 
             <div id="total" class="align-self-end">Total:</div>
 
