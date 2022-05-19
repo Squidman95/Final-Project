@@ -1,8 +1,8 @@
 import React from 'react';
 // import products from '../../Data/ProductData';
-import Card from '../../Components/Card/Card';
-import './SearchResultPage.scss';
-import CarouselComponent from '../../Components/Carousel/Carousel';
+import Card from '../Card/Card';
+import './ShowResults.scss';
+import CarouselComponent from '../Carousel/Carousel';
 
 const SearchResult = (props) => {
     
@@ -19,8 +19,8 @@ const SearchResult = (props) => {
 
     return (
 
-        <div className='SearchResultPage'>
-            <div className='SearchResultPage-Carousel'>
+        <div className='ShowResults'>
+            <div className='ShowResults-Carousel'>
                 <CarouselComponent
                     imageArray = {getCarouselArray()}
                     showIndicators = {false}
@@ -31,7 +31,7 @@ const SearchResult = (props) => {
                     infiniteLoop = {true}
                 />
             </div>
-            <div className='SearchResultPage-Cards'>
+            <div className='ShowResults-Cards'>
                 {
                     products.map((item, index) => {
                         return(

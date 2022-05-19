@@ -1,10 +1,34 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './BasketPage.scss';
 import Button from '../../Components/Button/Button';
 import products from '../../Data/ProductData';
 import Card from '../../Components/Card/Card';
+import { getBasket, createBasket, removeItemFromBasket } from '../../Service/BasketServices';
 
 const BasketPage = (props) => {
+
+    let {
+        costumerId
+    } = props
+
+    const [basket, setBasket] = useState([]);
+
+    useEffect(() => {
+        getBasket(costumerId).then(function(products) {
+            setBasket(products); // get and save content to state
+        }).catch(() => {
+            createBasket(costumerId); //if we can't get basket, we create one
+        });
+    }, []);
+
+    function removeBasketItem(productId) {
+        removeItemFromBasket(costumerId, productId); //remove item from backend
+        let basket = basket.filter(function (el) {
+            return el.id !== productId;
+        });
+        setBasket(basket); // remove item from frontend state
+    }
+
     return (
         <div className='BasketPage'>
             <div className='Basket-Cards'>
