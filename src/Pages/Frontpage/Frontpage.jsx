@@ -16,8 +16,8 @@ const Frontpage = () => {
   return (
     <div>
       <h1>Frontpage</h1>
-      <SearchResult/>
       <Topbar isLoggedIn={true} />
+      <SearchResult/>
       {/* <Popup onClose={setVisibility} show={visibility}/>  */}
     </div>
   );
