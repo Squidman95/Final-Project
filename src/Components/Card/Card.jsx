@@ -16,7 +16,10 @@ const Card = (props) => {
     return (
         <Link to={`/product/${id}`}>
             <div className={`Card Card-${imagePosition}`}>
-                <img src={`${process.env.PUBLIC_URL}${image}`} alt={header}/>
+                <img 
+                    src={`${process.env.PUBLIC_URL}${image}`} 
+                    alt={header}
+                    class='card-img-css'/>
                 <div className='Card-text'>
                     <div className='Card-Header'>
                         {header}
