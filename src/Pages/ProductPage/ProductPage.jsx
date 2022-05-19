@@ -33,18 +33,23 @@ const ProductPage = (props) => {
        <div>
             <Topbar isLoggedIn={true} />
             <div className='Product'>
-                <img src = {image} />
-                <h1 className='productName'> {name} </h1>
-                <h3 className='price'>{price} DKK</h3>
-                <div className='Description'>
-                    <div className='shortDescription'> {shortDescription}</div>
-                    <div className='longDescription'> {longDescription} </div>
+                <div className='columns'>
+                    <div className = 'leftColumn'>
+                        <h1 className='productName'> {name} </h1>
+                        <img src = {image} />
+                        <div className='longDescription'> {longDescription} </div>
+                    </div>
+                    <div className='rightColumn'>
+                        <div className='shortDescription'> {shortDescription}</div>
+                        <h3 className='price'>{price} DKK</h3>
+                        <div className = "ButtonsContainer">
+                            <a className="ProductButtonContainer"> Add to basket</a>
+                            <a className="ProductButtonContainer"> Buy now</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className = "ButtonsContainer">
-                <a className="ProductButtonContainer"> Add to basket</a>
-                <a className="ProductButtonContainer"> Buy now</a>
-            </div>
+            
         </div>
     )
 }
