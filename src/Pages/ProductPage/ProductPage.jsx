@@ -6,7 +6,7 @@ import {
   } from "react-router-dom";
 
 const ProductPage = (props) => {
-
+    
     let {
         name,
         image,
@@ -15,8 +15,10 @@ const ProductPage = (props) => {
         price
     } = props;
 
-    let { id } = useParams();
+    products[0].name
 
+    let { id } = useParams();
+    
     console.log(id);
 
     return (
