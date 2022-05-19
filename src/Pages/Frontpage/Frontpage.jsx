@@ -5,13 +5,15 @@ import { getAllProducts } from '../../Service/ProductService';
 import Popup from '../../Components/Popup/Popup';    
 // import SearchResult from '../../Pages/SearchResultPage/SearchResultPage';    
 import ShowResults from '../../Components/ShowResults/ShowResults';
-import products from '../../Data/ProductData';
+// import products from '../../Data/ProductData';
 
 const Frontpage = () => {
   const [visibility, setVisibility] = useState(false); // For the login/signup popup
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
 
+  const [products, setProducts] = useState([]); // the reference (all products). Should not change
+  const [filteredProducts, setFilteredProducts] = useState([]); // SHOULD BE THE SHOWN LIST
+
+  // filter variables
   const [productsFilterMinPrice, setproductsFilterMinPrice] = useState(null);
   const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(null);
   const [productsFilterAnimal, setproductsFilterAnimal] = useState(null);
@@ -55,9 +57,11 @@ const Frontpage = () => {
     <div>
       <h1>Frontpage</h1>
 
+      {/* DELETE THESE TEXTS ONCE WE UNDERSTAND THE USABILITY OF THE IMPLEMENTATION */}
       <p onClick = {() => {setproductsFilterAnimal('Dog'); console.log('click');}}  >dog filter</p>
       <p onClick = {() => {setproductsFilterMinPrice(10); setproductsFilterMaxPrice(100); console.log('click');}}  >price filter</p>
       <p onClick = {() => {setproductsFilterMinPrice(null); setproductsFilterMaxPrice(null); setproductsFilterAnimal(null)}}  >reset filter</p>
+
       <Topbar isLoggedIn={true} />
       <ShowResults
         products = {filteredProducts}
