@@ -1,0 +1,17 @@
+.Sidebar{
+    text-align: left;
+}
+
+.SidebarCategories{
+    display:flex;
+    flex-direction: column;
+}
+
+.SidebarPrice{
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 20%;
+}

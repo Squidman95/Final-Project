@@ -6,6 +6,8 @@ import Popup from "../../Components/Popup/Popup";
 // import SearchResult from '../../Pages/SearchResultPage/SearchResultPage';
 import ShowResults from "../../Components/ShowResults/ShowResults";
 // import products from '../../Data/ProductData';
+import Sidebar from "../../Components/Sidebar/Sidebar";
+import "./Frontpage.scss"
 
 const Frontpage = (props) => {
   let { userId } = props;
@@ -18,10 +20,11 @@ const Frontpage = (props) => {
   const [filteredProducts, setFilteredProducts] = useState([]); // SHOULD BE THE SHOWN LIST
 
   // filter variables
-  const [productsFilterMinPrice, setproductsFilterMinPrice] = useState(null);
-  const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(null);
+  const [productsFilterMinPrice, setproductsFilterMinPrice] = useState(0);
+  const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(1000);
   const [productsFilterAnimal, setproductsFilterAnimal] = useState(null);
   const [productsFilterCategory, setproductsFilterCategory] = useState(null);
+  
 
   useEffect(() => {
     getAllProducts().then(function (products) {
@@ -32,18 +35,17 @@ const Frontpage = (props) => {
 
   useEffect(() => {
     let localProducts = products;
-    if (
-      productsFilterMinPrice !== null &&
-      productsFilterMinPrice !== undefined &&
-      productsFilterMaxPrice !== null &&
-      productsFilterMaxPrice !== undefined
-    ) {
-      localProducts = getPriceFilteredItems(
-        localProducts,
-        productsFilterMinPrice,
-        productsFilterMaxPrice
-      );
+
+    if(productsFilterMinPrice < productsFilterMaxPrice && productsFilterMinPrice>=0 && productsFilterMaxPrice>0) {
+      if(productsFilterMinPrice !== null && productsFilterMinPrice !== undefined ) {
+        localProducts = getMinPriceFilteredItems(localProducts, productsFilterMinPrice)
+      }
+  
+      if(productsFilterMaxPrice !== null && productsFilterMaxPrice !== undefined) {
+        localProducts = getMaxPriceFilteredItems(localProducts, productsFilterMaxPrice)
+      }
     }
+    
 
     if (productsFilterAnimal !== null && productsFilterAnimal !== undefined) {
       localProducts = getNameFilteredItems(localProducts, productsFilterAnimal);
@@ -60,32 +62,50 @@ const Frontpage = (props) => {
     }
 
     setFilteredProducts(localProducts);
-  }, [productsFilterMaxPrice, productsFilterMinPrice, productsFilterAnimal]);
+  }, [productsFilterMaxPrice, productsFilterMinPrice, productsFilterAnimal, productsFilterCategory]);
 
-  function getNameFilteredItems(products, animalName) {
-    return products.filter(function (el) {
-      return el.animal === animalName;
+  function getNameFilteredItems(products, animalName){
+    return products.filter(function(el) {
+        return el.animal === animalName;
+    })
+  }
+
+  function getCategoriesFilterItems(products, category){
+    return products.filter(function(el) {
+        return el.category === category;
+    })
+  }
+
+  function getMinPriceFilteredItems(products, priceMin){
+    return products.filter(function(el) {
+        return el.price >= priceMin;
     });
   }
 
-  function getCategoriesFilterItems(products, category) {
-    return products.filter(function (el) {
-      return el.category === category;
-    });
-  }
-
-  function getPriceFilteredItems(products, priceMin, priceMax) {
-    return products.filter(function (el) {
-      return el.price >= priceMin && el.price <= priceMax;
+  function getMaxPriceFilteredItems(products, priceMax){
+    return products.filter(function(el) {
+        return el.price <= priceMax;
     });
   }
 
   return (
     <div>
       <h1>Frontpage</h1>
-      {/* <Topbar isLoggedIn={false} /> */}
-      {/* <Sidebar/> */}
-      <ShowResults products={filteredProducts} />
+      
+      <Topbar isLoggedIn={true} />
+      <div className='Frontpage-Content'>
+        <Sidebar
+          FilterAnimal = {setproductsFilterAnimal}
+          FilterCategory = {setproductsFilterCategory}
+          FilterMinPrice = {setproductsFilterMinPrice}
+          FilterMaxPrice = {setproductsFilterMaxPrice}
+        />
+        <ShowResults
+          products = {filteredProducts}
+        />
+      </div>
+      
+      
       {/* <Popup onClose={setVisibility} show={visibility}/>  */}
     </div>
   );
