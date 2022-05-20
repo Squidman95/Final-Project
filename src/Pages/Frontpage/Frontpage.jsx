@@ -124,7 +124,6 @@ const Frontpage = (props) => {
         <ShowResults
           products = {filteredProducts}
         />
-        <ShowResults products={filteredProducts} />
       </div>
 
       {/* <Popup onClose={setVisibility} show={visibility}/>  */}
