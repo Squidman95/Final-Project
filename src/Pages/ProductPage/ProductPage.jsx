@@ -45,7 +45,7 @@ const ProductPage = (props) => {
             <div className="ButtonsContainer">
               <div className="ProductButtonContainer">
                 <Button
-                  onClick={() => addItemToBasket(0, itemID)}
+                  onClick={() => addItemToBasket(userId, itemID)}
                   imageSrc="/assets/images/icons/add-basket-icon.png"
                   imageClass="default-img-loc"
                   btnText="Add to basket!"
@@ -54,7 +54,7 @@ const ProductPage = (props) => {
               <div className="ProductButtonContainer">
                 <Button
                   to="/Basket"
-                  onClick={() => addItemToBasket(0, itemID)}
+                  onClick={() => addItemToBasket(userId, itemID)}
                   imageSrc="/assets/images/icons/horse-icon.png"
                   imageClass="default-img-loc"
                   btnText="Buy now!"
