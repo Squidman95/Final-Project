@@ -1,5 +1,7 @@
 import React from 'react';
 import products from '../../Data/ProductData';
+import Button from '../../Components/Button/Button';
+import { addItemToBasket } from '../../Service/BasketService';
 import './ProductPage.scss';
 import Topbar from "../../Components/Topbar/Topbar";
 import { Link } from "react-router-dom";
@@ -9,9 +11,9 @@ import {
 
 const ProductPage = (props) => {
     
-    let { id } = useParams();
+    let { id: itemID } = useParams();
     
-    console.log(id);
+    console.log(itemID);
 
     /*
     let {
@@ -23,13 +25,15 @@ const ProductPage = (props) => {
     } = props;
     */
 
-    let name = products[id].name;
-    let image = products[id].image;
-    let shortDescription = products[id].shortDescription;
-    let longDescription = products[id].longDescription;
-    let price = products[id].price;
-
-    function addToBasket(id) {
+    let name = products[itemID].name;
+    let image = products[itemID].image;
+    let shortDescription = products[itemID].shortDescription;
+    let longDescription = products[itemID].longDescription;
+    let price = products[itemID].price;
+    // let contextType = UserContext;
+    function addToBasket() {
+        addItemToBasket(0, itemID);
+        console.log(`Adding item ${itemID} to basket`);
         // need to implement adding a product to the basket.
     }
 
@@ -47,8 +51,24 @@ const ProductPage = (props) => {
                         <div className='shortDescription'> {shortDescription}</div>
                         <h3 className='price'>{price} DKK</h3>
                         <div className = "ButtonsContainer">
-                            <a className="ProductButtonContainer" onClick={addToBasket(id)}> Add to basket</a>
-                            <a className="ProductButtonContainer" href='/Basket' onClick={addToBasket(id)}> Buy now</a>
+                            <div className="ProductButtonContainer">
+                                <Button 
+                                    to='/SearchResult'
+                                    onClick={() => addToBasket}
+                                    imageSrc='/assets/images/icons/add-basket-icon.png'
+                                    imageClass='default-img-loc'
+                                    btnText = "Add to basket!"
+                                />
+                            </div>
+                            <div className="ProductButtonContainer">
+                                <Button 
+                                    to='/Basket'
+                                    onClick={() => addToBasket}
+                                    imageSrc='/assets/images/icons/horse-icon.png'
+                                    imageClass='default-img-loc'
+                                    btnText = "Buy now!"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
