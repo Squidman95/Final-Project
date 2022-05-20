@@ -40,6 +40,7 @@ const SearchResult = (props) => {
                                 image = {item.image}
                                 header = {item.name}
                                 subtext = {item.shortDescription}
+                                price = {item.price}
                             />
                         );
                     })
