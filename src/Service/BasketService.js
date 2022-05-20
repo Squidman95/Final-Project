@@ -14,7 +14,7 @@ async function addItemToBasket(userID, itemID) {
     var requestOptions = {
         method: 'PUT',
         redirect: 'follow'
-      };
+    };
       
     fetch(`http://localhost:4000/customers/${userID}/basket/${itemID}`, requestOptions)
     .then(response => response.text())
@@ -27,7 +27,7 @@ async function deleteItemFromBasket(userID, itemID) {
     var requestOptions = {
         method: 'DELETE',
         redirect: 'follow'
-      };
+    };
       
     fetch(`http://localhost:4000/customers/${userID}/basket/${itemID}`, requestOptions)
     .then(response => response.text())

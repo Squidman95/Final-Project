@@ -32,6 +32,12 @@ const BasketPage = (props) => {
 
     console.log(basket);
 
+    // calculating the total (should maybe go somewhere else..)
+    let total = 0;
+    basket.forEach(function (item) {
+        total += item.price;
+    });
+
     return (
         <div className='BasketPage'>
             <div className='Basket-Cards'>
@@ -42,25 +48,29 @@ const BasketPage = (props) => {
                                 id = {item.id}
                                 image = {item.image}
                                 header = {item.name}
-                                subtext = {item.shortDescription}
+                                price = {item.price}
                                 imagePosition = 'left'
+                                showXbutton = 'true'
                             />
                         );
                     })
                 }
             </div>
 
-            <div id="total" class="align-self-end">Total:</div>
-
-            <div className='Checkout-Button'>
-                <Button 
-                    to='/SearchResult'
-                    onClick={() => console.log('You clicked on the custom button!')}
-                    imageSrc='/assets/images/icons/basket-icon.png'
-                    imageClass='default-img-loc'
-                    btnText = "Checkout!"
-                />
+            <div className='TotalAndButton'>
+                <div id="total">Total: {total} DKK</div>
+                <div className='Checkout-Button'>
+                    <Button 
+                        to='/SearchResult'
+                        onClick={() => console.log('You clicked on the custom button!')}
+                        imageSrc='/assets/images/icons/basket-icon.png'
+                        imageClass='default-img-loc'
+                        btnText = "Checkout!"
+                    />
+                </div>
             </div>
+        
+            
         </div>
     )
 

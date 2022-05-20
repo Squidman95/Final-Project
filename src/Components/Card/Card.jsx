@@ -9,6 +9,7 @@ const Card = (props) => {
         image,
         header,
         subtext,
+        price,
         imagePosition = 'top', //otherwise 'left'
         showXbutton = false,
     } = props;
@@ -27,6 +28,9 @@ const Card = (props) => {
                     </div>
                     <div className='Card-subtext'>
                         {subtext}
+                    </div>
+                    <div className='Card-price'>
+                        {price} DKK
                     </div>
                 </div>
                 {showXbutton && 
