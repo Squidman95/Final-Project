@@ -16,9 +16,13 @@ function App(props) {
   const [userID, setUserID] = useState(null);
   const [visibility, setVisibility] = useState(false);
 
-
+  let UID = localStorage.getItem('UserID');
+  if(UID === null) {
+    UID = uuid();
+    localStorage.setItem('UserID', UID);
+  }
   if(userID === null) {
-    setUserID(uuid());
+    setUserID(UID);
   }
 
   useEffect(() => {
