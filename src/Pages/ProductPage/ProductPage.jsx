@@ -12,11 +12,9 @@ const ProductPage = (props) => {
 
   console.log(itemID);
 
-    let {
-        userId
-    } = props;
+  let { userId } = props;
 
-    console.log(`userId: ${userId}`);
+  console.log(`userId: ${userId}`);
 
   let name = products[itemID].name;
   let image = products[itemID].image;
@@ -31,7 +29,7 @@ const ProductPage = (props) => {
 
   return (
     <div>
-      <Topbar isLoggedIn={false} />
+      {/* <Topbar isLoggedIn={false} /> */}
       <div className="Product">
         <div className="columns">
           <div className="leftColumn">
