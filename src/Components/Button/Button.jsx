@@ -11,10 +11,10 @@ const Button = (props) => {
         btnText = null,
     } = props;
     return (
-        <div>
+        <div className="btn custom-button">
             {to !== null ? 
-            <Link 
-                className="btn custom-button"
+            <Link
+                className="c-button"
                 role="button"
                 to={to}
                 onClick={(event) => {
@@ -31,7 +31,7 @@ const Button = (props) => {
             </Link>
             :
             <button 
-                className="btn custom-button"
+                className="c-button"
                 role="button"
                 onClick={(event) => {
                     onClick && onClick(event)
