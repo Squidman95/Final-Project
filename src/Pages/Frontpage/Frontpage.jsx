@@ -21,7 +21,7 @@ const Frontpage = (props) => {
 
   // filter variables
   const [productsFilterMinPrice, setproductsFilterMinPrice] = useState(0);
-  const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(1000);
+  const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(0);
   const [productsFilterAnimal, setproductsFilterAnimal] = useState(null);
   const [productsFilterCategory, setproductsFilterCategory] = useState(null);
   const [productsFilterSubCategory, setproductFilterSubCategory] = useState(null);
