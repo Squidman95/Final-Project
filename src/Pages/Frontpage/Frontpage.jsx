@@ -83,7 +83,7 @@ const Frontpage = (props) => {
   return (
     <div>
       <h1>Frontpage</h1>
-      <Topbar isLoggedIn={false} />
+      {/* <Topbar isLoggedIn={false} /> */}
       {/* <Sidebar/> */}
       <ShowResults products={filteredProducts} />
       {/* <Popup onClose={setVisibility} show={visibility}/>  */}
