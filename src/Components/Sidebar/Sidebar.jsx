@@ -1,28 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import "./Sidebar.scss"
 import { getAllCategories } from '../../Service/ProductService';
-// import Select from 'react-select';
-// import AsyncSelect from 'react-select/async';
-
-const animalsChoices = [
-    { label: 'Dog', value: 'Dog'},
-    { label: 'Cat', value: 'Cat'},
-    { label: 'Bird', value: 'Bird'},
-    { label: 'small', value: 'small'}
-];
-
-
 
 function Sidebar(props) {
 
-    let {FilterAnimal, FilterMinPrice, FilterMaxPrice} = props;
+    let {FilterAnimal, FilterCategory, FilterMinPrice, FilterMaxPrice} = props;
     const [categories, setCategories] = useState([]);
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(1000);
 
     useEffect(() => {
         getAllCategories().then(function(categories) {
           setCategories(categories);
         });
       }, []);
+
+    function checkHandler(item, e) {
+        if(e.target.checked == true) {
+            FilterCategory(item);
+        } else {
+            FilterCategory(null);
+        }
+    }
+
+    const handleMinPriceChange = (e) => {
+        setMinPrice(parseInt(e.target.value));
+        FilterMinPrice(parseInt(e.target.value));
+    }
+
+    const handleMaxPriceChange = (e) => {
+        setMaxPrice(parseInt(e.target.value));
+        FilterMaxPrice(parseInt(e.target.value));
+    }
 
     return (
         <div className="Sidebar">
@@ -31,13 +40,13 @@ function Sidebar(props) {
                 <p onClick={()=>{FilterAnimal("Dog")}}>
                     Dog
                 </p>
-                <p>
+                <p onClick={()=>{FilterAnimal("Cat")}}>
                     Cat
                 </p>
-                <p>
+                <p onClick={()=>{FilterAnimal("Rodent")}}>
                     Rodent
                 </p>
-                <p>
+                <p onClick={()=>{FilterAnimal("Bird")}}>
                     Bird
                 </p>
             </div>
@@ -48,24 +57,12 @@ function Sidebar(props) {
                     categories.map((item, index)=>{
                         return (
                             <div key={index}>
-                                <input type="checkbox" id={item} value={item}></input>
+                                <input type="checkbox" id={item} value={item} onChange={(e)=> checkHandler(item, e)}></input>
                                 <label for={item}>{item}</label> 
                             </div>
                         );
                     })
                 }
-               {/*  <div>
-                    <input type="checkbox" id="food" value="Food"></input>
-                    <label for="food">Food</label> 
-                </div>
-                <div>
-                    <input type="checkbox" id="Bed" value="Bed"></input>
-                    <label for="Bed">Bed</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="Toys" value="Toys"></input>
-                    <label for="Toys">Toys</label>
-                </div> */}
             </div>   
 
             <div className="SidebarSubcategories">
@@ -74,6 +71,14 @@ function Sidebar(props) {
 
             <div className="SidebarPrice">
                 <h1>Price</h1>
+                <div>
+                    <input type="number" id="minPrice" value={minPrice} min="0" onChange={handleMinPriceChange}></input>
+                    <label for="minPrice"> Min Price</label>
+                </div>
+                <div>
+                    <input type="number" id="maxPrice" value={maxPrice} min="0" onChange={handleMaxPriceChange}></input>
+                    <label for="maxPrice"> Max Price</label>
+                </div>
             </div>        
             
 
