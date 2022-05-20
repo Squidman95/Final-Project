@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import "./Sidebar.scss"
-import { getAllCategories } from '../../Service/ProductService';
+import { getAllCategories, getAllSubCategories } from '../../Service/ProductService';
 
 function Sidebar(props) {
 
-    let {FilterAnimal, FilterCategory, FilterMinPrice, FilterMaxPrice} = props;
+    let {FilterAnimal, FilterCategory, FilterSubCategory, FilterMinPrice, FilterMaxPrice} = props;
     const [categories, setCategories] = useState([]);
+    const [subcategories, setSubCategories] = useState([]);
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(1000);
 
@@ -15,11 +16,25 @@ function Sidebar(props) {
         });
       }, []);
 
-    function checkHandler(item, e) {
+    useEffect(() => {
+        getAllSubCategories().then(function(subcategories) {
+          setSubCategories(subcategories);
+        });
+    }, []);  
+
+    function checkCatHandler(item, e) {
         if(e.target.checked == true) {
             FilterCategory(item);
         } else {
             FilterCategory(null);
+        }
+    }
+
+    function checkSubHandler(item, e) {
+        if(e.target.checked == true) {
+            FilterSubCategory(item);
+        } else {
+            FilterSubCategory(null);
         }
     }
 
@@ -57,7 +72,7 @@ function Sidebar(props) {
                     categories.map((item, index)=>{
                         return (
                             <div key={index}>
-                                <input type="checkbox" id={item} value={item} onChange={(e)=> checkHandler(item, e)}></input>
+                                <input type="checkbox" id={item} value={item} onChange={(e)=> checkCatHandler(item, e)}></input>
                                 <label for={item}>{item}</label> 
                             </div>
                         );
@@ -67,6 +82,16 @@ function Sidebar(props) {
 
             <div className="SidebarSubcategories">
                 <h1>Subcategories</h1>
+                {
+                    subcategories.map((item, index)=>{
+                        return (
+                            <div key={index}>
+                                <input type="checkbox" id={item} value={item} onChange={(e)=> checkSubHandler(item, e)}></input>
+                                <label for={item}>{item}</label> 
+                            </div>
+                        );
+                    })
+                }
             </div>
 
             <div className="SidebarPrice">
