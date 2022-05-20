@@ -21,6 +21,8 @@ const Button = (props) => {
                     onClick && onClick(event)
                 }}
                 > 
+                {imageSrc !== null ?
+                <div className="c-button">
                 <img 
                     src={`${process.env.PUBLIC_URL}${imageSrc}`}
                     class={imageClass}
@@ -28,6 +30,12 @@ const Button = (props) => {
                 <div className='Button-Text'>
                     {btnText}
                 </div>
+                </div>
+                :
+                <div className='Button-Text'>
+                    {btnText}
+                </div>
+                }
             </Link>
             :
             <button 
@@ -36,7 +44,9 @@ const Button = (props) => {
                 onClick={(event) => {
                     onClick && onClick(event)
                 }}
-                > 
+                >
+                {imageSrc !== null ?
+                <div className="c-button">
                 <img 
                     src={`${process.env.PUBLIC_URL}${imageSrc}`}
                     class={imageClass}
@@ -44,6 +54,12 @@ const Button = (props) => {
                 <div className='Button-Text'>
                     {btnText}
                 </div>
+                </div>
+                :
+                <div className='Button-Text'>
+                    {btnText}
+                </div>
+                }
             </button>
             }
             </div>

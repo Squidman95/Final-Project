@@ -3,6 +3,16 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.BasketButtonContainer {
+  width: 20%;
+  height: 100%; 
+}
+
+.TopbarButtonContainer {
+  width: 30%;
+  height: 100%;
+}
+
 .topnav {
   overflow: visible;
   background-color: rgba(136, 174, 222, 0.491);
@@ -10,14 +20,14 @@ body {
   height:50px;
 }
 
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
+// .topnav a {
+//   float: left;
+//   color: #f2f2f2;
+//   text-align: center;
+//   padding: 14px 16px;
+//   text-decoration: none;
+//   font-size: 17px;
+// }
 
 .topnav a:hover {
   background-color: #f2f2f2;
@@ -27,12 +37,14 @@ body {
 .Topbar-left-container {
   display: flex;
   width: 33.33vw;
+  align-items: center;
   justify-content: left;
 }
 
 .Topbar-middle-container {
   display: flex;
   width: 33.33vw;
+  align-items: center;
   justify-content: center;
 }
 
@@ -40,6 +52,7 @@ body {
   display: flex;
   width: 33.33vw;
   justify-content: right;
+  align-items: center;
 }
 
 @media (max-width: 768px) {
