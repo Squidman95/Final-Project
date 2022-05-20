@@ -6,9 +6,10 @@ import Frontpage from './Pages/Frontpage/Frontpage.jsx';
 import ProductPage from './Pages/ProductPage/ProductPage.jsx';
 // import SearchResultPage from './Pages/SearchResultPage/SearchResultPage.jsx';
 
+var userID = 1;
+const UserContext = React.createContext(1);
 function App(props) {
-  var userID = uuid();
-  var UserContext = React.createContext(userID);
+  // var userID = uuid();
 
   return (
     <UserContext.Provider value={userID}>

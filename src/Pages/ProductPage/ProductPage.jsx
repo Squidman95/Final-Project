@@ -31,11 +31,10 @@ const ProductPage = (props) => {
     let longDescription = products[itemID].longDescription;
     let price = products[itemID].price;
     // let contextType = UserContext;
-    function addToBasket() {
-        addItemToBasket(0, itemID);
-        console.log(`Adding item ${itemID} to basket`);
-        // need to implement adding a product to the basket.
-    }
+    // function addToBasket() {
+    //     addItemToBasket(0, itemID);
+    //     console.log(`Adding item ${itemID} to basket`);
+    // }
 
     return (
        <div>
@@ -52,9 +51,8 @@ const ProductPage = (props) => {
                         <h3 className='price'>{price} DKK</h3>
                         <div className = "ButtonsContainer">
                             <div className="ProductButtonContainer">
-                                <Button 
-                                    to='/SearchResult'
-                                    onClick={() => addToBasket}
+                                <Button
+                                    onClick={() => addItemToBasket(0, itemID)}
                                     imageSrc='/assets/images/icons/add-basket-icon.png'
                                     imageClass='default-img-loc'
                                     btnText = "Add to basket!"
@@ -63,7 +61,7 @@ const ProductPage = (props) => {
                             <div className="ProductButtonContainer">
                                 <Button 
                                     to='/Basket'
-                                    onClick={() => addToBasket}
+                                    onClick={() => addItemToBasket(0, itemID)}
                                     imageSrc='/assets/images/icons/horse-icon.png'
                                     imageClass='default-img-loc'
                                     btnText = "Buy now!"
