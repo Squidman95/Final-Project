@@ -28,18 +28,21 @@ function App(props) {
       });
   }, []);
 
+  function a(){
+    console.log('printer');
+  }
+
   return (
-      <div className="App">
-        <Popup setVisibility={setVisibility} show={visibility} />
-        <Topbar isLoggedIn={false} userId={userID} setVisibility={setVisibility} show={visibility} />
-        {props.page === "ProductPage" ? <ProductPage userId={userID} visibility={setVisibility} show={visibility}/> : null}
-        {props.page === "BasketPage" ? <BasketPage userId={userID} visibility={setVisibility} show={visibility}/> : null}
-        {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
-        {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}
-        {props.page === "Frontpage" ? <Frontpage userId={userID} visibility={setVisibility} show={visibility}/> : null}
-        
-          {/* <Toolbar /> */}
-      </div>
+    <div className="App">
+      <Topbar isLoggedIn={false} userId={userID} setVisibility={setVisibility} show={visibility} productsInBasket={0}/>
+      {props.page === "ProductPage" ? <ProductPage userId={userID} visibility={setVisibility} show={visibility}/> : null}
+      {props.page === "BasketPage" ? <BasketPage userId={userID} visibility={setVisibility} show={visibility}/> : null}
+      {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
+      {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}
+      {props.page === "Frontpage" ? <Frontpage userId={userID} visibility={setVisibility} show={visibility}/> : null}
+      <Popup setVisibility={setVisibility} show={visibility} />
+        {/* <Toolbar /> */}
+    </div>
   );
 }
 
