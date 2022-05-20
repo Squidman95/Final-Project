@@ -1,37 +1,41 @@
-import React from 'react';
+import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from "react-responsive-carousel";
+import Card from "../Card/Card";
 
 const CarouselComponent = (props) => {
+  let {
+    imageArray,
+    showIndicators,
+    showArrows,
+    autoPlay,
+    interval,
+    showThumbs,
+    infiniteLoop,
+  } = props;
 
-    let {
-        imageArray,
-        showIndicators,
-        showArrows,
-        autoPlay,
-        interval,
-        showThumbs,
-        infiniteLoop
-    } = props;
-
-    return (
-        <Carousel
-            showIndicators = {showIndicators}
-            showArrows = {showArrows}
-            autoPlay = {autoPlay}
-            interval = {interval}
-            showThumbs = {showThumbs}
-            infiniteLoop = {infiniteLoop}
-        >
-            {imageArray.map((item, index) => {
-                return (
-                    <div key={index}>
-                        <img src={item} className='card-img-css'/>
-                    </div>
-                )
-            })}
-        </Carousel>
-    )
-}
+  return (
+    <Carousel
+      showIndicators={showIndicators}
+      showArrows={showArrows}
+      autoPlay={autoPlay}
+      interval={interval}
+      showThumbs={showThumbs}
+      infiniteLoop={infiniteLoop}
+    >
+      {imageArray.map((item, index) => {
+        return (
+          <Card
+            key={index}
+            id={item.id}
+            image={item.image}
+            // header={item.name}
+            price={item.price}
+          />
+        );
+      })}
+    </Carousel>
+  );
+};
 
 export default CarouselComponent;
