@@ -4,36 +4,36 @@ import PropTypes from "prop-types";
 import LoginPopup from "./LoginPopup";
 import SignupPopup from "./SignupPopup";
 const Popup = (props) => {
-// Code for inner components, LoginPopup and SignupPopup:
-    const [loginVis, setLoginVis] = useState(false);
-    const onLoginClick = () => {
-        setLoginVis(true);
-        setSignupVis(false);
-    }
-
-    const [signupVis, setSignupVis] = useState(false);
-    const onSignupClick = () => {
-        setSignupVis(true);
-        setLoginVis(false);
-    }
-
-// Overall popup specific
-    let popupMsg = "Log in to get membership discounts!";
-    const [show, setShow] = useState(false);
-     const closeHandler = (e) => {
-        setShow(false);
-        props.onClose(true);
+  // Code for inner components, LoginPopup and SignupPopup:
+  const [loginVis, setLoginVis] = useState(false);
+  const onLoginClick = () => {
+    setLoginVis(true);
+    setSignupVis(false);
   };
- 
+
+  const [signupVis, setSignupVis] = useState(false);
+  const onSignupClick = () => {
+    setSignupVis(true);
+    setLoginVis(false);
+  };
+
+  // Overall popup specific
+  let popupMsg = "Log in to get membership discounts!";
+  const [show, setShow] = useState(false);
+  const closeHandler = (e) => {
+    setShow(false);
+    props.onClose(true);
+  };
+
   useEffect(() => {
     setShow(props.show);
   }, [props.show]);
- 
+
   return (
     <div
       style={{
-        visibility: show ? "hidden" : "visible",
-        opacity: show ? "0" : "1"
+        visibility: show ? "visible" : "hidden",
+        opacity: show ? "1" : "0",
       }}
       className={popupStyles.overlay}
     >
@@ -43,23 +43,17 @@ const Popup = (props) => {
           &times;
         </span>
         <div className={popupStyles.content}>{props.children}</div>
-        {
-            loginVis ? <LoginPopup title="Log in :)"></LoginPopup>
-            : null
-        }
-        {
-            signupVis ? <SignupPopup title="Sign up :)"></SignupPopup>
-            : null
-        }
+        {loginVis ? <LoginPopup title="Log in :)"></LoginPopup> : null}
+        {signupVis ? <SignupPopup title="Sign up :)"></SignupPopup> : null}
         <button onClick={onLoginClick}>Log in!</button>
         <button onClick={onSignupClick}>Sign up!</button>
       </div>
     </div>
   );
 };
- 
+
 Popup.propTypes = {
   show: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
 };
 export default Popup;
