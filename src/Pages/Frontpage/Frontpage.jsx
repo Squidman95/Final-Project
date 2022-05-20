@@ -7,7 +7,7 @@ import Popup from "../../Components/Popup/Popup";
 import ShowResults from "../../Components/ShowResults/ShowResults";
 // import products from '../../Data/ProductData';
 import Sidebar from "../../Components/Sidebar/Sidebar";
-import "./Frontpage.scss"
+import "./Frontpage.scss";
 
 const Frontpage = (props) => {
   let { userId } = props;
@@ -46,7 +46,6 @@ const Frontpage = (props) => {
         localProducts = getMaxPriceFilteredItems(localProducts, productsFilterMaxPrice);
       }
     }
-    
 
     if (productsFilterAnimal !== null && productsFilterAnimal !== undefined) {
       localProducts = getNameFilteredItems(localProducts, productsFilterAnimal);
@@ -91,18 +90,30 @@ const Frontpage = (props) => {
     });
   }
 
-  function getMaxPriceFilteredItems(products, priceMax){
-    return products.filter(function(el) {
-        return el.price <= priceMax;
+  function getCategoriesFilterItems(products, category) {
+    return products.filter(function (el) {
+      return el.category === category;
+    });
+  }
+
+  function getMinPriceFilteredItems(products, priceMin) {
+    return products.filter(function (el) {
+      return el.price >= priceMin;
+    });
+  }
+
+  function getMaxPriceFilteredItems(products, priceMax) {
+    return products.filter(function (el) {
+      return el.price <= priceMax;
     });
   }
 
   return (
     <div>
       <h1>Frontpage</h1>
-      
-      <Topbar isLoggedIn={true} />
-      <div className='Frontpage-Content'>
+
+      {/* <Topbar isLoggedIn={true} /> */}
+      <div className="Frontpage-Content">
         <Sidebar
           FilterAnimal = {setproductsFilterAnimal}
           FilterCategory = {setproductsFilterCategory}
@@ -113,9 +124,9 @@ const Frontpage = (props) => {
         <ShowResults
           products = {filteredProducts}
         />
+        <ShowResults products={filteredProducts} />
       </div>
-      
-      
+
       {/* <Popup onClose={setVisibility} show={visibility}/>  */}
     </div>
   );

@@ -16,9 +16,13 @@ function App(props) {
   const [userID, setUserID] = useState(null);
   const [visibility, setVisibility] = useState(false);
 
-
+  let UID = localStorage.getItem('UserID');
+  if(UID === null) {
+    UID = uuid();
+    localStorage.setItem('UserID', UID);
+  }
   if(userID === null) {
-    setUserID(uuid());
+    setUserID(UID);
   }
 
   useEffect(() => {
@@ -28,18 +32,21 @@ function App(props) {
       });
   }, []);
 
+  function a(){
+    console.log('printer');
+  }
+
   return (
-      <div className="App">
-        <Popup setVisibility={setVisibility} show={visibility} />
-        <Topbar isLoggedIn={false} userId={userID} setVisibility={setVisibility} show={visibility} />
-        {props.page === "ProductPage" ? <ProductPage userId={userID} visibility={setVisibility} show={visibility}/> : null}
-        {props.page === "BasketPage" ? <BasketPage userId={userID} visibility={setVisibility} show={visibility}/> : null}
-        {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
-        {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}
-        {props.page === "Frontpage" ? <Frontpage userId={userID} visibility={setVisibility} show={visibility}/> : null}
-        
-          {/* <Toolbar /> */}
-      </div>
+    <div className="App">
+      <Topbar isLoggedIn={false} userId={userID} setVisibility={setVisibility} show={visibility} productsInBasket={0}/>
+      {props.page === "ProductPage" ? <ProductPage userId={userID} visibility={setVisibility} show={visibility}/> : null}
+      {props.page === "BasketPage" ? <BasketPage userId={userID} visibility={setVisibility} show={visibility}/> : null}
+      {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
+      {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}
+      {props.page === "Frontpage" ? <Frontpage userId={userID} visibility={setVisibility} show={visibility}/> : null}
+      <Popup setVisibility={setVisibility} show={visibility} />
+        {/* <Toolbar /> */}
+    </div>
   );
 }
 
