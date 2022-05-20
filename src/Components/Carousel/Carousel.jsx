@@ -29,8 +29,9 @@ const CarouselComponent = (props) => {
             key={index}
             id={item.id}
             image={item.image}
-            // header={item.name}
             price={item.price}
+            header={item.name}
+            carouselStyle={true}
           />
         );
       })}
