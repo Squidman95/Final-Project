@@ -3,6 +3,7 @@ import "./Topbar.scss";
 import ButtonDropdown from "../ButtonDropdown/ButtonDropdown";
 // import BasketButton from "../BasketButton/BasketButton";
 import Button from "../../Components/Button/Button";
+import Popup from "../../Components/Popup/Popup";
 
 let productsInBasket = 0;
 function LoggedInTopbar(props) {
@@ -12,7 +13,7 @@ function LoggedInTopbar(props) {
         <div className="TopbarButtonContainer">
           <Button
             to="/"
-            onClick={() => console.log("Logging out")}
+            onClick={() => console.log("Going to front page")}
             btnText="Home"
           />
         </div>
@@ -43,13 +44,15 @@ function LoggedInTopbar(props) {
 }
 
 function LoggedOutTopbar(props) {
+  const [visibility, setVisibility] = React.useState(false); // For the login/signup popup
+  let popup = <Popup onClose={setVisibility} show={visibility} />;
   return (
     <div class="topnav Topbar">
       <div className="Topbar-left-container">
         <div className="TopbarButtonContainer">
           <Button
             to="/"
-            onClick={() => console.log("Logging out")}
+            onClick={() => console.log("Going to front page")}
             btnText="Home"
           />
         </div>
@@ -59,7 +62,8 @@ function LoggedOutTopbar(props) {
       </div>
       <div className="Topbar-right-container">
         <div className="TopbarButtonContainer">
-          <Button onClick={() => console.log("Logging out")} btnText="Log in" />
+          <Button onClick={() => setVisibility(true)} btnText="Log in" />
+          {popup}
         </div>
         <div className="BasketButtonContainer">
           <Button
