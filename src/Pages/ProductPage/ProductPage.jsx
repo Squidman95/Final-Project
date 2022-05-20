@@ -52,7 +52,6 @@ const ProductPage = (props) => {
                         <div className = "ButtonsContainer">
                             <div className="ProductButtonContainer">
                                 <Button
-                                    to='/Basket'
                                     onClick={() => addItemToBasket(0, itemID)}
                                     imageSrc='/assets/images/icons/add-basket-icon.png'
                                     imageClass='default-img-loc'
