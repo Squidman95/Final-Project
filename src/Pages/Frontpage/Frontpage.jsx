@@ -7,7 +7,14 @@ import Popup from '../../Components/Popup/Popup';
 import ShowResults from '../../Components/ShowResults/ShowResults';
 // import products from '../../Data/ProductData';
 
-const Frontpage = () => {
+const Frontpage = (props) => {
+
+  let {
+    userId
+  } = props;
+
+  console.log(`userId: ${userId}`);
+
   const [visibility, setVisibility] = useState(false); // For the login/signup popup
 
   const [products, setProducts] = useState([]); // the reference (all products). Should not change
@@ -68,7 +75,7 @@ const Frontpage = () => {
   return (
     <div>
       <h1>Frontpage</h1>
-      
+
       <Topbar isLoggedIn={true} />
       {/* <Sidebar/> */}
       <ShowResults
