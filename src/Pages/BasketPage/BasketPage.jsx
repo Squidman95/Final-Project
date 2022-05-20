@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './BasketPage.scss';
 import Button from '../../Components/Button/Button';
-// import products from '../../Data/ProductData';
+import products from '../../Data/ProductData';
 import Card from '../../Components/Card/Card';
 import { getBasket, createBasket, removeItemFromBasket } from '../../Service/BasketServices';
 
@@ -42,7 +42,7 @@ const BasketPage = (props) => {
         <div className='BasketPage'>
             <div className='Basket-Cards'>
                 {
-                    basket.map((item, index) => {
+                    products.map((item, index) => { // OBS: change products/basket, changed it to test something. also outcomment the import of products
                         return(
                             <Card key = {index}
                                 id = {item.id}
@@ -50,6 +50,7 @@ const BasketPage = (props) => {
                                 header = {item.name}
                                 price = {item.price}
                                 imagePosition = 'left'
+                                showXbutton = 'true'
                             />
                         );
                     })
