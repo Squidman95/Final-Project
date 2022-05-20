@@ -32,6 +32,7 @@ const BasketPage = (props) => {
 
     console.log(basket);
 
+    // calculating the total (should maybe go somewhere else..)
     let total = 0;
     basket.forEach(function (item) {
         total += item.price;
