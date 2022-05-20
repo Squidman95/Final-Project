@@ -1,16 +1,20 @@
 // import React from "react";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Topbar from "../../Components/Topbar/Topbar";
-import { getAllProducts } from '../../Service/ProductService';
-import Popup from '../../Components/Popup/Popup';    
-// import SearchResult from '../../Pages/SearchResultPage/SearchResultPage';    
-import ShowResults from '../../Components/ShowResults/ShowResults';
+import { getAllProducts } from "../../Service/ProductService";
+import Popup from "../../Components/Popup/Popup";
+// import SearchResult from '../../Pages/SearchResultPage/SearchResultPage';
+import ShowResults from "../../Components/ShowResults/ShowResults";
 // import products from '../../Data/ProductData';
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import "./Frontpage.scss"
 
-const Frontpage = () => {
-  const [visibility, setVisibility] = useState(false); // For the login/signup popup
+const Frontpage = (props) => {
+  let { userId } = props;
+
+  console.log(`userId: ${userId}`);
+
+  const [visibility, setVisibility] = useState(true); // For the login/signup popup
 
   const [products, setProducts] = useState([]); // the reference (all products). Should not change
   const [filteredProducts, setFilteredProducts] = useState([]); // SHOULD BE THE SHOWN LIST
@@ -22,9 +26,8 @@ const Frontpage = () => {
   const [productsFilterCategory, setproductsFilterCategory] = useState(null);
   
 
-
   useEffect(() => {
-    getAllProducts().then(function(products) {
+    getAllProducts().then(function (products) {
       setProducts(products);
       setFilteredProducts(products);
     });
@@ -44,14 +47,20 @@ const Frontpage = () => {
     }
     
 
-    if(productsFilterAnimal !== null && productsFilterAnimal !== undefined) {
+    if (productsFilterAnimal !== null && productsFilterAnimal !== undefined) {
       localProducts = getNameFilteredItems(localProducts, productsFilterAnimal);
     }
 
-    if(productsFilterCategory !== null && productsFilterCategory !== undefined) {
-      localProducts = getCategoriesFilterItems(localProducts, productsFilterCategory);
+    if (
+      productsFilterCategory !== null &&
+      productsFilterCategory !== undefined
+    ) {
+      localProducts = getCategoriesFilterItems(
+        localProducts,
+        productsFilterCategory
+      );
     }
-      
+
     setFilteredProducts(localProducts);
   }, [productsFilterMaxPrice, productsFilterMinPrice, productsFilterAnimal, productsFilterCategory]);
 

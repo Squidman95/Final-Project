@@ -12,6 +12,7 @@ const Card = (props) => {
         price,
         imagePosition = 'top', //otherwise 'left'
         showXbutton = false,
+        //onClickXbutton
     } = props;
 
 
@@ -37,7 +38,12 @@ const Card = (props) => {
                     <div className='Card-xbutton'>
                         <img 
                             src={`${process.env.PUBLIC_URL}assets/images/icons/x-icon.png`} 
-                            class='card-xbuttonimg'/>
+                            class='card-xbuttonimg'
+                            onClick={(e) => {
+                                e.preventDefault();
+                            }}
+                            />
+                            
                     </div>
                 }
             </div>

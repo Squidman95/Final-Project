@@ -1,28 +1,34 @@
 import React, {useEffect, useState} from 'react';
 import './BasketPage.scss';
 import Button from '../../Components/Button/Button';
-// import products from '../../Data/ProductData';
+//import products from '../../Data/ProductData';
 import Card from '../../Components/Card/Card';
 import { getBasket, createBasket, removeItemFromBasket } from '../../Service/BasketServices';
 
 const BasketPage = (props) => {
 
     let {
-        costumerId
+        userId,
     } = props
+
+    console.log(`userId: ${userId}`);
 
     const [basket, setBasket] = useState([]);
 
     useEffect(() => {
-        getBasket(costumerId).then(function(basket) {
+        getBasket(userId)
+        .then(basket => {
             setBasket(basket.items); // get and save content to state
-        }).catch(() => {
-            createBasket(costumerId); //if we can't get basket, we create one
+        })
+        .catch(err => {
+            createBasket(userId).then(basket =>{ //if we can't get basket, we create one
+                setBasket(basket);
+            });
         });
     }, []);
 
     function removeBasketItem(productId) {
-        removeItemFromBasket(costumerId, productId) //remove item from backend
+        removeItemFromBasket(userId, productId) //remove item from backend
         .then(function () { // if successful, then also remove from frontend
             setBasket(basket.filter(function (el) {
                 return el.id !== productId;
@@ -40,6 +46,9 @@ const BasketPage = (props) => {
 
     return (
         <div className='BasketPage'>
+            <h1 className = 'basketHeader'>
+                Products in basket:
+            </h1>
             <div className='Basket-Cards'>
                 {
                     basket.map((item, index) => {
@@ -58,7 +67,7 @@ const BasketPage = (props) => {
             </div>
 
             <div className='TotalAndButton'>
-                <div id="total">Total: {total} DKK</div>
+                <h3 className="total">Total: {total} DKK</h3>
                 <div className='Checkout-Button'>
                     <Button 
                         to='/SearchResult'
@@ -77,4 +86,3 @@ const BasketPage = (props) => {
 }
 
 export default BasketPage;
-
