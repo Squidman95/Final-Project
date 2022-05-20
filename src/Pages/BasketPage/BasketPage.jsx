@@ -57,17 +57,20 @@ const BasketPage = (props) => {
                 }
             </div>
 
-            <div id="total" class="align-self-end">Total: {total}</div>
-
-            <div className='Checkout-Button'>
-                <Button 
-                    to='/SearchResult'
-                    onClick={() => console.log('You clicked on the custom button!')}
-                    imageSrc='/assets/images/icons/basket-icon.png'
-                    imageClass='default-img-loc'
-                    btnText = "Checkout!"
-                />
+            <div className='TotalAndButton'>
+                <div id="total">Total: {total} DKK</div>
+                <div className='Checkout-Button'>
+                    <Button 
+                        to='/SearchResult'
+                        onClick={() => console.log('You clicked on the custom button!')}
+                        imageSrc='/assets/images/icons/basket-icon.png'
+                        imageClass='default-img-loc'
+                        btnText = "Checkout!"
+                    />
+                </div>
             </div>
+        
+            
         </div>
     )
 
