@@ -1,4 +1,13 @@
 .Frontpage-Content {
+    width: 100%;
     display: flex;
     flex-direction: row;
+}
+
+.Frontpage-sidebarcontainer{
+    width: 250px;
+}
+
+.Frontpage-resultscontainer{
+    width: calc(100% - 250px);
 }

@@ -109,25 +109,22 @@ const Frontpage = (props) => {
   }
 
   return (
-    <div>
-      <h1>Frontpage</h1>
-
-      {/* <Topbar isLoggedIn={true} /> */}
       <div className="Frontpage-Content">
-        <Sidebar
-          FilterAnimal = {setproductsFilterAnimal}
-          FilterCategory = {setproductsFilterCategory}
-          FilterSubCategory = {setproductFilterSubCategory}
-          FilterMinPrice = {setproductsFilterMinPrice}
-          FilterMaxPrice = {setproductsFilterMaxPrice}
-        />
-        <ShowResults
-          products = {filteredProducts}
-        />
+        <div className="Frontpage-sidebarcontainer">
+          <Sidebar
+            FilterAnimal = {setproductsFilterAnimal}
+            FilterCategory = {setproductsFilterCategory}
+            FilterSubCategory = {setproductFilterSubCategory}
+            FilterMinPrice = {setproductsFilterMinPrice}
+            FilterMaxPrice = {setproductsFilterMaxPrice}
+          />
+        </div>
+        <div className="Frontpage-resultscontainer">
+          <ShowResults
+            products = {filteredProducts}
+          />
+        </div>
       </div>
-
-      {/* <Popup onClose={setVisibility} show={visibility}/>  */}
-    </div>
   );
 };
 
