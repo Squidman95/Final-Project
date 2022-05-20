@@ -17,7 +17,7 @@ const ProductPage = (props) => {
   console.log(`userId: ${userId}`);
 
   let name = products[itemID].name;
-  let image = products[itemID].image;
+  let image = `${process.env.PUBLIC_URL}/${products[itemID].image}`;
   let shortDescription = products[itemID].shortDescription;
   let longDescription = products[itemID].longDescription;
   let price = products[itemID].price;
