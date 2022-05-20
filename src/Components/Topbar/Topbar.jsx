@@ -7,6 +7,8 @@ import Popup from "../../Components/Popup/Popup";
 
 let productsInBasket = 0;
 function LoggedInTopbar(props) {
+  let { isLoggedIn, userId, setVisibility } = props;
+
   return (
     <div class="topnav Topbar">
       <div className="Topbar-left-container">
@@ -44,8 +46,7 @@ function LoggedInTopbar(props) {
 }
 
 function LoggedOutTopbar(props) {
-  const [visibility, setVisibility] = React.useState(false); // For the login/signup popup
-  let popup = <Popup onClose={setVisibility} show={visibility} />;
+  let { isLoggedIn, userId, setVisibility } = props;
   return (
     <div class="topnav Topbar">
       <div className="Topbar-left-container">
@@ -62,8 +63,7 @@ function LoggedOutTopbar(props) {
       </div>
       <div className="Topbar-right-container">
         <div className="TopbarButtonContainer">
-          <Button onClick={() => setVisibility(true)} btnText="Log in" />
-          {popup}
+          <Button onClick={() => (setVisibility = true)} btnText="Log in" />
         </div>
         <div className="BasketButtonContainer">
           <Button
