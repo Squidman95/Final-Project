@@ -4,8 +4,9 @@
 }
 
 .Basket-Cards{
-    display: flex;
+    display:flex;
     flex-direction: column;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2vw;
     margin: 2vw;
 }
