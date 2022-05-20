@@ -19,6 +19,7 @@ const Frontpage = () => {
   const [productsFilterMinPrice, setproductsFilterMinPrice] = useState(null);
   const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(null);
   const [productsFilterAnimal, setproductsFilterAnimal] = useState(null);
+  const [productsFilterCategory, setproductsFilterCategory] = useState(null);
 
 
   useEffect(() => {
@@ -38,6 +39,10 @@ const Frontpage = () => {
     if(productsFilterAnimal !== null && productsFilterAnimal !== undefined) {
       localProducts = getNameFilteredItems(localProducts, productsFilterAnimal);
     }
+
+    if(productsFilterCategory !== null && productsFilterCategory !== undefined) {
+      localProducts = getCategoriesFilterItems(localProducts, productsFilterCategory);
+    }
       
     setFilteredProducts(localProducts);
   }, [productsFilterMaxPrice, productsFilterMinPrice, productsFilterAnimal]);
@@ -45,6 +50,13 @@ const Frontpage = () => {
   function getNameFilteredItems(products, animalName){
     return products.filter(function(el) {
         return el.animal === animalName;
+
+    })
+  }
+
+  function getCategoriesFilterItems(products, category){
+    return products.filter(function(el) {
+        return el.category === category;
 
     })
   }
@@ -58,12 +70,7 @@ const Frontpage = () => {
   return (
     <div>
       <h1>Frontpage</h1>
-
-      {/* DELETE THESE TEXTS ONCE WE UNDERSTAND THE USABILITY OF THE IMPLEMENTATION */}
-      <p onClick = {() => {setproductsFilterAnimal('Dog'); console.log('click');}}  >dog filter</p>
-      <p onClick = {() => {setproductsFilterMinPrice(10); setproductsFilterMaxPrice(100); console.log('click');}}  >price filter</p>
-      <p onClick = {() => {setproductsFilterMinPrice(null); setproductsFilterMaxPrice(null); setproductsFilterAnimal(null)}}  >reset filter</p>
-
+      
       <Topbar isLoggedIn={true} />
       <div className='Frontpage-Content'>
         <Sidebar
