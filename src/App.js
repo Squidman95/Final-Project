@@ -15,6 +15,9 @@ function App(props) {
 
   const [userID, setUserID] = useState(null);
   const [visibility, setVisibility] = useState(false);
+  const popupCloseHandler = (e) => {
+    setVisibility(e);
+  };
 
   let UID = localStorage.getItem('UserID');
   if(UID === null) {
@@ -38,13 +41,13 @@ function App(props) {
 
   return (
     <div className="App">
-      <Topbar isLoggedIn={false} userId={userID} setVisibility={setVisibility} show={visibility} productsInBasket={0}/>
+      <Topbar isLoggedIn={false} userId={userID} onClose={popupCloseHandler} show={visibility} productsInBasket={0}/>
       {props.page === "ProductPage" ? <ProductPage userId={userID} visibility={setVisibility} show={visibility}/> : null}
       {props.page === "BasketPage" ? <BasketPage userId={userID} visibility={setVisibility} show={visibility}/> : null}
       {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
       {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}
       {props.page === "Frontpage" ? <Frontpage userId={userID} visibility={setVisibility} show={visibility}/> : null}
-      <Popup setVisibility={setVisibility} show={visibility} />
+      <Popup onClose={popupCloseHandler} show={visibility} />
         {/* <Toolbar /> */}
     </div>
   );
