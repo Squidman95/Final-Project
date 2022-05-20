@@ -31,3 +31,19 @@ a{
     height: 15vw;
     object-fit: contain;
 }
+
+.Card-xbutton{
+    height: 30%;
+    width: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    &:hover{
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+}
+
+.card-xbuttonimg{
+    width: 100%;
+    height: 100%;
+}

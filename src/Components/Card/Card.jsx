@@ -10,6 +10,7 @@ const Card = (props) => {
         header,
         subtext,
         imagePosition = 'top', //otherwise 'left'
+        showXbutton = false,
     } = props;
 
 
@@ -28,6 +29,13 @@ const Card = (props) => {
                         {subtext}
                     </div>
                 </div>
+                {showXbutton && 
+                    <div className='Card-xbutton'>
+                        <img 
+                            src={`${process.env.PUBLIC_URL}assets/images/icons/x-icon.png`} 
+                            class='card-xbuttonimg'/>
+                    </div>
+                }
             </div>
         </Link>
     )

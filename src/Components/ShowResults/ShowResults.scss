@@ -1,11 +1,11 @@
-.SearchResultPage-Cards{
+.ShowResults-Cards{
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2vw;
     margin: 2vw;
 }
 
-.SearchResultPage-Carousel{
+.ShowResults-Carousel{
     margin-top: 20px;
     margin-bottom: 20px;
 }
