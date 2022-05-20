@@ -8,7 +8,7 @@ function Sidebar(props) {
     const [categories, setCategories] = useState([]);
     const [subcategories, setSubCategories] = useState([]);
     const [minPrice, setMinPrice] = useState(0);
-    const [maxPrice, setMaxPrice] = useState(1000);
+    const [maxPrice, setMaxPrice] = useState(0);
 
     useEffect(() => {
         getAllCategories().then(function(categories) {
