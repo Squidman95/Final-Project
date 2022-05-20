@@ -12,15 +12,11 @@ const ProductPage = (props) => {
 
   console.log(itemID);
 
-  /*
     let {
-        name,
-        image,
-        shortDescription,
-        longDescription,
-        price
+        userId
     } = props;
-    */
+
+    console.log(`userId: ${userId}`);
 
   let name = products[itemID].name;
   let image = products[itemID].image;

@@ -9,21 +9,17 @@ import ProductPage from './Pages/ProductPage/ProductPage.jsx';
 var userID = 1;
 const UserContext = React.createContext(1);
 function App(props) {
-  // var userID = uuid();
-
+  var userID = uuid();
   return (
-    <UserContext.Provider value={userID}>
       <div className="App">
-        {props.page === "ProductPage" ? <ProductPage /> : null}
-        {props.page === "BasketPage" ? <BasketPage/> : null}
+        {props.page === "ProductPage" ? <ProductPage userId={userID}/> : null}
+        {props.page === "BasketPage" ? <BasketPage userId={userID}/> : null}
         {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
         {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}
-        {props.page === "Frontpage" ? <Frontpage/> : null}
+        {props.page === "Frontpage" ? <Frontpage userId={userID}/> : null}
         
           {/* <Toolbar /> */}
       </div>
-    
-    </UserContext.Provider>
   );
 }
 

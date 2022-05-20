@@ -8,21 +8,27 @@ import { getBasket, createBasket, removeItemFromBasket } from '../../Service/Bas
 const BasketPage = (props) => {
 
     let {
-        costumerId
+        userId,
     } = props
+
+    console.log(`userId: ${userId}`);
 
     const [basket, setBasket] = useState([]);
 
     useEffect(() => {
-        getBasket(costumerId).then(function(basket) {
+        getBasket(userId)
+        .then(basket => {
             setBasket(basket.items); // get and save content to state
-        }).catch(() => {
-            createBasket(costumerId); //if we can't get basket, we create one
+        })
+        .catch(err => {
+            createBasket(userId).then(basket =>{ //if we can't get basket, we create one
+                setBasket(basket);
+            });
         });
     }, []);
 
     function removeBasketItem(productId) {
-        removeItemFromBasket(costumerId, productId) //remove item from backend
+        removeItemFromBasket(userId, productId) //remove item from backend
         .then(function () { // if successful, then also remove from frontend
             setBasket(basket.filter(function (el) {
                 return el.id !== productId;
