@@ -6,6 +6,8 @@ import Popup from '../../Components/Popup/Popup';
 // import SearchResult from '../../Pages/SearchResultPage/SearchResultPage';    
 import ShowResults from '../../Components/ShowResults/ShowResults';
 // import products from '../../Data/ProductData';
+import Sidebar from "../../Components/Sidebar/Sidebar";
+import "./Frontpage.scss"
 
 const Frontpage = () => {
   const [visibility, setVisibility] = useState(false); // For the login/signup popup
@@ -63,9 +65,18 @@ const Frontpage = () => {
       <p onClick = {() => {setproductsFilterMinPrice(null); setproductsFilterMaxPrice(null); setproductsFilterAnimal(null)}}  >reset filter</p>
 
       <Topbar isLoggedIn={true} />
-      <ShowResults
-        products = {filteredProducts}
-      />
+      <div className='Frontpage-Content'>
+        <Sidebar
+          FilterAnimal = {setproductsFilterAnimal}
+          FilterMinPrice = {setproductsFilterMinPrice}
+          FilterMaxPrice = {setproductsFilterMinPrice}
+        />
+        <ShowResults
+          products = {filteredProducts}
+        />
+      </div>
+      
+      
       {/* <Popup onClose={setVisibility} show={visibility}/>  */}
     </div>
   );
