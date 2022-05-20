@@ -8,14 +8,11 @@ import ShowResults from "../../Components/ShowResults/ShowResults";
 // import products from '../../Data/ProductData';
 
 const Frontpage = (props) => {
-
-  let {
-    userId
-  } = props;
+  let { userId } = props;
 
   console.log(`userId: ${userId}`);
 
-  const [visibility, setVisibility] = useState(false); // For the login/signup popup
+  const [visibility, setVisibility] = useState(true); // For the login/signup popup
 
   const [products, setProducts] = useState([]); // the reference (all products). Should not change
   const [filteredProducts, setFilteredProducts] = useState([]); // SHOULD BE THE SHOWN LIST
