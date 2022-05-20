@@ -35,10 +35,6 @@ function App(props) {
       });
   }, []);
 
-  function a(){
-    console.log('printer');
-  }
-
   return (
     <div className="App">
       <Topbar isLoggedIn={false} userId={userID} onClose={popupCloseHandler} show={visibility} productsInBasket={0}/>
@@ -47,7 +43,7 @@ function App(props) {
       {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
       {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}
       {props.page === "Frontpage" ? <Frontpage userId={userID} visibility={setVisibility} show={visibility}/> : null}
-      <Popup onClose={popupCloseHandler} show={visibility} />
+      <Popup setVisibility={setVisibility} visibility={visibility} />
         {/* <Toolbar /> */}
     </div>
   );
