@@ -24,6 +24,8 @@ const Frontpage = (props) => {
   const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(1000);
   const [productsFilterAnimal, setproductsFilterAnimal] = useState(null);
   const [productsFilterCategory, setproductsFilterCategory] = useState(null);
+  const [productsFilterSubCategory, setproductFilterSubCategory] = useState(null);
+  
 
   useEffect(() => {
     getAllProducts().then(function (products) {
@@ -35,29 +37,13 @@ const Frontpage = (props) => {
   useEffect(() => {
     let localProducts = products;
 
-    if (
-      productsFilterMinPrice < productsFilterMaxPrice &&
-      productsFilterMinPrice >= 0 &&
-      productsFilterMaxPrice > 0
-    ) {
-      if (
-        productsFilterMinPrice !== null &&
-        productsFilterMinPrice !== undefined
-      ) {
-        localProducts = getMinPriceFilteredItems(
-          localProducts,
-          productsFilterMinPrice
-        );
+    if(productsFilterMinPrice < productsFilterMaxPrice && productsFilterMinPrice>=0 && productsFilterMaxPrice>0) {
+      if(productsFilterMinPrice !== null && productsFilterMinPrice !== undefined ) {
+        localProducts = getMinPriceFilteredItems(localProducts, productsFilterMinPrice);
       }
-
-      if (
-        productsFilterMaxPrice !== null &&
-        productsFilterMaxPrice !== undefined
-      ) {
-        localProducts = getMaxPriceFilteredItems(
-          localProducts,
-          productsFilterMaxPrice
-        );
+  
+      if(productsFilterMaxPrice !== null && productsFilterMaxPrice !== undefined) {
+        localProducts = getMaxPriceFilteredItems(localProducts, productsFilterMaxPrice);
       }
     }
 
@@ -66,26 +52,41 @@ const Frontpage = (props) => {
     }
 
     if (
-      productsFilterCategory !== null &&
-      productsFilterCategory !== undefined
+      productsFilterCategory !== null && productsFilterCategory !== undefined
     ) {
-      localProducts = getCategoriesFilterItems(
-        localProducts,
-        productsFilterCategory
-      );
+      localProducts = getCategoriesFilterItems(localProducts, productsFilterCategory );
+    }
+
+    if (
+      productsFilterSubCategory !== null && productsFilterSubCategory !== undefined
+    ) {
+      localProducts = getSubCategoriesFilterItems(localProducts,productsFilterSubCategory);
     }
 
     setFilteredProducts(localProducts);
-  }, [
-    productsFilterMaxPrice,
-    productsFilterMinPrice,
-    productsFilterAnimal,
-    productsFilterCategory,
-  ]);
+  }, [productsFilterMaxPrice, productsFilterMinPrice, productsFilterAnimal, productsFilterCategory, productsFilterSubCategory]);
 
-  function getNameFilteredItems(products, animalName) {
-    return products.filter(function (el) {
-      return el.animal === animalName;
+  function getNameFilteredItems(products, animalName){
+    return products.filter(function(el) {
+        return el.animal === animalName;
+    })
+  }
+
+  function getCategoriesFilterItems(products, category){
+    return products.filter(function(el) {
+        return el.category === category;
+    })
+  }
+
+  function getSubCategoriesFilterItems(products, subcategory){
+    return products.filter(function(el) {
+        return el.subcategory === subcategory;
+    })
+  }
+
+  function getMinPriceFilteredItems(products, priceMin){
+    return products.filter(function(el) {
+        return el.price >= priceMin;
     });
   }
 
@@ -114,10 +115,14 @@ const Frontpage = (props) => {
       {/* <Topbar isLoggedIn={true} /> */}
       <div className="Frontpage-Content">
         <Sidebar
-          FilterAnimal={setproductsFilterAnimal}
-          FilterCategory={setproductsFilterCategory}
-          FilterMinPrice={setproductsFilterMinPrice}
-          FilterMaxPrice={setproductsFilterMaxPrice}
+          FilterAnimal = {setproductsFilterAnimal}
+          FilterCategory = {setproductsFilterCategory}
+          FilterSubCategory = {setproductFilterSubCategory}
+          FilterMinPrice = {setproductsFilterMinPrice}
+          FilterMaxPrice = {setproductsFilterMaxPrice}
+        />
+        <ShowResults
+          products = {filteredProducts}
         />
         <ShowResults products={filteredProducts} />
       </div>
