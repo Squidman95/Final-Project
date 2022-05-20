@@ -32,6 +32,12 @@ const BasketPage = (props) => {
 
     console.log(basket);
 
+    // calculating the total (should maybe go somewhere else..)
+    let total = 0;
+    basket.forEach(function (item) {
+        total += item.price;
+    });
+
     return (
         <div className='BasketPage'>
             <div className='Basket-Cards'>
@@ -42,15 +48,16 @@ const BasketPage = (props) => {
                                 id = {item.id}
                                 image = {item.image}
                                 header = {item.name}
-                                subtext = {item.shortDescription}
+                                price = {item.price}
                                 imagePosition = 'left'
+                                showXbutton = 'true'
                             />
                         );
                     })
                 }
             </div>
 
-            <div id="total" class="align-self-end">Total:</div>
+            <div id="total" class="align-self-end">Total: {total}</div>
 
             <div className='Checkout-Button'>
                 <Button 
