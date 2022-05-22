@@ -6,7 +6,7 @@ const products = [
         animal: 'Dog',
         category: 'Accessories',
         subCategory: 'Bed',
-        image: 'https://m.media-amazon.com/images/I/81amc1cWs0L._AC_SL1500_.jpg',
+        image: 'assets/Images/dog/dog_bed.jpg',
         shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         longDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     },
@@ -17,7 +17,7 @@ const products = [
         animal: 'Dog',
         category: 'Food',
         subCategory: 'Dry food',
-        image: 'https://m.media-amazon.com/images/I/81753eskvxL._AC_SX466_.jpg',
+        image: 'assets/Images/dog/dog_food_glutenfree.jpg',
         shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         longDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     },
@@ -28,7 +28,7 @@ const products = [
         animal: 'Dog',
         category: 'Accessory',
         subCategory: 'Collar',
-        image: 'https://www.dfordog.co.uk/user/products/red-dingo-dog-collar-red.jpg',
+        image: 'assets/Images/dog/dog_collar.jpg',
         shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         longDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     },
