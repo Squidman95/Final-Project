@@ -46,9 +46,11 @@ const BasketPage = (props) => {
 
     return (
         <div className='BasketPage'>
+
             <h1 className = 'basketHeader'>
                 Products in basket:
             </h1>
+
             <div className='Basket-Cards'>
                 {
                     basket.map((item, index) => {
@@ -78,7 +80,6 @@ const BasketPage = (props) => {
                     />
                 </div>
             </div>
-        
             
         </div>
     )

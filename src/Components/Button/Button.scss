@@ -1,22 +1,28 @@
 .custom-button {
     text-align: center;
-    color: white;
     width: 100%;
     height: 100%;
-    
-}
-
-button {
+    background-color:var(--primary-0);
     &:hover {
         cursor: pointer;
+        color: var(--secondary-0);
     }
 }
 
+button {
+    border: 0;
+}
+
 .c-button {
-    background-color:var(--primary-0);
+    width: 100%;
+    height: 100%;
+}
+
+.custom-button-content{
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-evenly;
     width: 100%;
     height: 100%;
 }
@@ -24,13 +30,12 @@ button {
 .default-img-loc {
     padding-left: 5%;
     width: 30%;
-    // height: 100%;
 }
 
 .Button-Text{
     width: 70%;
 }
 
-.custom-button:hover {
-    background-color:rgb(118, 110, 253)
+.Button-text-solo{
+    width: 100%;
 }

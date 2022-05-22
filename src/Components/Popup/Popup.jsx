@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import popupStyles from "./popup.module.css";
 import PropTypes from "prop-types";
 import LoginPopup from "./LoginPopup";

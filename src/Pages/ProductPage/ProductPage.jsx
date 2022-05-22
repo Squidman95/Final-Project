@@ -3,18 +3,13 @@ import products from "../../Data/ProductData";
 import Button from "../../Components/Button/Button";
 import { addItemToBasket } from "../../Service/BasketService";
 import "./ProductPage.scss";
-import Topbar from "../../Components/Topbar/Topbar";
-import { Link } from "react-router-dom";
+// import Topbar from "../../Components/Topbar/Topbar";
+// import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 const ProductPage = (props) => {
   let { id: itemID } = useParams();
-
-  console.log(itemID);
-
   let { userId } = props;
-
-  console.log(`userId: ${userId}`);
 
   let name = products[itemID].name;
   let image = `${process.env.PUBLIC_URL}/${products[itemID].image}`;
@@ -33,14 +28,20 @@ const ProductPage = (props) => {
       <div className="Product">
         <div className="columns">
           <div className="leftColumn">
-            <img className="prodImg" src={image} />
-            <div className="longDescription"> {longDescription} </div>
+            
+            <img className="prodImg" src={`${process.env.PUBLIC_URL}${image}`} alt={''}/>
+            <p className="longDescription"> {longDescription} </p>
+
           </div>
+
           <div className="rightColumn">
+
             <h1 className="productName"> {name} </h1>
-            <div className="shortDescription"> {shortDescription}</div>
+            <p className="shortDescription"> {shortDescription}</p>
             <h3 className="price">{price} DKK</h3>
+
             <div className="ButtonsContainer">
+
               <div className="ProductButtonContainer">
                 <Button
                   onClick={() => addItemToBasket(userId, itemID)}
@@ -49,6 +50,7 @@ const ProductPage = (props) => {
                   btnText="Add to basket!"
                 />
               </div>
+
               <div className="ProductButtonContainer">
                 <Button
                   to="/Basket"
@@ -58,7 +60,9 @@ const ProductPage = (props) => {
                   btnText="Buy now!"
                 />
               </div>
+
             </div>
+
           </div>
         </div>
       </div>

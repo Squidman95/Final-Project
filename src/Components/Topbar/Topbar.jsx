@@ -4,11 +4,12 @@ import ButtonDropdown from "../ButtonDropdown/ButtonDropdown";
 import Button from "../../Components/Button/Button";
 
 function Topbar(props) {
-  let { isLoggedIn, userId, onClose, show, productsInBasket } = props;
+  let { isLoggedIn, setVisibility, visibility, productsInBasket } = props;
 
   return (
     <div className="topnav Topbar">
-      <div className="Topbar-left-container">
+
+      <div className="Topbar-left-container Topbar-container">
         <div className="TopbarButtonContainer">
           <Button
             to="/"
@@ -17,20 +18,24 @@ function Topbar(props) {
           />
         </div>
       </div>
-      <div className="Topbar-middle-container">
-        <a href="#news">News for members</a>
+
+      <div className="Topbar-middle-container Topbar-container">
+        <p>News for members</p>
       </div>
-      <div className="Topbar-right-container">
+
+      <div className="Topbar-right-container Topbar-container">
+        
         <div className="TopbarButtonContainer">
           <Button
             onClick={() =>
-              isLoggedIn ? console.log("Logging out") : onClose(!show)
+              isLoggedIn ? console.log("Logging out") : setVisibility(!visibility)
             }
             btnText={isLoggedIn ? "Log out" : "Log in"}
           />
         </div>
+
         {isLoggedIn && <ButtonDropdown />}
-        <div className="BasketButtonContainer">
+        <div className="TopbarButtonContainer">
           <Button
             to="/Basket"
             onClick={() => console.log("Navigating to Basket")}
@@ -39,7 +44,9 @@ function Topbar(props) {
             btnText={productsInBasket}
           />
         </div>
+
       </div>
+
     </div>
   );
 }

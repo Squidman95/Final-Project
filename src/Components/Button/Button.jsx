@@ -10,6 +10,22 @@ const Button = (props) => {
     imageClass = null,
     btnText = null,
   } = props;
+
+  function buttonLayout(){
+    return (
+      <div className="custom-button-content">
+        {imageSrc &&
+          <img
+            src={`${process.env.PUBLIC_URL}${imageSrc}`}
+            className={imageClass}
+            alt='button icon'
+          />
+        }
+        <div className={`Button-text${imageSrc ? `` : `-solo`}`}>{btnText}</div>
+      </div>
+    );
+  }
+
   return (
     <div className="btn custom-button">
       {to !== null ? (
@@ -21,38 +37,17 @@ const Button = (props) => {
             onClick && onClick(event);
           }}
         >
-          {imageSrc !== null ? (
-            <div className="c-button">
-              <img
-                src={`${process.env.PUBLIC_URL}${imageSrc}`}
-                className={imageClass}
-              />
-              <div className="Button-Text">{btnText}</div>
-            </div>
-          ) : (
-            <div className="Button-Text">{btnText}</div>
-          )}
+          {buttonLayout()}
         </Link>
       ) : (
-        <button
+        <div
           className="c-button"
-          role="button"
           onClick={(event) => {
             onClick && onClick(event);
           }}
         >
-          {imageSrc !== null ? (
-            <div className="c-button">
-              <img
-                src={`${process.env.PUBLIC_URL}${imageSrc}`}
-                className={imageClass}
-              />
-              <div className="Button-Text">{btnText}</div>
-            </div>
-          ) : (
-            <div className="Button-Text">{btnText}</div>
-          )}
-        </button>
+          {buttonLayout()}
+        </div>
       )}
     </div>
   );
