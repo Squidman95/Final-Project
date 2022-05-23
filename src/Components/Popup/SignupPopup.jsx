@@ -24,40 +24,52 @@ const SignupPopup = (props) => {
   return (
     <div>
       <h1>{props.title}</h1>
-      <label for="name">First name:</label>
-      <br />
-      <input class="form-control mx-auto" type="text" id="name" name="name" />
-      <br />
+      <form onSubmit={handleSubmit}>
+        <label>First Name:</label>
+        <br />
+        <input
+          type="text"
+          value={fname}
+          onChange={(e) => setfName(e.target.value)}
+        />
+        <br />
+        <label>Last Name:</label>
+        <br />
+        <input
+          type="text"
+          value={lname}
+          onChange={(e) => setlName(e.target.value)}
+        />
+        <br />
+        <label>Email:</label>
+        <br />
+        <input
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <br />
 
-      <label for="email">Last name:</label>
-      <br />
-      <input class="form-control mx-auto" type="text" id="email" name="email" />
-      <br />
+        <label>Password:</label>
+        <br />
+        <input
+          type="text"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <br />
 
-      <label for="email">Email:</label>
-      <br />
-      <input class="form-control mx-auto" type="text" id="email" name="email" />
-      <br />
+        <label>Re-type Password:</label>
+        <br />
+        <input
+          type="text"
+          value={passwordRe}
+          onChange={(e) => setPasswordRe(e.target.value)}
+        />
+        <br />
 
-      <label for="password">Password:</label>
-      <br />
-      <input
-        class="form-control mx-auto"
-        type="text"
-        id="password"
-        name="password"
-      />
-      <br />
-
-      <label for="password">Re-type Password:</label>
-      <br />
-      <input
-        class="form-control mx-auto"
-        type="text"
-        id="passwordRe"
-        name="passwordRe"
-      />
-      <br />
+        <input type="submit" />
+      </form>
     </div>
   );
 };
