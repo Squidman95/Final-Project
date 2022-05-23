@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { login } from "../../Service/CustomerService";
 const LoginPopup = (props) => {
+  let { isLoggedIn } = props;
+
   const [fname, setfName] = useState("");
   const [lname, setlName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,23 +13,21 @@ const LoginPopup = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     login(fname, lname, email, password)
-      .then((loginResponse) => {
-        setUserID(loginResponse.userID);
-        console.log("Successful login, new userID is: " + userID);
-        localStorage.setItem("UserID", userID);
+      .then((response) => response)
+      .then((result) => {
+        console.log(result);
+        if (result.err) {
+          alert(result.err);
+        } else {
+          setUserID(result.userID);
+          localStorage.setItem("UserID", result.userID);
+          console.log("Successful login, new userID is: " + result.userID);
+          isLoggedIn = true;
+        }
       })
       .catch((error) => {
         console.log("error", error);
-        // alert(error);  // Display some error if login is wrong
       });
-
-    // let loginResponse = login(fname, lname, email, password);
-    // console.log("Resp: " + loginResponse);
-    // if (loginResponse == null) {
-    //   alert(`No user exists with that info`);
-    // } else {
-    //   console.log(`Update userID to: ${loginResponse.userID}`);
-    // }
   };
 
   return (
