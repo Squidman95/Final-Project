@@ -12,7 +12,7 @@ const Card = (props) => {
         imagePosition = "top", //otherwise 'left'
         showXbutton = false,
         carouselStyle = false,
-        //onClickXbutton
+        onClickXbutton = null
     } = props;
 
     return (
@@ -37,9 +37,9 @@ const Card = (props) => {
                         src={`${process.env.PUBLIC_URL}assets/images/icons/x-icon.png`}
                         className="card-xbuttonimg"
                         alt={header}
-                        onClick={(e) => {
-                            e.preventDefault();
-                        }}
+                        onClick={(event) => {
+                            onClickXbutton && onClickXbutton(event);
+                          }}
                         />
                     </div>
                 )}

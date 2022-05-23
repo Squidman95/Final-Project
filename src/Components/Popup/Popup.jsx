@@ -22,8 +22,12 @@ const Popup = (props) => {
     setLoginVis(false);
   };
 
+  // counter for number of times popup has appeared
+  const [popupCount, setCount] = useState(0);
+
   // Overall popup specific
-  let popupMsg = "Sign up or log in to get membership discounts!";
+  let popupMsgFirst = "Welcome! Sign up or log in to get membership discounts!";
+  let popupMsgSecond = "Sign up or log in to get membership discounts!";
 
   return (
     <div
@@ -34,11 +38,17 @@ const Popup = (props) => {
       className={popupStyles.overlay}
     >
       <div className={popupStyles.popup}>
-        <h1>{loginVis || signupVis ? null : popupMsg}</h1>
+        <h1 style={{ display: popupCount == 0 ? "block" : "none" }}>
+          {popupMsgFirst}
+        </h1>
+        <h1 style={{ display: popupCount >= 1 ? "block" : "none" }}>
+          {popupMsgSecond}
+        </h1>
         <span
           className={popupStyles.close}
           onClick={() => {
             setVisibility(false);
+            setCount(popupCount + 1);
           }}
         >
           &times;
