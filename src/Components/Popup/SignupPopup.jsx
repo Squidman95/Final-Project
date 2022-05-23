@@ -2,7 +2,8 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { createCustomer } from "../../Service/CustomerService";
 const SignupPopup = (props) => {
-  let { userID } = props;
+  // let { userID } = props;
+  let { userID, setVisibility, visibility } = props;
   // console.log(`userID in SignupPopup: ${userID}`);
 
   const [fname, setfName] = useState("");
