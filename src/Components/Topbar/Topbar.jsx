@@ -17,6 +17,14 @@ function Topbar(props) {
 
   let productsInBasket = 0;
 
+  // I want to do something like this, but it does not yet work. /cema
+  function getBasketCount() {
+    getBasket(userID).then(function(result) {
+      return result.items.length;
+    });
+  }
+  //productsInBasket = getBasketCount();
+
   return (
     <div className="topnav Topbar">
       <div className="Topbar-left-container Topbar-container">
