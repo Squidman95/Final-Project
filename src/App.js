@@ -14,7 +14,7 @@ const UserContext = React.createContext(1);
 function App(props) {
 
   const [userID, setUserID] = useState(null);
-  const [visibility, setVisibility] = useState(true);
+  const [visibility, setVisibility] = useState(false);
 
   let UID = localStorage.getItem('UserID');
   if(UID === null) {
