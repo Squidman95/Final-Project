@@ -8,8 +8,15 @@ import "./popup.scss";
 import { login, createCustomer } from "../../Service/CustomerService";
 
 const Popup = (props) => {
-  let { setVisibility, visibility, userID, setUserID, setLogin, headerText } =
-    props;
+  let {
+    setVisibility,
+    visibility,
+    userID,
+    setUserID,
+    setLogin,
+    setTopbarText,
+    headerText,
+  } = props;
 
   const [loginVis, setLoginVis] = useState(false);
   // Code for inner components, LoginPopup and SignupPopup:
@@ -34,6 +41,9 @@ const Popup = (props) => {
             console.log("Successful login, new userID is: " + result.userID);
             setLogin(true);
             localStorage.setItem("LoginStatus", "true");
+            setTopbarText(
+              `Hello again ${fname}! Hope you're having a great day!`
+            );
             setVisibility(false);
           }
         })
@@ -56,6 +66,7 @@ const Popup = (props) => {
         createCustomer(userID, fname, lname, email, password);
         setLogin(true);
         localStorage.setItem("LoginStatus", "true");
+        setTopbarText(`Hello ${fname}! Thank you for signing up!`);
         setVisibility(false);
       }
     } else {
@@ -65,6 +76,7 @@ const Popup = (props) => {
   };
 
   const [popupCount, setCount] = useState(0);
+  const altText = "Log in or sign up for membership discounts";
 
   return (
     <div
@@ -75,7 +87,7 @@ const Popup = (props) => {
       className={popupStyles.overlay}
     >
       <div className={popupStyles.popup}>
-        <h1>{headerText}</h1>
+        <h1>{popupCount == 0 ? headerText : altText}</h1>
 
         <span
           className={popupStyles.close}

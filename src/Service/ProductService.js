@@ -32,17 +32,28 @@ async function getAllSubCategories() {
     return await response.json();
 }
 
-async function getSingleProduct(productID) {
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-    };
+// async function getSingleProduct(productID) {
+//     var requestOptions = {
+//         method: 'GET',
+//         redirect: 'follow'
+//     };
       
-    let response = await fetch(`http://localhost:4000/products/${productID}`, requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+//     let response = await fetch(`http://localhost:4000/products/${productID}`, requestOptions)
+//     .then(response => response.text())
+//     .then(result => console.log(result))
+//     .catch(error => console.log('error', error));
     
+//     return await response.json();
+// }
+
+async function getSingleProduct(productID) {
+    let response = await fetch(`http://localhost:4000/products/${productID}`, {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'GET',
+    });
     return await response.json();
 }
 
