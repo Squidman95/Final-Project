@@ -42,7 +42,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <Topbar setLogin={setLogin} isLoggedIn={isLoggedIn} setVisibility={setVisibility} visibility={visibility} productsInBasket={0}/>
+      <Topbar setLogin={setLogin} isLoggedIn={isLoggedIn} setVisibility={setVisibility} visibility={visibility} userID={userID}/>
       {props.page === "ProductPage" ? <ProductPage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
       {props.page === "BasketPage" ? <BasketPage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
       {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}

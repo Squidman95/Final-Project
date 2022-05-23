@@ -2,10 +2,13 @@ import React from "react";
 import "./Topbar.scss";
 import ButtonDropdown from "../ButtonDropdown/ButtonDropdown";
 import Button from "../../Components/Button/Button";
+import { getBasket } from '../../Service/BasketServices';
 
 function Topbar(props) {
-  let { setLogin, isLoggedIn, setVisibility, visibility, productsInBasket } =
+  let { setLogin, isLoggedIn, setVisibility, visibility, userID } =
     props;
+
+  let productsInBasket = 0;
 
   return (
     <div className="topnav Topbar">
