@@ -3,12 +3,10 @@ import popupStyles from "./popup.module.css";
 import PropTypes from "prop-types";
 import LoginPopup from "./LoginPopup";
 import SignupPopup from "./SignupPopup";
-const Popup = (props) => {
+import Button from "../Button/Button";
 
-  let {
-    setVisibility,
-    visibility
-  } = props;
+const Popup = (props) => {
+  let { setVisibility, visibility } = props;
 
   // Code for inner components, LoginPopup and SignupPopup:
   const [loginVis, setLoginVis] = useState(false);
@@ -36,14 +34,26 @@ const Popup = (props) => {
     >
       <div className={popupStyles.popup}>
         <h1>{loginVis || signupVis ? null : popupMsg}</h1>
-        <span className={popupStyles.close} onClick={() => {setVisibility(false)}}>
+        <span
+          className={popupStyles.close}
+          onClick={() => {
+            setVisibility(false);
+          }}
+        >
           &times;
         </span>
         <div className={popupStyles.content}>{props.children}</div>
-          {loginVis ? <LoginPopup title="Log in :)"></LoginPopup> : null}
-          {signupVis ? <SignupPopup title="Sign up :)"></SignupPopup> : null}
-        <button onClick={onLoginClick}>Log in!</button>
-        <button onClick={onSignupClick}>Sign up!</button>
+        {loginVis ? <LoginPopup title="Log in :)"></LoginPopup> : null}
+        {signupVis ? <SignupPopup title="Sign up :)"></SignupPopup> : null}
+        <br />
+        <div style={{ display: "flexbox" }}>
+          <div className="left-button-container" style={{ float: "left" }}>
+            <Button onClick={onLoginClick} btnText={"Log in"} />
+          </div>
+          <div className="right-button-container" style={{ float: "right" }}>
+            <Button onClick={onSignupClick} btnText={"Sign up!"} />
+          </div>
+        </div>
       </div>
     </div>
   );
