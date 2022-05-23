@@ -2,13 +2,16 @@ import React from "react";
 import "./Topbar.scss";
 import ButtonDropdown from "../ButtonDropdown/ButtonDropdown";
 import Button from "../../Components/Button/Button";
+import { getBasket } from '../../Service/BasketServices';
 
 function Topbar(props) {
-  let { isLoggedIn, setVisibility, visibility, productsInBasket } = props;
+  let { setLogin, isLoggedIn, setVisibility, visibility, userID } =
+    props;
+
+  let productsInBasket = 0;
 
   return (
     <div className="topnav Topbar">
-
       <div className="Topbar-left-container Topbar-container">
         <div className="TopbarButtonContainer">
           <Button
@@ -24,11 +27,10 @@ function Topbar(props) {
       </div>
 
       <div className="Topbar-right-container Topbar-container">
-        
         <div className="TopbarButtonContainer">
           <Button
             onClick={() =>
-              isLoggedIn ? console.log("Logging out") : setVisibility(!visibility)
+              isLoggedIn ? setLogin(false) : setVisibility(!visibility)
             }
             btnText={isLoggedIn ? "Log out" : "Log in"}
           />
@@ -39,14 +41,12 @@ function Topbar(props) {
           <Button
             to="/Basket"
             onClick={() => console.log("Navigating to Basket")}
-            imageSrc="/assets/images/icons/add-basket-icon.png"
+            imageSrc="/assets/images/icons/basket-icon.png"
             imageClass="default-img-loc"
             btnText={productsInBasket}
           />
         </div>
-
       </div>
-
     </div>
   );
 }
