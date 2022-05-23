@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import LoginPopup from "./LoginPopup";
 import SignupPopup from "./SignupPopup";
 import Button from "../Button/Button";
+import "./popup.scss";
 
 const Popup = (props) => {
   let { setVisibility, visibility } = props;
@@ -22,7 +23,7 @@ const Popup = (props) => {
   };
 
   // Overall popup specific
-  let popupMsg = "Log in to get membership discounts!";
+  let popupMsg = "Sign up or log in to get membership discounts!";
 
   return (
     <div
