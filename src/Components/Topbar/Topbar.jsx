@@ -4,7 +4,8 @@ import ButtonDropdown from "../ButtonDropdown/ButtonDropdown";
 import Button from "../../Components/Button/Button";
 
 function Topbar(props) {
-  let { isLoggedIn, setVisibility, visibility, productsInBasket } = props;
+  let { setLogin, isLoggedIn, setVisibility, visibility, productsInBasket } =
+    props;
 
   return (
     <div className="topnav Topbar">
@@ -26,9 +27,7 @@ function Topbar(props) {
         <div className="TopbarButtonContainer">
           <Button
             onClick={() =>
-              isLoggedIn
-                ? console.log("Logging out")
-                : setVisibility(!visibility)
+              isLoggedIn ? setLogin(false) : setVisibility(!visibility)
             }
             btnText={isLoggedIn ? "Log out" : "Log in"}
           />

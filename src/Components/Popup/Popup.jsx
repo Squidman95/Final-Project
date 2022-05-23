@@ -7,7 +7,7 @@ import Button from "../Button/Button";
 import "./popup.scss";
 
 const Popup = (props) => {
-  let { setVisibility, visibility, userID, headerText } = props;
+  let { setVisibility, visibility, userID, setLogin, headerText } = props;
 
   // Code for inner components, LoginPopup and SignupPopup:
   const [loginVis, setLoginVis] = useState(false);
@@ -49,7 +49,7 @@ const Popup = (props) => {
         {loginVis ? (
           <LoginPopup
             title="Log in :)"
-            isLoggedIn={false}
+            setLogin={setLogin}
             setVisibility={setVisibility}
             visibility={visibility}
           ></LoginPopup>
@@ -58,6 +58,7 @@ const Popup = (props) => {
           <SignupPopup
             title="Sign up :)"
             userID={userID}
+            setLogin={setLogin}
             setVisibility={setVisibility}
             visibility={visibility}
           ></SignupPopup>
