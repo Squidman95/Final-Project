@@ -25,6 +25,8 @@ function App(props) {
     setUserID(UID);
   }
 
+  console.log(userID);
+
   useEffect(() => {
     getBasket(userID)
       .catch(err => {

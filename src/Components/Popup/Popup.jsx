@@ -66,6 +66,6 @@ const Popup = (props) => {
 Popup.propTypes = {
   visibility: PropTypes.bool.isRequired,
   setVisibility: PropTypes.func.isRequired,
-  userID: PropTypes.string.isRequired,
+  // userID: PropTypes.string.isRequired,
 };
 export default Popup;
