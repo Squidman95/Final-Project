@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "./Sidebar.scss"
 import { getAllCategories, getAllSubCategories } from '../../Service/ProductService';
 
+
 function Sidebar(props) {
 
     let { FilterAnimal, FilterCategory, FilterSubCategory, FilterMinPrice, FilterMaxPrice } = props;
@@ -9,6 +10,9 @@ function Sidebar(props) {
     const [subcategories, setSubCategories] = useState([]);
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(0);
+    
+    
+   
 
     useEffect(() => {
         getAllCategories().then(function (categories) {
@@ -23,20 +27,35 @@ function Sidebar(props) {
     }, []);
 
     function checkCatHandler(item, e) {
+        console.log('item');
+        console.log(item);
+        let id = 'sub' + item;
+        console.log('id');
+        console.log(id);
+        const test = document.getElementById(id);
+        console.log('test');
+        console.log(test);
         if (e.target.checked === true) {
             FilterCategory(item);
+            document.getElementById(id).style.display = 'block';
         } else {
             FilterCategory(null);
+            document.getElementById(id).style.display = 'none';
         }
     }
 
     function checkSubHandler(item, e) {
+        
         if (e.target.checked === true) {
             FilterSubCategory(item);
+            //test.style.display = 'show';
         } else {
             FilterSubCategory(null);
+           //test.style.display = 'hide';
         }
     }
+
+    
 
     const handleMinPriceChange = (e) => {
         setMinPrice(parseInt(e.target.value));
@@ -79,15 +98,14 @@ function Sidebar(props) {
                                 <div key={categoryIndex}>
                                     <input type="checkbox" id={categoryItem} value={categoryItem} onChange={(e) => checkCatHandler(categoryItem, e)}></input>
                                     <label htmlFor={categoryItem}>{categoryItem}</label>
-                                    <div className="Sidebar-subcategories">
+                                    
+                                    <div className="Sidebar-subcategories" id={'sub' + categoryItem}>
                                         {
                                             subcategories.filter(e => e.category === categoryItem).map((item, index) => {
                                                 return (
-                                                    <div>
-                                                        <div key={index}>
-                                                            <input type="checkbox" id={item.subcategory} value={item.subcategory} onChange={(e) => checkSubHandler(item.subcategory, e)}></input>
-                                                            <label htmlFor={item.subcategory}>{item.subcategory}</label>
-                                                        </div>
+                                                    <div key={index}>
+                                                        <input type="checkbox" id={item.subcategory} value={item.subcategory} onChange={(e) => checkSubHandler(item.subcategory, e)}></input>
+                                                        <label htmlFor={item.subcategory}>{item.subcategory}</label>
                                                     </div>
                                                 );
                                             })

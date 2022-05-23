@@ -58,15 +58,16 @@
         height: 1.5em;
         border-radius: 20px;
         &:checked + label{
-            color: var(--primary-0);
+            color: var(--primary-dark);
             text-decoration: underline;
         }
     }
 }
 .container input:checked ~ .checkmark {
-    background-color: #2196F3;
+    background-color: #2168a2;
 }
 
 .Sidebar-subcategories{
     padding-left: 10%;
+    display:none;
 }
