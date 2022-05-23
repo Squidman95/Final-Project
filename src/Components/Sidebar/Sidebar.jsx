@@ -51,9 +51,8 @@ function Sidebar(props) {
     function createAnimalFilterItem(animal) {
         return (
             <div className='SidebarAnimals-animalfilteritem'>
-                <img className='SidebarAnimals-icon' src={`${process.env.PUBLIC_URL}assets/images/icons/${animal}-icon.png`} alt={animal}/>
                 <p onClick={()=>{FilterAnimal(animal)}}>
-                    {animal}
+                    <img className='SidebarAnimals-icon' src={`${process.env.PUBLIC_URL}assets/images/icons/${animal}-icon.png`} alt={animal}/>
                 </p>
             </div>
         )

@@ -32,4 +32,16 @@ async function getAllSubCategories() {
     return await response.json();
 }
 
-export {getAllProducts, getAllCategories, getAllSubCategories}
+async function getSingleProduct(productID) {
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
+      
+      fetch(`http://localhost:4000/products/${productID}`, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
+export {getAllProducts, getAllCategories, getAllSubCategories, getSingleProduct}
