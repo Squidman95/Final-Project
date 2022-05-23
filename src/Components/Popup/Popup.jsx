@@ -42,9 +42,21 @@ const Popup = (props) => {
           &times;
         </span>
         <div className={popupStyles.content}>{props.children}</div>
-        {loginVis ? <LoginPopup title="Log in :)"></LoginPopup> : null}
+        {loginVis ? (
+          <LoginPopup
+            title="Log in :)"
+            isLoggedIn={false}
+            setVisibility={setVisibility}
+            visibility={visibility}
+          ></LoginPopup>
+        ) : null}
         {signupVis ? (
-          <SignupPopup title="Sign up :)" userID={userID}></SignupPopup>
+          <SignupPopup
+            title="Sign up :)"
+            userID={userID}
+            setVisibility={setVisibility}
+            visibility={visibility}
+          ></SignupPopup>
         ) : null}
 
         <div className="ButtonsContainer">

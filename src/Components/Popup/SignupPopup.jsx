@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { createCustomer } from "../../Service/CustomerService";
 const SignupPopup = (props) => {
-  let { userID } = props;
+  let { userID, setVisibility, visibility } = props;
   // console.log(`userID in SignupPopup: ${userID}`);
 
   const [fname, setfName] = useState("");
@@ -17,9 +17,10 @@ const SignupPopup = (props) => {
       alert(`Passwords do not match`);
     } else {
       createCustomer(userID, fname, lname, email, password);
-      console.log(
-        `Send info to backend:\nFirst Name: ${fname}\nLast Name: ${lname}\nEmail: ${email}\nPassword: ${password}\nPassword Re: ${passwordRe}`
-      );
+      setVisibility(false);
+      // console.log(
+      //   `Send info to backend:\nFirst Name: ${fname}\nLast Name: ${lname}\nEmail: ${email}\nPassword: ${password}\nPassword Re: ${passwordRe}`
+      // );
     }
   };
 
