@@ -24,6 +24,16 @@ const SignupPopup = (props) => {
   return (
     <div>
       <h1>{props.title}</h1>
+<<<<<<< HEAD
+      <label for="name">First name:</label>
+      <br />
+      <input class="form-control mx-auto" type="text" id="name" name="name" />
+      <br />
+
+      <label for="email">Last name:</label>
+      <br />
+      <input class="form-control mx-auto" type="text" id="email" name="email" />
+=======
       <form onSubmit={handleSubmit}>
         <label>First Name:</label>
         <br />
@@ -79,6 +89,7 @@ const SignupPopup = (props) => {
       <label for="lname">Last Name:</label>
       <br />
       <input class="form-control mx-auto" type="text" id="lname" name="lname" />
+>>>>>>> ad19753bb46d39d53e2573e51f3438e03c9145db
       <br />
 
       <label for="email">Email:</label>
@@ -104,7 +115,11 @@ const SignupPopup = (props) => {
         id="passwordRe"
         name="passwordRe"
       />
+<<<<<<< HEAD
+      <br />
+=======
       <br /> */}
+>>>>>>> ad19753bb46d39d53e2573e51f3438e03c9145db
     </div>
   );
 };
