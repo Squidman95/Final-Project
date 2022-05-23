@@ -14,7 +14,7 @@ const UserContext = React.createContext(1);
 function App(props) {
 
   const [userID, setUserID] = useState(null);
-  const [visibility, setVisibility] = useState(false);
+  const [visibility, setVisibility] = useState(true);
 
   let UID = localStorage.getItem('UserID');
   if(UID === null) {
@@ -42,7 +42,7 @@ function App(props) {
       {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
       {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}
       {props.page === "Frontpage" ? <Frontpage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
-      <Popup setVisibility={setVisibility} visibility={visibility} userID={userID}/>
+      <Popup setVisibility={setVisibility} visibility={visibility} userID={userID} headerText={"Welcome! Log in or sign up to get membership discounts!"}/>
         {/* <Toolbar /> */}
     </div>
   );

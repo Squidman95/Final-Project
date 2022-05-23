@@ -7,7 +7,7 @@ import Button from "../Button/Button";
 import "./popup.scss";
 
 const Popup = (props) => {
-  let { setVisibility, visibility, userID } = props;
+  let { setVisibility, visibility, userID, headerText } = props;
 
   // Code for inner components, LoginPopup and SignupPopup:
   const [loginVis, setLoginVis] = useState(false);
@@ -25,10 +25,6 @@ const Popup = (props) => {
   // counter for number of times popup has appeared
   const [popupCount, setCount] = useState(0);
 
-  // Overall popup specific
-  let popupMsgFirst = "Welcome! Sign up or log in to get membership discounts!";
-  let popupMsgSecond = "Sign up or log in to get membership discounts!";
-
   return (
     <div
       style={{
@@ -38,12 +34,8 @@ const Popup = (props) => {
       className={popupStyles.overlay}
     >
       <div className={popupStyles.popup}>
-        <h1 style={{ display: popupCount == 0 ? "block" : "none" }}>
-          {popupMsgFirst}
-        </h1>
-        <h1 style={{ display: popupCount >= 1 ? "block" : "none" }}>
-          {popupMsgSecond}
-        </h1>
+        <h1>{headerText}</h1>
+
         <span
           className={popupStyles.close}
           onClick={() => {
