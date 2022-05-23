@@ -63,25 +63,12 @@ function Sidebar(props) {
         <div className="Sidebar">
             <div className="SidebarAnimals">
                 <h1>Animal</h1>
-                {createAnimalFilterItem('Dog')}
-                {createAnimalFilterItem('Cat')}
-                {createAnimalFilterItem('Rodent')}
-                {createAnimalFilterItem('Bird')}
-
-
-                {/* <p onClick={()=>{FilterAnimal("dog")}}>
-                    dog
-                </p>
-                
-                <p onClick={()=>{FilterAnimal("Cat")}}>
-                    Cat
-                </p>
-                <p onClick={()=>{FilterAnimal("Rodent")}}>
-                    Rodent
-                </p>
-                <p onClick={()=>{FilterAnimal("Bird")}}>
-                    Bird
-                </p> */}
+                <div className="SidebarAnimals-grid">
+                    {createAnimalFilterItem('Dog')}
+                    {createAnimalFilterItem('Cat')}
+                    {createAnimalFilterItem('Rodent')}
+                    {createAnimalFilterItem('Bird')}
+                </div>
             </div>
 
             <div className="SidebarCategories">

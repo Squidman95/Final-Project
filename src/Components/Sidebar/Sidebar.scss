@@ -12,15 +12,59 @@
     flex-direction: column;
 }
 
-input {
-    // width: 20%;
-}
+
+
+ @media screen and (min-width: 800px) {
+    .SidebarAnimals-grid{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row; 
+     }
+
+    .SidebarAnimals-animalfilteritem{
+        height: auto;
+        align-items: center;
+        width: 40%;
+        padding: 5%;
+        .SidebarAnimals-icon{
+            max-height: 2em;
+        }
+        &:hover{
+            cursor: pointer;
+            color: var(--primary-0);
+            .SidebarAnimals-icon{
+                transform: scale(1.1);
+            }
+        }
+    }
+ }
+
+ @media screen and (max-width: 799px) {
+    
+     
+    .SidebarAnimals-animalfilteritem{
+        height: auto;
+        align-items: center;
+        width: 100%;
+        padding: 5%;
+        .SidebarAnimals-icon{
+            max-height: 2em;
+        }
+        &:hover{
+            cursor: pointer;
+            color: var(--primary-0);
+            .SidebarAnimals-icon{
+                transform: scale(1.1);
+            }
+        }
+    }
+ }
 
 .SidebarAnimals-animalfilteritem{
-    display: flex;
-    flex-direction: row;
     height: auto;
     align-items: center;
+    width: 40%;
+    padding: 5%;
     .SidebarAnimals-icon{
         max-height: 2em;
     }
@@ -32,6 +76,9 @@ input {
         }
     }
 }
+
+
+
 
 .Sidebar-checkbox-container{
     display: flex;
