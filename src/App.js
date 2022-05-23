@@ -4,7 +4,7 @@ import uuid from 'react-uuid'
 import BasketPage from './Pages/BasketPage/BasketPage.jsx';
 import Frontpage from './Pages/Frontpage/Frontpage.jsx';
 import ProductPage from './Pages/ProductPage/ProductPage.jsx';
-import { getBasket, createBasket } from './Service/BasketServices';
+import { getBasket, createBasket } from './Service/BasketService';
 import Popup from "./Components/Popup/Popup";
 import Topbar from "./Components/Topbar/Topbar";
 // import SearchResultPage from './Pages/SearchResultPage/SearchResultPage.jsx';

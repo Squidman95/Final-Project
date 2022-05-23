@@ -2,7 +2,6 @@ import React from "react";
 import "./Topbar.scss";
 import ButtonDropdown from "../ButtonDropdown/ButtonDropdown";
 import Button from "../../Components/Button/Button";
-import { getBasket } from "../../Service/BasketServices";
 
 function Topbar(props) {
   let {

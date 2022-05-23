@@ -1,94 +1,91 @@
-import React, {useEffect, useState} from 'react';
-import './BasketPage.scss';
-import Button from '../../Components/Button/Button';
-import Card from '../../Components/Card/Card';
-import { getBasket, createBasket, removeItemFromBasket } from '../../Service/BasketServices';
+import React, { useEffect, useState } from "react";
+import "./BasketPage.scss";
+import Button from "../../Components/Button/Button";
+import Card from "../../Components/Card/Card";
+import {
+  getBasket,
+  createBasket,
+  deleteItemFromBasket,
+} from "../../Service/BasketService";
 
 const BasketPage = (props) => {
+  let { userID } = props;
 
-    let {
-        userId,
-    } = props
+  console.log(`userID: ${userID}`);
 
-    console.log(`userId: ${userId}`);
+  const [basket, setBasket] = useState([]);
 
-    const [basket, setBasket] = useState([]);
-
-    useEffect(() => {
-        getBasket(userId)
-        .then(basket => {
-            setBasket(basket.items); // get and save content to state
-        })
-        .catch(err => {
-            createBasket(userId).then(basket =>{ //if we can't get basket, we create one
-                setBasket(basket);
-            });
+  useEffect(() => {
+    getBasket(userID)
+      .then((basket) => {
+        setBasket(basket.items); // get and save content to state
+      })
+      .catch((err) => {
+        createBasket(userID).then((basket) => {
+          //if we can't get basket, we create one
+          setBasket(basket);
         });
-    }, []);
+      });
+  }, []);
 
-    function removeBasketItem(productId) {
-        removeItemFromBasket(userId, productId) //remove item from backend
-        .then(function () { // if successful, then also remove from frontend
-            setBasket(basket.filter(function (el) {
-                return el.id !== productId;
-            }));
-        }); 
-    }
+  function removeBasketItem(productId) {
+    deleteItemFromBasket(userID, productId) //remove item from backend
+      .then(function () {
+        // if successful, then also remove from frontend
+        setBasket(
+          basket.filter(function (el) {
+            return el.id !== productId;
+          })
+        );
+      });
+  }
 
-    console.log(basket);
+  console.log(basket);
 
-    // calculating the total (should maybe go somewhere else..)
-    let total = 0;
-    basket.forEach(function (item) {
-        total += item.price;
-    });
+  // calculating the total (should maybe go somewhere else..)
+  let total = 0;
+  basket.forEach(function (item) {
+    total += item.price;
+  });
 
-    return (
-        <div className='BasketPage'>
+  return (
+    <div className="BasketPage">
+      <h1 className="basketHeader">Products in basket:</h1>
 
-            <h1 className = 'basketHeader'>
-                Products in basket:
-            </h1>
+      <div className="Basket-Cards">
+        {basket.map((item, index) => {
+          return (
+            <Card
+              key={index}
+              id={item.id}
+              image={item.image}
+              header={item.name}
+              price={item.price}
+              imagePosition="left"
+              showXbutton="true"
+              onClickXbutton={(event) => {
+                event.preventDefault();
+                removeBasketItem(item.id); //removes ALL products with this id, not ideal.
+              }}
+            />
+          );
+        })}
+      </div>
 
-            <div className='Basket-Cards'>
-                {
-                    basket.map((item, index) => {
-                        return(
-                            <Card key = {index}
-                                id = {item.id}
-                                image = {item.image}
-                                header = {item.name}
-                                price = {item.price}
-                                imagePosition = 'left'
-                                showXbutton = 'true'
-                                onClickXbutton = {
-                                    (event) => {
-                                        event.preventDefault();
-                                        removeBasketItem(item.id); //removes ALL products with this id, not ideal.
-                                    }
-                                }
-                            />
-                        );
-                    })
-                }
-            </div>
-
-            <div className='TotalAndButton'>
-                <h3 className="total">Total: {total} DKK</h3>
-                <div className='Checkout-Button'>
-                    <Button 
-                        to='/SearchResult'
-                        onClick={() => console.log('You clicked on the custom button!')}
-                        imageSrc='/assets/images/icons/basket-icon.png'
-                        imageClass='default-img-loc'
-                        btnText = "Checkout!"
-                    />
-                </div>
-            </div>
-            
+      <div className="TotalAndButton">
+        <h3 className="total">Total: {total} DKK</h3>
+        <div className="Checkout-Button">
+          <Button
+            to="/SearchResult"
+            onClick={() => console.log("You clicked on the custom button!")}
+            imageSrc="/assets/images/icons/basket-icon.png"
+            imageClass="default-img-loc"
+            btnText="Checkout!"
+          />
         </div>
-    )
-
-}
+      </div>
+    </div>
+  );
+};
 
 export default BasketPage;
