@@ -8,7 +8,6 @@ function Topbar(props) {
 
   return (
     <div className="topnav Topbar">
-
       <div className="Topbar-left-container Topbar-container">
         <div className="TopbarButtonContainer">
           <Button
@@ -24,11 +23,12 @@ function Topbar(props) {
       </div>
 
       <div className="Topbar-right-container Topbar-container">
-        
         <div className="TopbarButtonContainer">
           <Button
             onClick={() =>
-              isLoggedIn ? console.log("Logging out") : setVisibility(!visibility)
+              isLoggedIn
+                ? console.log("Logging out")
+                : setVisibility(!visibility)
             }
             btnText={isLoggedIn ? "Log out" : "Log in"}
           />
@@ -39,14 +39,12 @@ function Topbar(props) {
           <Button
             to="/Basket"
             onClick={() => console.log("Navigating to Basket")}
-            imageSrc="/assets/images/icons/add-basket-icon.png"
+            imageSrc="/assets/images/icons/basket-icon.png"
             imageClass="default-img-loc"
             btnText={productsInBasket}
           />
         </div>
-
       </div>
-
     </div>
   );
 }
