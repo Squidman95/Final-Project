@@ -6,7 +6,7 @@ import SignupPopup from "./SignupPopup";
 import Button from "../Button/Button";
 
 const Popup = (props) => {
-  let { setVisibility, visibility } = props;
+  let { setVisibility, visibility, userID } = props;
 
   // Code for inner components, LoginPopup and SignupPopup:
   const [loginVis, setLoginVis] = useState(false);
@@ -44,7 +44,9 @@ const Popup = (props) => {
         </span>
         <div className={popupStyles.content}>{props.children}</div>
         {loginVis ? <LoginPopup title="Log in :)"></LoginPopup> : null}
-        {signupVis ? <SignupPopup title="Sign up :)"></SignupPopup> : null}
+        {signupVis ? (
+          <SignupPopup title="Sign up :)" userID={userID}></SignupPopup>
+        ) : null}
 
         <div className="ButtonsContainer">
           <div className="ProductButtonContainer">
@@ -63,5 +65,6 @@ const Popup = (props) => {
 Popup.propTypes = {
   visibility: PropTypes.bool.isRequired,
   setVisibility: PropTypes.func.isRequired,
+  userID: PropTypes.string.isRequired,
 };
 export default Popup;

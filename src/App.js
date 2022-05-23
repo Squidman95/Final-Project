@@ -40,7 +40,7 @@ function App(props) {
       {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
       {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}
       {props.page === "Frontpage" ? <Frontpage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
-      <Popup setVisibility={setVisibility} visibility={visibility} />
+      <Popup setVisibility={setVisibility} visibility={visibility} userID={userID}/>
         {/* <Toolbar /> */}
     </div>
   );
