@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { login } from "../../Service/CustomerService";
 const LoginPopup = (props) => {
   // let { isLoggedIn } = props;
-  let { isLoggedIn, setVisibility, visibility } = props;
+  let { setLogin, setVisibility, visibility } = props;
 
   const [fname, setfName] = useState("");
   const [lname, setlName] = useState("");
@@ -21,10 +21,11 @@ const LoginPopup = (props) => {
           alert(result.err);
         } else {
           setUserID(result.userID);
-          setVisibility(false);
           localStorage.setItem("UserID", result.userID);
           console.log("Successful login, new userID is: " + result.userID);
-          isLoggedIn = true;
+          setLogin(true);
+          localStorage.setItem("LoginStatus", "true");
+          setVisibility(false);
         }
       })
       .catch((error) => {
