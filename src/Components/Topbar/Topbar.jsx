@@ -2,11 +2,17 @@ import React from "react";
 import "./Topbar.scss";
 import ButtonDropdown from "../ButtonDropdown/ButtonDropdown";
 import Button from "../../Components/Button/Button";
-import { getBasket } from '../../Service/BasketServices';
+import { getBasket } from "../../Service/BasketServices";
 
 function Topbar(props) {
-  let { setLogin, isLoggedIn, setVisibility, visibility, userID } =
-    props;
+  let {
+    setLogin,
+    isLoggedIn,
+    setVisibility,
+    visibility,
+    setTopbarText,
+    topbarText,
+  } = props;
 
   let productsInBasket = 0;
 
@@ -23,14 +29,22 @@ function Topbar(props) {
       </div>
 
       <div className="Topbar-middle-container Topbar-container">
-        <p>News for members</p>
+        <p>{topbarText}</p>
       </div>
 
       <div className="Topbar-right-container Topbar-container">
         <div className="TopbarButtonContainer">
           <Button
-            onClick={() =>
-              isLoggedIn ? setLogin(false) : setVisibility(!visibility)
+            onClick={
+              () => {
+                if (isLoggedIn) {
+                  setLogin(false);
+                  setTopbarText("Happy Shopping!");
+                } else {
+                  setVisibility(!visibility);
+                }
+              }
+              // isLoggedIn ? setLogin(false) : setVisibility(!visibility)
             }
             btnText={isLoggedIn ? "Log out" : "Log in"}
           />

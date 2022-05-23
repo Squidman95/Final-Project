@@ -13,9 +13,13 @@ var userID = 1;
 const UserContext = React.createContext(1);
 function App(props) {
 
+  // Primarily for the popup:
   const [userID, setUserID] = useState(null);
   const [visibility, setVisibility] = useState(false);
   const [isLoggedIn, setLogin] = useState(false);
+
+  // Topbar:
+  const [topbarText, setTopbarText] = useState("Happy Shopping!");
 
   // let loginStatus = localStorage.getItem('LoginStatus');
   // if(loginStatus === 'true') {
@@ -42,13 +46,13 @@ function App(props) {
 
   return (
     <div className="App">
-      <Topbar setLogin={setLogin} isLoggedIn={isLoggedIn} setVisibility={setVisibility} visibility={visibility} userID={userID}/>
+      <Topbar setLogin={setLogin} isLoggedIn={isLoggedIn} setVisibility={setVisibility} visibility={visibility} setTopbarText={setTopbarText} topbarText={topbarText}/>
       {props.page === "ProductPage" ? <ProductPage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
       {props.page === "BasketPage" ? <BasketPage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
       {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
       {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}
       {props.page === "Frontpage" ? <Frontpage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
-      <Popup setVisibility={setVisibility} visibility={visibility} userID={userID} setLogin={setLogin} headerText={"Welcome! Log in or sign up to get membership discounts!"}/>
+      <Popup setVisibility={setVisibility} visibility={visibility} userID={userID} setUserID={setUserID} setLogin={setLogin} setTopbarText={setTopbarText} headerText={"Welcome! Log in or sign up to get membership discounts!"}/>
         {/* <Toolbar /> */}
     </div>
   );
