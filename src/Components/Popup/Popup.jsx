@@ -22,9 +22,6 @@ const Popup = (props) => {
     setLoginVis(false);
   };
 
-  // counter for number of times popup has appeared
-  const [popupCount, setCount] = useState(0);
-
   return (
     <div
       style={{
@@ -40,7 +37,6 @@ const Popup = (props) => {
           className={popupStyles.close}
           onClick={() => {
             setVisibility(false);
-            setCount(popupCount + 1);
           }}
         >
           &times;
