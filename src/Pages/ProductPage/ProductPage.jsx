@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import products from "../../Data/ProductData";
+import React, { useEffect, useState } from "react";
+// import products from "../../Data/ProductData";
 import Button from "../../Components/Button/Button";
 import { addItemToBasket } from "../../Service/BasketService";
 import { getSingleProduct } from "../../Service/ProductService";
@@ -11,30 +11,14 @@ import { useParams } from "react-router-dom";
 const ProductPage = (props) => {
   let { id: itemID } = useParams();
   let { userID } = props;
+  const [product, setProduct] = useState([]);
 
-  let name = products[itemID].name;
-  let image = `${process.env.PUBLIC_URL}/${products[itemID].image}`;
-  let shortDescription = products[itemID].shortDescription;
-  let longDescription = products[itemID].longDescription;
-  let price = products[itemID].price;
-  // let contextType = UserContext;
-  // function addToBasket() {
-  //     addItemToBasket(0, itemID);
-  //     console.log(`Adding item ${itemID} to basket`);
-  // }
-
-  // useEffect(() => {
-  //   getBasket(userID)
-  //     .then((basket) => {
-  //       setBasket(basket.items); // get and save content to state
-  //     })
-  //     .catch((err) => {
-  //       createBasket(userID).then((basket) => {
-  //         //if we can't get basket, we create one
-  //         setBasket(basket);
-  //       });
-  //     });
-  // }, []);
+  useEffect(() => {
+    getSingleProduct(itemID).then(function (productResult) {
+      setProduct(productResult[0]);
+      console.log(productResult[0]);
+    });
+  }, []);
 
   return (
     <div>
@@ -43,16 +27,16 @@ const ProductPage = (props) => {
           <div className="leftColumn">
             <img
               className="prodImg"
-              src={`${process.env.PUBLIC_URL}${image}`}
-              alt={""}
+              src={`${process.env.PUBLIC_URL}/${product.image}`}
+              alt={"Unable to find"}
             />
-            <p className="longDescription"> {longDescription} </p>
+            <p className="longDescription"> {product.longDescription} </p>
           </div>
 
           <div className="rightColumn">
-            <h1 className="productName"> {name} </h1>
-            <p className="shortDescription"> {shortDescription}</p>
-            <h3 className="price">{price} DKK</h3>
+            <h1 className="productName"> {product.name} </h1>
+            <p className="shortDescription"> {product.shortDescription}</p>
+            <h3 className="price">{product.price} DKK</h3>
 
             <div className="ButtonsContainer">
               <div className="ProductButtonContainer">
