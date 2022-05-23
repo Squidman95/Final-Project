@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './BasketPage.scss';
 import Button from '../../Components/Button/Button';
-//import products from '../../Data/ProductData';
 import Card from '../../Components/Card/Card';
 import { getBasket, createBasket, removeItemFromBasket } from '../../Service/BasketServices';
 
@@ -62,6 +61,12 @@ const BasketPage = (props) => {
                                 price = {item.price}
                                 imagePosition = 'left'
                                 showXbutton = 'true'
+                                onClickXbutton = {
+                                    (event) => {
+                                        event.preventDefault();
+                                        removeBasketItem(item.id); //removes ALL products with this id, not ideal.
+                                    }
+                                }
                             />
                         );
                     })
