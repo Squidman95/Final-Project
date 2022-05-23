@@ -92,7 +92,6 @@ const Popup = (props) => {
           className={popupStyles.close}
           onClick={() => {
             setVisibility(false);
-            setCount(popupCount + 1);
           }}
         >
           &times;
