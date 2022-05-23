@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import popupStyles from "./popup.module.css";
 import PropTypes from "prop-types";
 import LoginPopup from "./LoginPopup";
@@ -78,6 +78,10 @@ const Popup = (props) => {
   const [popupCount, setCount] = useState(0);
   const altText = "Log in or sign up for membership discounts";
 
+  // useEffect(() => {
+  //   headerText = "Log in or sign up for membership discounts";
+  // }, []);
+
   return (
     <div
       style={{
@@ -88,6 +92,7 @@ const Popup = (props) => {
     >
       <div className={popupStyles.popup}>
         <h1>{popupCount == 0 ? headerText : altText}</h1>
+        {/* <h1>{headerText}</h1> */}
 
         <span
           className={popupStyles.close}
@@ -99,7 +104,7 @@ const Popup = (props) => {
           &times;
         </span>
         <div className={popupStyles.content}>{props.children}</div>
-        {loginVis ? (
+        {loginVis &&
           <LoginPopup
             title="Log in :)"
             setLogin={setLogin}
@@ -113,9 +118,9 @@ const Popup = (props) => {
             password={password}
             setVisibility={setVisibility}
             visibility={visibility}
-          ></LoginPopup>
-        ) : null}
-        {signupVis ? (
+          />
+        }
+        {signupVis &&
           <SignupPopup
             title="Sign up :)"
             userID={userID}
@@ -132,8 +137,8 @@ const Popup = (props) => {
             passwordRe={passwordRe}
             setVisibility={setVisibility}
             visibility={visibility}
-          ></SignupPopup>
-        ) : null}
+          />
+        }
 
         <div className="ButtonsContainer">
           <div className="ProductButtonContainer">

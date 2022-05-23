@@ -1,0 +1,161 @@
+.PhoneNav-Filter-Items {
+    text-align: left;
+    background-color: var(--primary-0);
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    height: 100%;
+    max-width: 100%;
+  }
+  
+  .PhoneNav #hamburger,
+  .PhoneNav-Hamburger-lines {
+    display: none;
+  }
+  
+  .PhoneNavPrice {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .PhoneNavAnimals-grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    text-align: center;
+  }
+  
+  .PhoneNavAnimals-animalfilteritem {
+    height: auto;
+    align-items: center;
+    width: 100%;
+    .PhoneNavAnimals-icon {
+      max-height: 2em;
+      pointer-events: all;
+    }
+    &:hover {
+      cursor: pointer;
+      color: var(--primary-light);
+      .PhoneNavAnimals-icon {
+        transform: scale(1.1);
+      }
+    }
+    &:active {
+      cursor: pointer;
+      color: var(--primary-dark);
+      .PhoneNavAnimals-icon {
+        transform: scale(1.1);
+      }
+    }
+  }
+  
+  .PhoneNav-checkbox-container {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      vertical-align: center;
+      .PhoneNav-Filter-Checkbox {
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 20px;
+        &:checked + label {
+          color: var(--primary-dark);
+          text-decoration: underline;
+        }
+      }
+    }
+    .container .PhoneNav-Filter-Checkbox:checked ~ .checkmark {
+      background-color: #2168a2;
+    }
+    
+    .PhoneNav-subcategories {
+      padding-left: 10%;
+      display: none;
+    }
+    
+    .PhoneNavPrice input {
+      width: 20%;
+    }
+  
+  // make animals 2 by 2
+  @media screen and (min-width: 769px) {
+    .PhoneNavAnimals-animalfilteritem {
+      width: 40%;
+    }
+  }
+  
+  // create burger menu for smartphone
+  @media (max-width: 768px) {
+    .PhoneNav #hamburger {
+      position: absolute;
+      display: block;
+      height: 132px; //was 32px
+      width: 30px;
+      top: 20px;
+      left: 20px;
+      z-index: 5;
+      opacity: 0;
+    }
+  
+    .PhoneNav-Hamburger-lines {
+      display: block;
+      height: 23px;
+      width: 35px;
+      position: absolute; //was absolute, should maybe be changed back?
+      top: 70px; // was 17px
+      left: 20px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  
+    .PhoneNav-Hamburger-lines .line {
+      display: block;
+      height: 4px;
+      width: 100%;
+      border-radius: 10px;
+      background: #333;
+    }
+  
+    .PhoneNav-Hamburger-lines .line1 {
+      transform-origin: 0% 0%;
+      transition: transform 0.4s ease-in-out;
+    }
+  
+    .PhoneNav-Hamburger-lines .line2 {
+      transition: transform 0.2s ease-in-out;
+    }
+  
+    .PhoneNav-Hamburger-lines .line3 {
+      transform-origin: 0% 100%;
+      transition: transform 0.4s ease-in-out;
+    }
+  
+    .PhoneNav #hamburger:checked ~ .PhoneNav-Filter-Items {
+      transform: translateX(0);
+    }
+  
+    .PhoneNav #hamburger:checked ~ .PhoneNav-Hamburger-lines .line1 {
+      transform: rotate(35deg);
+    }
+  
+    .PhoneNav #hamburger:checked ~ .PhoneNav-Hamburger-lines .line2 {
+      transform: scaleY(0);
+    }
+  
+    .PhoneNav #hamburger:checked ~ .PhoneNav-Hamburger-lines .line3 {
+      transform: rotate(-35deg);
+    }
+  
+    .PhoneNav-Filter-Items {
+      transform: translate(-150%);
+      margin-left: -40px;
+      padding-left: 50px;
+      transition: transform 0.5s ease-in-out;
+      box-shadow: 5px 0px 10px 0px #aaa;
+    }
+  }
+  
+  

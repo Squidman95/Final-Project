@@ -2,11 +2,13 @@
     text-align: center;
     width: 100%;
     height: 100%;
-    // background-color:var(--primary-0);
-    // &:hover {
-    //     cursor: pointer;
-    //     color: var(--secondary-0);
-    // }
+    a {
+        &:hover{
+            color: inherit;
+            border: inherit;
+            background-color: inherit;
+        }
+    }
 }
 
 button {

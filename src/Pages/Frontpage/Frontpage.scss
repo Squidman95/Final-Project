@@ -5,9 +5,19 @@
 }
 
 .Frontpage-sidebarcontainer{
-    width: 250px;
+    width: 250px;   
 }
 
 .Frontpage-resultscontainer{
     width: calc(100% - 250px);
 }
+
+@media screen and (max-width: 768px) {
+    .Frontpage-sidebarcontainer{
+        width: auto;
+    }
+    .Frontpage-resultscontainer{
+        width: 100%;
+    }
+}
+

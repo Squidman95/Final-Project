@@ -7,6 +7,7 @@ import { getAllProducts } from "../../Service/ProductService";
 import ShowResults from "../../Components/ShowResults/ShowResults";
 // import products from '../../Data/ProductData';
 import Sidebar from "../../Components/Sidebar/Sidebar";
+import NavbarController from "../../Components/Sidebar/NavbarController";
 import "./Frontpage.scss";
 
 const Frontpage = (props) => {
@@ -105,22 +106,25 @@ const Frontpage = (props) => {
   }
 
   return (
-      <div className="Frontpage-Content">
-        <div className="Frontpage-sidebarcontainer">
-          <Sidebar
-            FilterAnimal = {setproductsFilterAnimal}
-            FilterCategory = {setproductsFilterCategory}
-            FilterSubCategory = {setproductFilterSubCategory}
-            FilterMinPrice = {setproductsFilterMinPrice}
-            FilterMaxPrice = {setproductsFilterMaxPrice}
-          />
-        </div>
-        <div className="Frontpage-resultscontainer">
-          <ShowResults
-            products = {filteredProducts}
-          />
-        </div>
+    <div className="Frontpage-Content">
+
+      <div className="Frontpage-sidebarcontainer">
+        <NavbarController
+          FilterAnimal = {setproductsFilterAnimal}
+          FilterCategory = {setproductsFilterCategory}
+          FilterSubCategory = {setproductFilterSubCategory}
+          FilterMinPrice = {setproductsFilterMinPrice}
+          FilterMaxPrice = {setproductsFilterMaxPrice}
+        />
       </div>
+
+      <div className="Frontpage-resultscontainer">
+        <ShowResults
+          products = {filteredProducts}
+        />
+      </div>
+
+    </div>
   );
 };
 

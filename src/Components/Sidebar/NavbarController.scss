@@ -1,0 +1,21 @@
+// .NavbarController-PhoneNav, .NavbarController-Sidebar{
+//     text-align: center;
+// }
+
+@media screen and (max-width: 768px) {
+    .NavbarController-PhoneNav{
+        display: inline-block;
+    }
+    .NavbarController-Sidebar{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .NavbarController-PhoneNav{
+        display: none;
+    }
+    .NavbarController-Sidebar{
+        display: inline-block;
+    }
+}

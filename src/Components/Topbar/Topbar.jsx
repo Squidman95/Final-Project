@@ -27,6 +27,7 @@ function Topbar(props) {
 
   return (
     <div className="topnav Topbar">
+
       <div className="Topbar-left-container Topbar-container">
         <div className="TopbarButtonContainer">
           <Button
@@ -42,6 +43,7 @@ function Topbar(props) {
       </div>
 
       <div className="Topbar-right-container Topbar-container">
+
         <div className="TopbarButtonContainer">
           <Button
             onClick={
@@ -60,6 +62,7 @@ function Topbar(props) {
         </div>
 
         {isLoggedIn && <ButtonDropdown />}
+
         <div className="TopbarButtonContainer">
           <Button
             to="/Basket"
@@ -69,7 +72,9 @@ function Topbar(props) {
             btnText={productsInBasket}
           />
         </div>
+
       </div>
+
     </div>
   );
 }

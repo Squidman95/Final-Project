@@ -34,12 +34,12 @@ const Card = (props) => {
                 {showXbutton && (
                     <div className="Card-xbutton">
                         <img
-                        src={`${process.env.PUBLIC_URL}assets/images/icons/x-icon.png`}
-                        className="card-xbuttonimg"
-                        alt={header}
-                        onClick={(event) => {
-                            onClickXbutton && onClickXbutton(event);
-                          }}
+                            src={`${process.env.PUBLIC_URL}assets/images/icons/x-icon.png`}
+                            className="card-xbuttonimg"
+                            alt={header}
+                            onClick={(event) => {
+                                onClickXbutton && onClickXbutton(event);
+                            }}
                         />
                     </div>
                 )}

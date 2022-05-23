@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./Sidebar.scss";
+import "./PhoneNav.scss";
 
-function Sidebar(props) {
+function PhoneNav(props) {
     let {
         createAnimalFilterItem,
         categories,
@@ -15,20 +15,20 @@ function Sidebar(props) {
     } = props;
 
     return (
-        <div className="Sidebar">
+        <div className="PhoneNav">
             
                 <input type="checkbox" name="" id="hamburger" />
-                <div class="Sidebar-Hamburger-lines">
+                <div class="PhoneNav-Hamburger-lines">
                     <span class="line line1"></span>
                     <span class="line line2"></span>
                     <span class="line line3"></span>
                 </div>
             
-            <div className="Sidebar-Filter-Items">
+            <div className="PhoneNav-Filter-Items">
 
-                <div className="SidebarAnimals">
+                <div className="PhoneNavAnimals">
                     <h1>Animal</h1>
-                    <div className="SidebarAnimals-grid">
+                    <div className="PhoneNavAnimals-grid">
                         {createAnimalFilterItem("Dog")}
                         {createAnimalFilterItem("Cat")}
                         {createAnimalFilterItem("Rodent")}
@@ -36,16 +36,16 @@ function Sidebar(props) {
                     </div>
                 </div>
 
-                <div className="SidebarCategories">
+                <div className="PhoneNavCategories">
                     <h1>Categories</h1>
 
-                    <div className="Sidebar-checkbox-container">
+                    <div className="PhoneNav-checkbox-container">
                         {categories.map((categoryItem, categoryIndex) => {
                             return (
                                 <div key={categoryIndex}>
 
                                     <input
-                                        className="Sidebar-Filter-Checkbox"
+                                        className="PhoneNav-Filter-Checkbox"
                                         type="checkbox"
                                         id={categoryItem}
                                         value={categoryItem}
@@ -53,14 +53,14 @@ function Sidebar(props) {
                                     />
                                     <label htmlFor={categoryItem}>{categoryItem}</label>
 
-                                    <div className="Sidebar-subcategories" id={"sub" + categoryItem}>
+                                    <div className="PhoneNav-subcategories" id={"sub" + categoryItem}>
                                         {subcategories
                                             .filter((e) => e.category === categoryItem)
                                             .map((item, index) => {
                                                 return (
                                                     <div key={index}>
                                                         <input
-                                                            className="Sidebar-Filter-Checkbox"
+                                                            className="PhoneNav-Filter-Checkbox"
                                                             type="checkbox"
                                                             id={item.subcategory}
                                                             value={item.subcategory}
@@ -79,7 +79,7 @@ function Sidebar(props) {
 
                 </div>
 
-                <div className="SidebarPrice">
+                <div className="PhoneNavPrice">
                     <h1>Price</h1>
 
                     <div>
@@ -110,4 +110,4 @@ function Sidebar(props) {
     );
 }
 
-export default Sidebar;
+export default PhoneNav;
