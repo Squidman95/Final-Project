@@ -2,6 +2,7 @@ import React from "react";
 import "./Topbar.scss";
 import ButtonDropdown from "../ButtonDropdown/ButtonDropdown";
 import Button from "../../Components/Button/Button";
+import { getBasket } from "../../Service/BasketService";
 
 function Topbar(props) {
   let {
@@ -11,6 +12,7 @@ function Topbar(props) {
     visibility,
     setTopbarText,
     topbarText,
+    userID
   } = props;
 
   let productsInBasket = 0;
