@@ -48,7 +48,7 @@ function App(props) {
       {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
       {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}
       {props.page === "Frontpage" ? <Frontpage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
-      <Popup setVisibility={setVisibility} visibility={visibility} userID={userID} setLogin={setLogin} headerText={"Welcome! Log in or sign up to get membership discounts!"}/>
+      <Popup setVisibility={setVisibility} visibility={visibility} userID={userID} setUserID={setUserID} setLogin={setLogin} headerText={"Welcome! Log in or sign up to get membership discounts!"}/>
         {/* <Toolbar /> */}
     </div>
   );

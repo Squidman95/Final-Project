@@ -5,24 +5,65 @@ import LoginPopup from "./LoginPopup";
 import SignupPopup from "./SignupPopup";
 import Button from "../Button/Button";
 import "./popup.scss";
+import { login, createCustomer } from "../../Service/CustomerService";
 
 const Popup = (props) => {
-  let { setVisibility, visibility, userID, setLogin, headerText } = props;
+  let { setVisibility, visibility, userID, setUserID, setLogin, headerText } =
+    props;
 
-  // Code for inner components, LoginPopup and SignupPopup:
   const [loginVis, setLoginVis] = useState(false);
-  const onLoginClick = () => {
-    setLoginVis(true);
-    setSignupVis(false);
+  // Code for inner components, LoginPopup and SignupPopup:
+  const [fname, setfName] = useState("");
+  const [lname, setlName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordRe, setPasswordRe] = useState("");
+
+  const onLoginClick = (event) => {
+    if (loginVis) {
+      event.preventDefault();
+      login(fname, lname, email, password)
+        .then((response) => response)
+        .then((result) => {
+          console.log(result);
+          if (result.err) {
+            alert(result.err);
+          } else {
+            setUserID(result.userID);
+            localStorage.setItem("UserID", result.userID);
+            console.log("Successful login, new userID is: " + result.userID);
+            setLogin(true);
+            localStorage.setItem("LoginStatus", "true");
+            setVisibility(false);
+          }
+        })
+        .catch((error) => {
+          console.log("error", error);
+        });
+    } else {
+      setLoginVis(true);
+      setSignupVis(false);
+    }
   };
 
   const [signupVis, setSignupVis] = useState(false);
-  const onSignupClick = () => {
-    setSignupVis(true);
-    setLoginVis(false);
+  const onSignupClick = (event) => {
+    if (signupVis) {
+      event.preventDefault();
+      if (password !== passwordRe) {
+        alert(`Passwords do not match`);
+      } else {
+        createCustomer(userID, fname, lname, email, password);
+        setLogin(true);
+        localStorage.setItem("LoginStatus", "true");
+        setVisibility(false);
+      }
+    } else {
+      setSignupVis(true);
+      setLoginVis(false);
+    }
   };
 
-  // counter for number of times popup has appeared
   const [popupCount, setCount] = useState(0);
 
   return (
@@ -50,6 +91,14 @@ const Popup = (props) => {
           <LoginPopup
             title="Log in :)"
             setLogin={setLogin}
+            setfName={setfName}
+            setlName={setlName}
+            setEmail={setEmail}
+            setPassword={setPassword}
+            fname={fname}
+            lname={lname}
+            email={email}
+            password={password}
             setVisibility={setVisibility}
             visibility={visibility}
           ></LoginPopup>
@@ -59,6 +108,16 @@ const Popup = (props) => {
             title="Sign up :)"
             userID={userID}
             setLogin={setLogin}
+            setfName={setfName}
+            setlName={setlName}
+            setEmail={setEmail}
+            setPassword={setPassword}
+            setPasswordRe={setPasswordRe}
+            fname={fname}
+            lname={lname}
+            email={email}
+            password={password}
+            passwordRe={passwordRe}
             setVisibility={setVisibility}
             visibility={visibility}
           ></SignupPopup>
@@ -81,6 +140,5 @@ const Popup = (props) => {
 Popup.propTypes = {
   visibility: PropTypes.bool.isRequired,
   setVisibility: PropTypes.func.isRequired,
-  // userID: PropTypes.string.isRequired,
 };
 export default Popup;
