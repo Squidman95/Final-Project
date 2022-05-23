@@ -45,13 +45,14 @@ const Popup = (props) => {
         <div className={popupStyles.content}>{props.children}</div>
         {loginVis ? <LoginPopup title="Log in :)"></LoginPopup> : null}
         {signupVis ? <SignupPopup title="Sign up :)"></SignupPopup> : null}
-        <br />
-        <div style={{ display: "flexbox" }}>
-          <div className="left-button-container" style={{ float: "left" }}>
-            <Button onClick={onLoginClick} btnText={"Log in"} />
+
+        <div className="ButtonsContainer">
+          <div className="ProductButtonContainer">
+            <Button onClick={onLoginClick} btnText="Log in" />
           </div>
-          <div className="right-button-container" style={{ float: "right" }}>
-            <Button onClick={onSignupClick} btnText={"Sign up!"} />
+
+          <div className="ProductButtonContainer">
+            <Button onClick={onSignupClick} btnText="Sign up!" />
           </div>
         </div>
       </div>
