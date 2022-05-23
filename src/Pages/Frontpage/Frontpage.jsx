@@ -56,7 +56,7 @@ const Frontpage = (props) => {
     }
 
     if (productsFilterSubCategory !== null && productsFilterSubCategory !== undefined) {
-      localProducts = getSubCategoriesFilterItems(localProducts,productsFilterSubCategory);
+      localProducts = getSubCategoriesFilterItems(localProducts, productsFilterSubCategory);
     }
 
     setFilteredProducts(localProducts);

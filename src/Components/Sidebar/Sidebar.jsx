@@ -4,26 +4,26 @@ import { getAllCategories, getAllSubCategories } from '../../Service/ProductServ
 
 function Sidebar(props) {
 
-    let {FilterAnimal, FilterCategory, FilterSubCategory, FilterMinPrice, FilterMaxPrice} = props;
+    let { FilterAnimal, FilterCategory, FilterSubCategory, FilterMinPrice, FilterMaxPrice } = props;
     const [categories, setCategories] = useState([]);
     const [subcategories, setSubCategories] = useState([]);
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(0);
 
     useEffect(() => {
-        getAllCategories().then(function(categories) {
+        getAllCategories().then(function (categories) {
             setCategories(categories);
         });
     }, []);
 
     useEffect(() => {
-        getAllSubCategories().then(function(subcategories) {
+        getAllSubCategories().then(function (subcategories) {
             setSubCategories(subcategories);
         });
-    }, []);  
+    }, []);
 
     function checkCatHandler(item, e) {
-        if(e.target.checked === true) {
+        if (e.target.checked === true) {
             FilterCategory(item);
         } else {
             FilterCategory(null);
@@ -31,7 +31,7 @@ function Sidebar(props) {
     }
 
     function checkSubHandler(item, e) {
-        if(e.target.checked === true) {
+        if (e.target.checked === true) {
             FilterSubCategory(item);
         } else {
             FilterSubCategory(null);
@@ -51,8 +51,8 @@ function Sidebar(props) {
     function createAnimalFilterItem(animal) {
         return (
             <div className='SidebarAnimals-animalfilteritem'>
-                <p onClick={()=>{FilterAnimal(animal)}}>
-                    <img className='SidebarAnimals-icon' src={`${process.env.PUBLIC_URL}assets/images/icons/${animal}-icon.png`} alt={animal}/>
+                <p onClick={() => { FilterAnimal(animal) }}>
+                    <img className='SidebarAnimals-icon' src={`${process.env.PUBLIC_URL}assets/images/icons/${animal}-icon.png`} alt={animal} />
                 </p>
             </div>
         )
@@ -71,34 +71,48 @@ function Sidebar(props) {
             </div>
 
             <div className="SidebarCategories">
-                <h1>Categories</h1> 
-                <div className='Sidebar-checkbox-container'> 
+                <h1>Categories</h1>
+                <div className='Sidebar-checkbox-container'>
                     {
-                        categories.map((item, index)=>{
+                        categories.map((categoryItem, categoryIndex) => {
                             return (
-                                <div key={index}>
-                                    <input type="checkbox" id={item} value={item} onChange={(e)=> checkCatHandler(item, e)}></input>
-                                    <label htmlFor={item}>{item}</label> 
+                                <div key={categoryIndex}>
+                                    <input type="checkbox" id={categoryItem} value={categoryItem} onChange={(e) => checkCatHandler(categoryItem, e)}></input>
+                                    <label htmlFor={categoryItem}>{categoryItem}</label>
+                                    <div className="Sidebar-subcategories">
+                                        {
+                                            subcategories.filter(e => e.category === categoryItem).map((item, index) => {
+                                                return (
+                                                    <div>
+                                                        <div key={index}>
+                                                            <input type="checkbox" id={item.subcategory} value={item.subcategory} onChange={(e) => checkSubHandler(item.subcategory, e)}></input>
+                                                            <label htmlFor={item.subcategory}>{item.subcategory}</label>
+                                                        </div>
+                                                    </div>
+                                                );
+                                            })
+                                        }
+                                    </div>
                                 </div>
                             );
                         })
                     }
                 </div>
-            </div>   
+            </div>
 
-            <div className="SidebarSubcategories">
+            {/* <div className="SidebarSubcategories">
                 <h1>Subcategories</h1>
                 {
                     subcategories.map((item, index)=>{
                         return (
                             <div key={index}>
-                                <input type="checkbox" id={item} value={item} onChange={(e)=> checkSubHandler(item, e)}></input>
-                                <label htmlFor={item}>{item}</label> 
+                                <input type="checkbox" id={item.subcategory} value={item.subcategory} onChange={(e)=> checkSubHandler(item.subcategory, e)}></input>
+                                <label htmlFor={item.subcategory}>{item.subcategory}</label> 
                             </div>
                         );
                     })
                 }
-            </div>
+            </div> */}
 
             <div className="SidebarPrice">
                 <h1>Price</h1>
@@ -110,8 +124,8 @@ function Sidebar(props) {
                     <input type="number" id="maxPrice" value={maxPrice} min="0" onChange={handleMaxPriceChange}></input>
                     <label htmlFor="maxPrice"> Max Price</label>
                 </div>
-            </div>        
-            
+            </div>
+
         </div>
     );
 }
