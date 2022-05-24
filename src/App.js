@@ -33,7 +33,8 @@ function App(props) {
         createBasket(userID)
           .then(response => response)
           .then((result) => {
-            console.log(result);
+            // console.log(result.items);
+            setBasket(result.items);
             // setBasketCounter(result.items.length);
           })
           .catch(error => console.log('error', error));
@@ -45,16 +46,23 @@ function App(props) {
     const [basketCount, setBasketCounter] = useState();
     const [basket, setBasket] = useState([]);
     // Basket counter
-    useEffect(() => {
-        getBasket(userID). // something wrong with the userID?
-        then((basket) => {
-            setBasketCounter(basket.items.length);
-        });
-    });
+    // useEffect(() => {
+    //     getBasket(userID). // something wrong with the userID?
+    //     then((result) => {
+    //       setBasket(result.items);
+    //     });
+    // }, [basket]);
 
     function updateBasket(itemID) {
-      setBasket(basket.concat(itemID));
-      addItemToBasket(userID, itemID);
+      addItemToBasket(userID, itemID)
+        .then(() => {
+          getBasket(userID) // something wrong with the userID?
+            .then((result) => {
+              setBasket(result);
+          });
+        });
+      
+      
     }
 
     return (

@@ -14,7 +14,8 @@ function Topbar(props) {
     userID,
     basket,
   } = props;
-  console.log("Basket: " + basket);
+  // console.log("Basket in TopBar: ");
+  // console.log(basket);
   return (
     <div className="topnav Topbar">
       <div className="Topbar-left-container Topbar-container">
