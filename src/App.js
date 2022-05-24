@@ -7,6 +7,7 @@ import ProductPage from './Pages/ProductPage/ProductPage.jsx';
 import { getBasket, createBasket } from './Service/BasketService';
 import Popup from "./Components/Popup/Popup";
 import Topbar from "./Components/Topbar/Topbar";
+import PaymentPage from './Pages/PaymentPage/PaymentPage';
 
 function App(props) {
 
