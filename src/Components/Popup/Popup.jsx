@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import popupStyles from "./popup.module.css";
 import PropTypes from "prop-types";
 import LoginPopup from "./LoginPopup";
 import SignupPopup from "./SignupPopup";
@@ -88,14 +87,14 @@ const Popup = (props) => {
         visibility: visibility ? "visible" : "hidden",
         opacity: visibility ? "1" : "0",
       }}
-      className={popupStyles.overlay}
+      className="overlay"
     >
-      <div className={popupStyles.popup}>
+      <div className="popup">
         <h1>{popupCount == 0 ? headerText : altText}</h1>
         {/* <h1>{headerText}</h1> */}
 
         <span
-          className={popupStyles.close}
+          className="close"
           onClick={() => {
             setVisibility(false);
             setCount(popupCount + 1);
@@ -103,7 +102,7 @@ const Popup = (props) => {
         >
           &times;
         </span>
-        <div className={popupStyles.content}>{props.children}</div>
+        <div className="content">{props.children}</div>
         {loginVis &&
           <LoginPopup
             title="Log in :)"

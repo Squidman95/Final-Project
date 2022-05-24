@@ -1,10 +1,9 @@
-import './App.css';
+import './App.scss';
 import React, {useEffect, useState} from 'react'
 import uuid from 'react-uuid'
 import BasketPage from './Pages/BasketPage/BasketPage.jsx';
 import Frontpage from './Pages/Frontpage/Frontpage.jsx';
 import ProductPage from './Pages/ProductPage/ProductPage.jsx';
-import PaymentPage from './Pages/PaymentPage/PaymentPage';
 import { getBasket, createBasket } from './Service/BasketService';
 import Popup from "./Components/Popup/Popup";
 import Topbar from "./Components/Topbar/Topbar";
@@ -28,20 +27,32 @@ function App(props) {
       setUserID(UID);
     }, []);
 
+    const [basketCount, setBasketCounter] = useState();
     useEffect(() => {
       if(userID !== null && userID !== undefined && userID !== 'null') {
         createBasket(userID)
           .then(response => response)
-          .then(result => console.log(result))
+          .then((result) => {
+            console.log(result);
+            setBasketCounter(result.items.length);
+          })
           .catch(error => console.log('error', error));
         console.log(userID);
       }
     }, [userID]);
 
+    // Basket counter
+    // useEffect(() => {
+    //     getBasket(userID). // something wrong with the userID?
+    //     then((basket) => {
+    //         setBasketCounter(basket.items.length);
+    //       });
+    // });
+
     return (
         <div className="App">
             <div className='App-topbar-container'> 
-                <Topbar setLogin={setLogin} isLoggedIn={isLoggedIn} setVisibility={setVisibility} visibility={visibility} setTopbarText={setTopbarText} topbarText={topbarText} userID={userID}/>
+                <Topbar setLogin={setLogin} isLoggedIn={isLoggedIn} setVisibility={setVisibility} visibility={visibility} setTopbarText={setTopbarText} topbarText={topbarText} userID={userID} basketCount={basketCount}/>
             </div>
             <div className='App-content-container'>
                 {props.page === "ProductPage" ? <ProductPage userID={userID} setVisibility={setVisibility} visibility={visibility}/> : null}

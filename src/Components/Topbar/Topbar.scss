@@ -1,6 +1,8 @@
 .TopbarButtonContainer {
   width: 100%;
   height: 100%;
+  max-width: 150px;
+  min-width: 70px;
 }
 
 .topnav {
@@ -17,8 +19,15 @@
   justify-content: left;
 }
 
+.Topbar-left-container, .Topbar-middle-container, .Topbar-right-container{
+  height: 70%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .Topbar-left-container {
   width: 15vw;
+  margin-left: 3%;
 }
 
 .Topbar-middle-container {
@@ -29,7 +38,8 @@
 .Topbar-right-container {
   width: 25vw;
   justify-content: right;
-  gap: 1px; 
+  margin-right: 3%;
+  gap: 5%; 
 }
 
 // @media (max-width: 768px) {

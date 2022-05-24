@@ -5,16 +5,16 @@
 }
 
 .Frontpage-sidebarcontainer{
-    width: 250px;   
+    width: 20%;   
 }
 
 .Frontpage-resultscontainer{
-    width: calc(100% - 250px);
+    width: 80%;
 }
 
 @media screen and (max-width: 768px) {
     .Frontpage-sidebarcontainer{
-        width: auto;
+        width: 0%;
     }
     .Frontpage-resultscontainer{
         width: 100%;
