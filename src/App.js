@@ -35,10 +35,12 @@ function App(props) {
             });
     }, []);
 
+    const productsInBasket = 0;
+
     return (
         <div className="App">
             <div className='App-topbar-container'> 
-                <Topbar setLogin={setLogin} isLoggedIn={isLoggedIn} setVisibility={setVisibility} visibility={visibility} setTopbarText={setTopbarText} topbarText={topbarText} userID={userID}/>
+                <Topbar setLogin={setLogin} isLoggedIn={isLoggedIn} setVisibility={setVisibility} visibility={visibility} setTopbarText={setTopbarText} topbarText={topbarText} userID={userID} basketCount={productsInBasket}/>
             </div>
             <div className='App-content-container'>
                 {props.page === "ProductPage" ? <ProductPage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
