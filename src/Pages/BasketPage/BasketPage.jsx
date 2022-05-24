@@ -75,7 +75,9 @@
                 <div className="Checkout-Button">
                 <Button
                     to="/Payment"
-                    onClick={() => console.log("You clicked on the custom button!")}
+                    onClick={() => basket.forEach(function (item) { // empties the basket when checking out
+                        removeBasketItem(item.id);
+                    })}
                     imageSrc="/assets/images/icons/basket-icon.png"
                     imageClass="default-img-loc"
                     btnText="Checkout!"
