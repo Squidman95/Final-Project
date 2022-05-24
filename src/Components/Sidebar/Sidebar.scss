@@ -1,12 +1,15 @@
 .Sidebar-Filter-Items {
   text-align: left;
-  background-color: var(--primary-0);
+  background-color: var(--tertiary-0);
   padding-left: 5%;
   padding-right: 5%;
   padding-top: 10%;
   padding-bottom: 10%;
   height: 100%;
   max-width: 100%;
+  h1 {
+    color: var(--background-0);
+  }
 }
 
 .Sidebar #hamburger,
@@ -18,6 +21,8 @@
   display: flex;
   flex-direction: column;
 }
+
+
 
 .SidebarAnimals-grid {
   display: flex;
