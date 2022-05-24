@@ -70,9 +70,6 @@ const Popup = (props) => {
     }
   };
 
-  const [popupCount, setCount] = useState(0);
-  const altText = "Log in or sign up for membership discounts";
-
   return (
     <div
       style={{
@@ -82,14 +79,13 @@ const Popup = (props) => {
       className="overlay"
     >
       <div className="popup">
-        <h1>{popupCount == 0 ? headerText : altText}</h1>
+        <h1>{headerText}</h1>
         {/* <h1>{headerText}</h1> */}
 
         <span
           className="close"
           onClick={() => {
             setVisibility(false);
-            setCount(popupCount + 1);
           }}
         >
           &times;
