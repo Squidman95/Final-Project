@@ -30,7 +30,7 @@ const Popup = (props) => {
 
   const onLoginClick = (event) => {
     if (loginVis) {
-      if(ValidateEmail(loginInformation.mail)) {
+      if (ValidateEmail(loginInformation.email)) {
         event.preventDefault();
         login(
           loginInformation.fname,
@@ -59,22 +59,19 @@ const Popup = (props) => {
           .catch((error) => {
             console.log("error", error);
           });
-      } else {
-        setLoginVis(true);
-        setSignupVis(false);
       }
+    } else {
+      setLoginVis(true);
+      setSignupVis(false);
     }
-  }
-  ;
+  };
 
-  function ValidateEmail(mail) 
-  {
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
-    {
-      return (true)
+  function ValidateEmail(mail) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return true;
     }
-      alert("You have entered an invalid email address!")
-      return (false)
+    alert("You have entered an invalid email address!");
+    return false;
   }
 
   const [signupVis, setSignupVis] = useState(false);
@@ -84,9 +81,7 @@ const Popup = (props) => {
       if (loginInformation.password !== loginInformation.passwordRe) {
         alert(`Passwords do not match`);
       }
-      if (
-        ValidateEmail(loginInformation.email)
-      ) {
+      if (ValidateEmail(loginInformation.email)) {
         createCustomer(
           userID,
           loginInformation.fname,
