@@ -6,7 +6,7 @@ import { getAllProducts } from "../../Service/ProductService";
 // import SearchResult from '../../Pages/SearchResultPage/SearchResultPage';
 import ShowResults from "../../Components/ShowResults/ShowResults";
 // import products from '../../Data/ProductData';
-import Sidebar from "../../Components/Sidebar/Sidebar";
+import OfferCarousel from "../../Components/OfferCarousel/OfferCarousel";
 import NavbarController from "../../Components/Sidebar/NavbarController";
 import "./Frontpage.scss";
 
@@ -26,7 +26,7 @@ const Frontpage = (props) => {
   const [productsFilterAnimal, setproductsFilterAnimal] = useState(null);
   const [productsFilterCategory, setproductsFilterCategory] = useState(null);
   const [productsFilterSubCategory, setproductFilterSubCategory] = useState(null);
-  
+
 
   useEffect(() => {
     getAllProducts().then(function (products) {
@@ -38,12 +38,12 @@ const Frontpage = (props) => {
   useEffect(() => {
     let localProducts = products;
 
-    if(productsFilterMinPrice < productsFilterMaxPrice && productsFilterMinPrice >= 0 && productsFilterMaxPrice > 0) {
-      if(productsFilterMinPrice !== null && productsFilterMinPrice !== undefined ) {
+    if (productsFilterMinPrice < productsFilterMaxPrice && productsFilterMinPrice >= 0 && productsFilterMaxPrice > 0) {
+      if (productsFilterMinPrice !== null && productsFilterMinPrice !== undefined) {
         localProducts = getMinPriceFilteredItems(localProducts, productsFilterMinPrice);
       }
-  
-      if(productsFilterMaxPrice !== null && productsFilterMaxPrice !== undefined) {
+
+      if (productsFilterMaxPrice !== null && productsFilterMaxPrice !== undefined) {
         localProducts = getMaxPriceFilteredItems(localProducts, productsFilterMaxPrice);
       }
     }
@@ -53,7 +53,7 @@ const Frontpage = (props) => {
     }
 
     if (productsFilterCategory !== null && productsFilterCategory !== undefined) {
-      localProducts = getCategoriesFilterItems(localProducts, productsFilterCategory );
+      localProducts = getCategoriesFilterItems(localProducts, productsFilterCategory);
     }
 
     if (productsFilterSubCategory !== null && productsFilterSubCategory !== undefined) {
@@ -63,27 +63,27 @@ const Frontpage = (props) => {
     setFilteredProducts(localProducts);
   }, [productsFilterMaxPrice, productsFilterMinPrice, productsFilterAnimal, productsFilterCategory, productsFilterSubCategory]);
 
-  function getNameFilteredItems(products, animalName){
-    return products.filter(function(el) {
-        return el.animal === animalName;
+  function getNameFilteredItems(products, animalName) {
+    return products.filter(function (el) {
+      return el.animal === animalName;
     })
   }
 
-  function getCategoriesFilterItems(products, category){
-    return products.filter(function(el) {
-        return el.category === category;
+  function getCategoriesFilterItems(products, category) {
+    return products.filter(function (el) {
+      return el.category === category;
     })
   }
 
-  function getSubCategoriesFilterItems(products, subcategory){
-    return products.filter(function(el) {
-        return el.subcategory === subcategory;
+  function getSubCategoriesFilterItems(products, subcategory) {
+    return products.filter(function (el) {
+      return el.subcategory === subcategory;
     })
   }
 
-  function getMinPriceFilteredItems(products, priceMin){
-    return products.filter(function(el) {
-        return el.price >= priceMin;
+  function getMinPriceFilteredItems(products, priceMin) {
+    return products.filter(function (el) {
+      return el.price >= priceMin;
     });
   }
 
@@ -110,17 +110,23 @@ const Frontpage = (props) => {
 
       <div className="Frontpage-sidebarcontainer">
         <NavbarController
-          FilterAnimal = {setproductsFilterAnimal}
-          FilterCategory = {setproductsFilterCategory}
-          FilterSubCategory = {setproductFilterSubCategory}
-          FilterMinPrice = {setproductsFilterMinPrice}
-          FilterMaxPrice = {setproductsFilterMaxPrice}
+          FilterAnimal={setproductsFilterAnimal}
+          FilterCategory={setproductsFilterCategory}
+          FilterSubCategory={setproductFilterSubCategory}
+          FilterMinPrice={setproductsFilterMinPrice}
+          FilterMaxPrice={setproductsFilterMaxPrice}
         />
       </div>
 
-      <div className="Frontpage-resultscontainer">
+      <div className='Frontpage-OfferCarouselContainer'>
+        
+      </div>
+      <div className="Frontpage-resultscontainer"> {/* //split them into two divs, without them disapearing */}
+      <OfferCarousel
+          products={filteredProducts}
+        />
         <ShowResults
-          products = {filteredProducts}
+          products={filteredProducts}
         />
       </div>
 

@@ -1,11 +1,17 @@
 .Frontpage-Content {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+}
+
+.Frontpage-OfferCarouselContainer {
+    height: 50%;
+    width: 80%;
 }
 
 .Frontpage-resultscontainer{
     background-color: var(--background-0);
+    height: 50%;
 }
 
 
