@@ -4,7 +4,7 @@ import uuid from 'react-uuid'
 import BasketPage from './Pages/BasketPage/BasketPage.jsx';
 import Frontpage from './Pages/Frontpage/Frontpage.jsx';
 import ProductPage from './Pages/ProductPage/ProductPage.jsx';
-import { createBasket } from './Service/BasketService';
+import { getBasket, createBasket } from './Service/BasketService';
 import Popup from "./Components/Popup/Popup";
 import Topbar from "./Components/Topbar/Topbar";
 import PaymentPage from './Pages/PaymentPage/PaymentPage';
@@ -42,6 +42,13 @@ function App(props) {
       }
     }, [userID]);
 
+    function updateBasket() {
+      getBasket(userID) // something wrong with the userID?
+        .then((result) => {
+          setBasket(result.items);
+        });
+    }
+
 
     return (
         <div className="App">
@@ -55,7 +62,7 @@ function App(props) {
                 {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
                 {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}
                 {props.page === "Frontpage" ? <Frontpage userID={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
-                <Popup setVisibility={setVisibility} visibility={visibility} userID={userID} setUserID={setUserID} setLogin={setLogin} setTopbarText={setTopbarText} headerText={"Welcome! Log in or sign up to get membership discounts!"}/>
+                <Popup setVisibility={setVisibility} visibility={visibility} userID={userID} setUserID={setUserID} setLogin={setLogin} setTopbarText={setTopbarText} updateBasket={updateBasket} headerText={"Welcome! Log in or sign up to get membership discounts!"}/>
                 {/* <Toolbar /> */}
             </div>
         </div>
