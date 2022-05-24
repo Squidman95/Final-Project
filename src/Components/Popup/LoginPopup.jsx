@@ -1,14 +1,16 @@
 import PropTypes from "prop-types";
 const LoginPopup = (props) => {
   let {
-    fname,
-    lname,
-    email,
-    password,
-    setfName,
-    setlName,
-    setEmail,
-    setPassword,
+    // fname,
+    // lname,
+    // email,
+    // password,
+    // setfName,
+    // setlName,
+    // setEmail,
+    // setPassword,
+    loginInformation,
+    setLoginInformation,
   } = props;
 
   return (
@@ -17,27 +19,28 @@ const LoginPopup = (props) => {
       <label>First Name:</label>
       <input
         type="text"
-        value={fname}
-        onChange={(e) => setfName(e.target.value)}
+        value={loginInformation.fname}
+        onClick = {(e) => {console.log('a')}}
+        onChange={(e) => setLoginInformation({...loginInformation, fname: e.target.value})}
       />
       <label>Last Name:</label>
       <input
         type="text"
-        value={lname}
-        onChange={(e) => setlName(e.target.value)}
+        value={loginInformation.lname}
+        onChange={(e) => setLoginInformation({...loginInformation, lname: e.target.value})}
       />
       <label>Email:</label>
       <input
         type="text"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={loginInformation.email}
+        onChange={(e) => setLoginInformation({...loginInformation, email: e.target.value})}
       />
 
       <label>Password:</label>
       <input
         type="text"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={loginInformation.password}
+        onChange={(e) => setLoginInformation({...loginInformation, password: e.target.value})}
       />
     </div>
   );
