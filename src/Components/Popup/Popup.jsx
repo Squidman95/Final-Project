@@ -30,39 +30,52 @@ const Popup = (props) => {
 
   const onLoginClick = (event) => {
     if (loginVis) {
-      event.preventDefault();
-      login(
-        loginInformation.fname,
-        loginInformation.lname,
-        loginInformation.email,
-        loginInformation.password
-      )
-        .then((response) => response)
-        .then((result) => {
-          console.log(result);
-          if (result.err) {
-            alert(result.err);
-          } else {
-            setUserID(result.userID);
-            localStorage.setItem("UserID", result.userID);
-            console.log("Successful login, new userID is: " + result.userID);
-            setLogin(true);
-            localStorage.setItem("LoginStatus", "true");
-            setTopbarText(
-              `Hello again ${loginInformation.fname}! Hope you're having a great day!`
-            );
-            updateBasket(result.userID);
-            setVisibility(false);
-          }
-        })
-        .catch((error) => {
-          console.log("error", error);
-        });
-    } else {
-      setLoginVis(true);
-      setSignupVis(false);
+      if(ValidateEmail(loginInformation.mail)) {
+        event.preventDefault();
+        login(
+          loginInformation.fname,
+          loginInformation.lname,
+          loginInformation.email,
+          loginInformation.password
+        )
+          .then((response) => response)
+          .then((result) => {
+            console.log(result);
+            if (result.err) {
+              alert(result.err);
+            } else {
+              setUserID(result.userID);
+              localStorage.setItem("UserID", result.userID);
+              console.log("Successful login, new userID is: " + result.userID);
+              setLogin(true);
+              localStorage.setItem("LoginStatus", "true");
+              setTopbarText(
+                `Hello again ${loginInformation.fname}! Hope you're having a great day!`
+              );
+              updateBasket(result.userID);
+              setVisibility(false);
+            }
+          })
+          .catch((error) => {
+            console.log("error", error);
+          });
+      } else {
+        setLoginVis(true);
+        setSignupVis(false);
+      }
     }
-  };
+  }
+  ;
+
+  function ValidateEmail(mail) 
+  {
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+    {
+      return (true)
+    }
+      alert("You have entered an invalid email address!")
+      return (false)
+  }
 
   const [signupVis, setSignupVis] = useState(false);
   const onSignupClick = (event) => {
@@ -72,11 +85,8 @@ const Popup = (props) => {
         alert(`Passwords do not match`);
       }
       if (
-        !loginInformation.email.includes("@") ||
-        !loginInformation.email.includes(".")
+        ValidateEmail(loginInformation.email)
       ) {
-        alert(`Please enter a valid e-mail address`);
-      } else {
         createCustomer(
           userID,
           loginInformation.fname,
