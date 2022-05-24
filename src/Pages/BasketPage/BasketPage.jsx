@@ -23,7 +23,6 @@ const BasketPage = (props) => {
       getBasket(userID) // something wrong with the userID?
         .then((result) => {
           setBasket(result.items);
-          console.log(result.items);
         });
     });
   }
@@ -31,7 +30,6 @@ const BasketPage = (props) => {
   useEffect(() => {
     let tempTotal = 0;
     basket.forEach(function (item) {
-      console.log(item);
       tempTotal += item.price;
     });
     setTotal(tempTotal);

@@ -18,7 +18,6 @@ const ProductPage = (props) => {
       getBasket(userID) // something wrong with the userID?
         .then((result) => {
           setBasket(result.items);
-          // console.log(result.items);
         });
     });
   }
@@ -26,7 +25,6 @@ const ProductPage = (props) => {
   useEffect(() => {
     getSingleProduct(itemID).then(function (productResult) {
       setProduct(productResult[0]);
-      console.log(productResult[0]);
     });
   }, []);
 
