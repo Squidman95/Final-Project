@@ -35,12 +35,19 @@ function App(props) {
             });
     }, []);
 
-    const productsInBasket = 0;
+    // Basket counter
+    const [basketCount, setBasketCounter] = useState();
+    useEffect(() => {
+        getBasket(userID). // something wrong with the userID?
+        then((basket) => {
+            setBasketCounter(basket.items.length);
+          });
+    });
 
     return (
         <div className="App">
             <div className='App-topbar-container'> 
-                <Topbar setLogin={setLogin} isLoggedIn={isLoggedIn} setVisibility={setVisibility} visibility={visibility} setTopbarText={setTopbarText} topbarText={topbarText} userID={userID} basketCount={productsInBasket}/>
+                <Topbar setLogin={setLogin} isLoggedIn={isLoggedIn} setVisibility={setVisibility} visibility={visibility} setTopbarText={setTopbarText} topbarText={topbarText} userID={userID} basketCount={basketCount}/>
             </div>
             <div className='App-content-container'>
                 {props.page === "ProductPage" ? <ProductPage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
