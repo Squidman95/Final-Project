@@ -74,7 +74,7 @@
                 <h3 className="total">Total: {total} DKK</h3>
                 <div className="Checkout-Button">
                 <Button
-                    to="/SearchResult"
+                    to="/Payment"
                     onClick={() => console.log("You clicked on the custom button!")}
                     imageSrc="/assets/images/icons/basket-icon.png"
                     imageClass="default-img-loc"
