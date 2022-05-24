@@ -4,7 +4,7 @@ import uuid from 'react-uuid'
 import BasketPage from './Pages/BasketPage/BasketPage.jsx';
 import Frontpage from './Pages/Frontpage/Frontpage.jsx';
 import ProductPage from './Pages/ProductPage/ProductPage.jsx';
-import { getBasket, createBasket } from './Service/BasketService';
+import { getBasket, createBasket, addItemToBasket } from './Service/BasketService';
 import Popup from "./Components/Popup/Popup";
 import Topbar from "./Components/Topbar/Topbar";
 import PaymentPage from './Pages/PaymentPage/PaymentPage';
@@ -28,7 +28,6 @@ function App(props) {
       setUserID(UID);
     }, []);
 
-    const [basketCount, setBasketCounter] = useState();
     useEffect(() => {
       if(userID !== null && userID !== undefined && userID !== 'null') {
         createBasket(userID)
@@ -42,21 +41,29 @@ function App(props) {
       }
     }, [userID]);
 
+    
+    const [basketCount, setBasketCounter] = useState();
+    const [basket, setBasket] = useState([]);
     // Basket counter
     useEffect(() => {
         getBasket(userID). // something wrong with the userID?
         then((basket) => {
             setBasketCounter(basket.items.length);
-          });
+        });
     });
+
+    function updateBasket(itemID) {
+      setBasket(basket.concat(itemID));
+      addItemToBasket(userID, itemID);
+    }
 
     return (
         <div className="App">
             <div className='App-topbar-container'> 
-                <Topbar setLogin={setLogin} isLoggedIn={isLoggedIn} setVisibility={setVisibility} visibility={visibility} setTopbarText={setTopbarText} topbarText={topbarText} userID={userID} basketCount={basketCount}/>
+                <Topbar setLogin={setLogin} isLoggedIn={isLoggedIn} setVisibility={setVisibility} visibility={visibility} setTopbarText={setTopbarText} topbarText={topbarText} userID={userID} basket={basket}/>
             </div>
             <div className='App-content-container'>
-                {props.page === "ProductPage" ? <ProductPage userID={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
+                {props.page === "ProductPage" ? <ProductPage userID={userID} setVisibility={setVisibility} visibility={visibility} updateBasket={updateBasket}/> : null}
                 {props.page === "BasketPage" ? <BasketPage userID={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
                 {props.page === "PaymentPage" ? <PaymentPage userID={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
                 {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
