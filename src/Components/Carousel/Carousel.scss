@@ -1,5 +1,5 @@
 .carousel-outer {
-  background-color: var(--primary-0);
+  background-color: var(--tertiary-0);
 }
 
 .carousel.carousel-slider {
@@ -17,9 +17,9 @@
 
 .carousel {
   .control-next.control-arrow::before {
-    border-left: 8px solid var(--primary-0);
+    border-left: 8px solid var(--tertiary-0);
   }
   .control-prev.control-arrow::before {
-    border-right: 8px solid var(--primary-0);
+    border-right: 8px solid var(--tertiary-0);
   }
 }

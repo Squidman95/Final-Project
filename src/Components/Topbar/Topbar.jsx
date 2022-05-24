@@ -1,6 +1,5 @@
 import React from "react";
 import "./Topbar.scss";
-import ButtonDropdown from "../ButtonDropdown/ButtonDropdown";
 import Button from "../../Components/Button/Button";
 import { getBasket } from "../../Service/BasketService";
 
@@ -51,8 +50,6 @@ function Topbar(props) {
             btnText={isLoggedIn ? "Log out" : "Log in"}
           />
         </div>
-
-        {isLoggedIn && <ButtonDropdown />}
 
         <div className="TopbarButtonContainer">
           <Button

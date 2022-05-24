@@ -16,14 +16,14 @@ function Sidebar(props) {
 
     return (
         <div className="Sidebar">
-            
-                <input type="checkbox" name="" id="hamburger" />
-                <div className="Sidebar-Hamburger-lines">
-                    <span className="line line1"></span>
-                    <span className="line line2"></span>
-                    <span className="line line3"></span>
-                </div>
-            
+
+            <input type="checkbox" name="" id="hamburger" />
+            <div className="Sidebar-Hamburger-lines">
+                <span className="line line1"></span>
+                <span className="line line2"></span>
+                <span className="line line3"></span>
+            </div>
+
             <div className="Sidebar-Filter-Items">
 
                 <div className="SidebarAnimals">
@@ -64,7 +64,7 @@ function Sidebar(props) {
                                                             type="checkbox"
                                                             id={item.subcategory}
                                                             value={item.subcategory}
-                                                            onChange={(e) => checkSubHandler(item.subcategory, e) }
+                                                            onChange={(e) => checkSubHandler(item.subcategory, e)}
                                                         />
                                                         <label htmlFor={item.subcategory}> {item.subcategory} </label>
                                                     </div>
@@ -92,7 +92,7 @@ function Sidebar(props) {
                         />
                         <label htmlFor="minPrice"> Min Price</label>
                     </div>
-                    
+
                     <div>
                         <input
                             type="number"
