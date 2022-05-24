@@ -39,7 +39,7 @@ function Sidebar(props) {
                 </div>
 
                 <div className="SidebarCategories">
-                    <h1>Categories</h1>
+                    {/* <h1>Categories</h1> */}
 
                     <div className="Sidebar-checkbox-container">
                         {categories.map((categoryItem, categoryIndex) => {
@@ -85,7 +85,7 @@ function Sidebar(props) {
                 </div>
 
                 <div className="SidebarPrice">
-                    <h1>Price</h1>
+                    {/* <h1>Price</h1> */}
 
                     <div>
                         <input
