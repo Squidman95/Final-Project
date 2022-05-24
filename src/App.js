@@ -4,6 +4,7 @@ import uuid from 'react-uuid'
 import BasketPage from './Pages/BasketPage/BasketPage.jsx';
 import Frontpage from './Pages/Frontpage/Frontpage.jsx';
 import ProductPage from './Pages/ProductPage/ProductPage.jsx';
+import PaymentPage from './Pages/PaymentPage/PaymentPage';
 import { getBasket, createBasket } from './Service/BasketService';
 import Popup from "./Components/Popup/Popup";
 import Topbar from "./Components/Topbar/Topbar";
@@ -51,6 +52,7 @@ function App(props) {
             <div className='App-content-container'>
                 {props.page === "ProductPage" ? <ProductPage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
                 {props.page === "BasketPage" ? <BasketPage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
+                {props.page === "PaymentPage" ? <PaymentPage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
                 {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
                 {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}
                 {props.page === "Frontpage" ? <Frontpage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}

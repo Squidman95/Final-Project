@@ -74,8 +74,10 @@
                 <h3 className="total">Total: {total} DKK</h3>
                 <div className="Checkout-Button">
                 <Button
-                    to="/SearchResult"
-                    onClick={() => console.log("You clicked on the custom button!")}
+                    to="/Payment"
+                    onClick={() => basket.forEach(function (item) { // empties the basket when checking out
+                        removeBasketItem(item.id);
+                    })}
                     imageSrc="/assets/images/icons/basket-icon.png"
                     imageClass="default-img-loc"
                     btnText="Checkout!"

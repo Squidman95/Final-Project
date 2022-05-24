@@ -1,3 +1,25 @@
 .carousel-outer {
-    background-color: var(--primary-0)
+  background-color: var(--primary-0);
+}
+
+.carousel.carousel-slider {
+  .control-arrow {
+    width: 150px;
+  }
+  .control-arrow:hover {
+    width: 200px;
+  }
+}
+
+.carousel-status {
+  display: none;
+}
+
+.carousel {
+  .control-next.control-arrow::before {
+    border-left: 8px solid var(--primary-0);
+  }
+  .control-prev.control-arrow::before {
+    border-right: 8px solid var(--primary-0);
+  }
 }
