@@ -18,21 +18,30 @@ function App(props) {
     // Topbar:
     const [topbarText, setTopbarText] = useState("Happy Shopping!");
 
-    let UID = localStorage.getItem('UserID');
-    if(UID === null) {
-        UID = uuid();
-        localStorage.setItem('UserID', UID);
-    }
-    if(userID === null) {
-        setUserID(UID);
-    }
+    // let UID = localStorage.getItem('UserID');
+    // if(UID === null) {
+    //     UID = uuid();
+    //     localStorage.setItem('UserID', UID);
+    // }
+    // if(userID === null) {
+    //     setUserID(UID);
+    // }
 
     useEffect(() => {
-        getBasket(userID)
-            .catch(err => {
-                createBasket(userID)
-            });
+      let UID = localStorage.getItem('UserID');
+      if(UID === null) {
+          UID = uuid();
+          localStorage.setItem('UserID', UID);
+      }
+      setUserID(UID);
     }, []);
+
+    useEffect(() => {
+      if(userID !== null) {
+        createBasket(userID);
+        console.log(userID);
+      }
+    }, [userID]);
 
     return (
         <div className="App">
