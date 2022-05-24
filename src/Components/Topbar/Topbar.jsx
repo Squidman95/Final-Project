@@ -33,7 +33,11 @@ function Topbar(props) {
       </div>
 
       <div className="Topbar-right-container Topbar-container">
-        <div className="TopbarButtonContainer">
+        <div
+          className={`TopbarButtonContainer ${
+            !isLoggedIn ? `TopbarLoginButtonContainer` : ``
+          }`}
+        >
           <Button
             onClick={
               () => {

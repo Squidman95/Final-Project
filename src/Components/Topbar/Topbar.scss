@@ -5,6 +5,26 @@
   min-width: 70px;
 }
 
+.TopbarLoginButtonContainer {
+  animation: shake-animation 4s ease infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes shake-animation {
+    0% {transform: rotate(0deg)}
+    1% {transform: rotate(5deg)}
+    2% {transform: rotate(0deg)}
+    3% {transform: rotate(-5deg)}
+    4% {transform: rotate(0deg)}
+    5% {transform: rotate(5deg)}
+    6% {transform: rotate(0deg)}
+    7% {transform: rotate(-5deg)}
+    8% {transform: rotate(0deg)}
+    9% {transform: rotate(5deg)}
+    10% {transform: rotate(0deg)}
+    100% {transform: rotate(0deg)}
+}
+
 .topnav {
   display: flex;
   flex-direction: row;
