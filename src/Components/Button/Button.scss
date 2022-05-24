@@ -24,16 +24,19 @@
     background-color: var(--secondary-0);
     border-radius: 3px;
     border: 1px solid var(--secondary-dark);
+    transition: all .1s ease-in-out;
     &:hover {
       cursor: pointer;
       color: var(--primary-0);
       border: 1px solid var(--primary-0);
+      transform: scale(1.05);
     }
     &:active {
       color: var(--secondary-dark);
       border: 1px solid var(--primary-0);
     }
   }
+
   .default-img-loc {
     padding-left: 5%;
     // width: 30%;

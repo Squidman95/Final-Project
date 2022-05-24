@@ -5,6 +5,7 @@
 .carousel.carousel-slider {
   .control-arrow {
     width: 150px;
+    z-index: 2;
   }
   .control-arrow:hover {
     width: 200px;

@@ -21,7 +21,7 @@ function App(props) {
 
     useEffect(() => {
       let UID = localStorage.getItem('UserID');
-      if(UID === null && UID === undefined && UID === 'null') {
+      if(UID === null || UID === undefined || UID === 'null') {
           UID = uuid();
           localStorage.setItem('UserID', UID);
       }
