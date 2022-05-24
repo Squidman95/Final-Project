@@ -35,7 +35,7 @@ function App(props) {
           .then(response => response)
           .then((result) => {
             console.log(result);
-            setBasketCounter(result.items.length);
+            // setBasketCounter(result.items.length);
           })
           .catch(error => console.log('error', error));
         console.log(userID);
@@ -43,12 +43,12 @@ function App(props) {
     }, [userID]);
 
     // Basket counter
-    // useEffect(() => {
-    //     getBasket(userID). // something wrong with the userID?
-    //     then((basket) => {
-    //         setBasketCounter(basket.items.length);
-    //       });
-    // });
+    useEffect(() => {
+        getBasket(userID). // something wrong with the userID?
+        then((basket) => {
+            setBasketCounter(basket.items.length);
+          });
+    });
 
     return (
         <div className="App">
