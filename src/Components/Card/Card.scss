@@ -5,7 +5,15 @@
         cursor: pointer;
     }
     padding: 0em 1em 1em 1em;
+    
 }
+
+.Card-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 .Card-left{
     display: flex;
