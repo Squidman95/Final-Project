@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import products from "../../Data/ProductData";
 import Button from "../../Components/Button/Button";
-import { addItemToBasket } from "../../Service/BasketService";
+import { getBasket, addItemToBasket } from "../../Service/BasketService";
 import { getSingleProduct } from "../../Service/ProductService";
 import "./ProductPage.scss";
 // import Topbar from "../../Components/Topbar/Topbar";
@@ -10,8 +10,18 @@ import { useParams } from "react-router-dom";
 
 const ProductPage = (props) => {
   let { id: itemID } = useParams();
-  let { userID, updateBasket } = props;
+  let { userID, setBasket } = props;
   const [product, setProduct] = useState([]);
+
+  function addToBasket(itemID) {
+    addItemToBasket(userID, itemID).then(() => {
+      getBasket(userID) // something wrong with the userID?
+        .then((result) => {
+          setBasket(result.items);
+          // console.log(result.items);
+        });
+    });
+  }
 
   useEffect(() => {
     getSingleProduct(itemID).then(function (productResult) {
@@ -43,7 +53,7 @@ const ProductPage = (props) => {
                 <Button
                   onClick={() => {
                     // addItemToBasket(userID, itemID);
-                    updateBasket(itemID);
+                    addToBasket(itemID);
                   }}
                   imageSrc="/assets/images/icons/add-basket-icon.png"
                   imageClass="default-img-loc"
@@ -56,7 +66,7 @@ const ProductPage = (props) => {
                   to="/Basket"
                   onClick={() => {
                     // addItemToBasket(userID, itemID);
-                    updateBasket(itemID);
+                    addToBasket(itemID);
                   }}
                   imageSrc="/assets/images/icons/horse-icon.png"
                   imageClass="default-img-loc"

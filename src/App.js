@@ -4,7 +4,7 @@ import uuid from 'react-uuid'
 import BasketPage from './Pages/BasketPage/BasketPage.jsx';
 import Frontpage from './Pages/Frontpage/Frontpage.jsx';
 import ProductPage from './Pages/ProductPage/ProductPage.jsx';
-import { getBasket, createBasket, addItemToBasket } from './Service/BasketService';
+import { createBasket } from './Service/BasketService';
 import Popup from "./Components/Popup/Popup";
 import Topbar from "./Components/Topbar/Topbar";
 import PaymentPage from './Pages/PaymentPage/PaymentPage';
@@ -28,42 +28,20 @@ function App(props) {
       setUserID(UID);
     }, []);
 
+    
+    const [basket, setBasket] = useState([]);
     useEffect(() => {
       if(userID !== null && userID !== undefined && userID !== 'null') {
         createBasket(userID)
           .then(response => response)
           .then((result) => {
-            // console.log(result.items);
             setBasket(result.items);
-            // setBasketCounter(result.items.length);
           })
           .catch(error => console.log('error', error));
         console.log(userID);
       }
     }, [userID]);
 
-    
-    const [basketCount, setBasketCounter] = useState();
-    const [basket, setBasket] = useState([]);
-    // Basket counter
-    // useEffect(() => {
-    //     getBasket(userID). // something wrong with the userID?
-    //     then((result) => {
-    //       setBasket(result.items);
-    //     });
-    // }, [basket]);
-
-    function updateBasket(itemID) {
-      addItemToBasket(userID, itemID)
-        .then(() => {
-          getBasket(userID) // something wrong with the userID?
-            .then((result) => {
-              setBasket(result);
-          });
-        });
-      
-      
-    }
 
     return (
         <div className="App">
@@ -71,8 +49,8 @@ function App(props) {
                 <Topbar setLogin={setLogin} isLoggedIn={isLoggedIn} setVisibility={setVisibility} visibility={visibility} setTopbarText={setTopbarText} topbarText={topbarText} userID={userID} basket={basket}/>
             </div>
             <div className='App-content-container'>
-                {props.page === "ProductPage" ? <ProductPage userID={userID} setVisibility={setVisibility} visibility={visibility} updateBasket={updateBasket}/> : null}
-                {props.page === "BasketPage" ? <BasketPage userID={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
+                {props.page === "ProductPage" ? <ProductPage userID={userID} setVisibility={setVisibility} visibility={visibility} setBasket={setBasket}/> : null}
+                {props.page === "BasketPage" ? <BasketPage userID={userID} setVisibility={setVisibility} visibility={visibility} setBasket={setBasket} basket={basket}/> : null}
                 {props.page === "PaymentPage" ? <PaymentPage userID={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
                 {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
                 {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}

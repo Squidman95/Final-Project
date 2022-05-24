@@ -2,52 +2,40 @@ import React, { useEffect, useState } from "react";
 import "./BasketPage.scss";
 import Button from "../../Components/Button/Button";
 import Card from "../../Components/Card/Card";
-import {
-  getBasket,
-  createBasket,
-  deleteItemFromBasket,
-} from "../../Service/BasketService";
+import { getBasket, deleteItemFromBasket } from "../../Service/BasketService";
 
 const BasketPage = (props) => {
-  let { userID } = props;
-
-  const [basket, setBasket] = useState([]);
-
-  const obj = {
-    data1: "data1",
-    data1: "data1",
-  };
+  let { userID, setBasket, basket } = props;
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     getBasket(userID)
-      .then((basket) => {
-        setBasket(basket.items); // get and save content to state
+      .then((result) => {
+        setBasket(result.items); // get and save content to state
       })
       .catch((err) => {
-        createBasket(userID).then((basket) => {
-          //if we can't get basket, we create one
-          setBasket(basket);
-        });
+        console.log(err);
       });
   }, []);
 
-  function removeBasketItem(productId) {
-    deleteItemFromBasket(userID, productId) //remove item from backend
-      .then(function () {
-        // if successful, then also remove from frontend
-        setBasket(
-          basket.filter(function (el) {
-            return el.id !== productId;
-          })
-        );
-      });
+  function removeBasketItem(itemID) {
+    deleteItemFromBasket(userID, itemID).then(() => {
+      getBasket(userID) // something wrong with the userID?
+        .then((result) => {
+          setBasket(result.items);
+          console.log(result.items);
+        });
+    });
   }
 
-  // calculating the total (should maybe go somewhere else..)
-  let total = 0;
-  basket.forEach(function (item) {
-    total += item.price;
-  });
+  useEffect(() => {
+    let tempTotal = 0;
+    basket.forEach(function (item) {
+      console.log(item);
+      tempTotal += item.price;
+    });
+    setTotal(tempTotal);
+  }, [basket]);
 
   return (
     <div className="BasketPage">
