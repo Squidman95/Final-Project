@@ -4,12 +4,18 @@
     flex-direction: row;
 }
 
-.Frontpage-sidebarcontainer{
-    width: 20%;   
-}
 
-.Frontpage-resultscontainer{
-    width: 80%;
+@media screen and (min-width: 767px) {
+    .Frontpage-sidebarcontainer{
+        position: fixed;
+        width: 20%;   
+    }
+
+    .Frontpage-resultscontainer{
+        position:absolute;
+        right:0%;
+        width: 80%; 
+    }
 }
 
 @media screen and (max-width: 768px) {
