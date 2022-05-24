@@ -15,6 +15,7 @@ const Popup = (props) => {
     setLogin,
     setTopbarText,
     headerText,
+    updateBasket,
   } = props;
 
   const [loginVis, setLoginVis] = useState(false);
@@ -50,6 +51,7 @@ const Popup = (props) => {
             setTopbarText(
               `Hello again ${loginInformation.fname}! Hope you're having a great day!`
             );
+            updateBasket(result.userID);
             setVisibility(false);
           }
         })
