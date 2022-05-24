@@ -12,12 +12,12 @@ function Topbar(props) {
     setTopbarText,
     topbarText,
     userID,
-    basketCount
+    basket,
   } = props;
-
+  // console.log("Basket in TopBar: ");
+  // console.log(basket);
   return (
     <div className="topnav Topbar">
-
       <div className="Topbar-left-container Topbar-container">
         <div className="TopbarButtonContainer">
           <Button
@@ -33,7 +33,6 @@ function Topbar(props) {
       </div>
 
       <div className="Topbar-right-container Topbar-container">
-
         <div className="TopbarButtonContainer">
           <Button
             onClick={
@@ -57,12 +56,10 @@ function Topbar(props) {
             onClick={() => console.log("Navigating to Basket")}
             imageSrc="/assets/images/icons/basket-icon.png"
             imageClass="default-img-loc"
-            btnText={basketCount}
+            btnText={basket.length}
           />
         </div>
-
       </div>
-
     </div>
   );
 }

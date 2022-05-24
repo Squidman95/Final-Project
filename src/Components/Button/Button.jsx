@@ -27,7 +27,7 @@ const Button = (props) => {
   }
 
   return (
-    <div className="btn custom-button">
+    <div className="custom-button">
       {to !== null ? (
         <Link
           className="c-button"

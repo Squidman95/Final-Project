@@ -10,6 +10,7 @@ async function getBasket(customerId) {
 }
 
 async function addItemToBasket(customerId, productId) {
+    console.log(`Requesting to PUT item ${productId} in basket for customerId ${customerId}`);
     let response = await fetch(`http://localhost:4000/customers/${customerId}/basket/${productId}`, {
         headers: {
             'Accept': 'application/json',

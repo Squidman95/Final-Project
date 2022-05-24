@@ -7,6 +7,7 @@ import ProductPage from './Pages/ProductPage/ProductPage.jsx';
 import { getBasket, createBasket } from './Service/BasketService';
 import Popup from "./Components/Popup/Popup";
 import Topbar from "./Components/Topbar/Topbar";
+import PaymentPage from './Pages/PaymentPage/PaymentPage';
 
 function App(props) {
 
@@ -18,53 +19,61 @@ function App(props) {
     // Topbar:
     const [topbarText, setTopbarText] = useState("Happy Shopping!");
 
-    // let UID = localStorage.getItem('UserID');
-    // if(UID === null) {
-    //     UID = uuid();
-    //     localStorage.setItem('UserID', UID);
-    // }
-    // if(userID === null) {
-    //     setUserID(UID);
-    // }
-
-    /*
     useEffect(() => {
       let UID = localStorage.getItem('UserID');
-      if(UID === null) {
+      if(UID === null && UID === undefined && UID === 'null') {
           UID = uuid();
           localStorage.setItem('UserID', UID);
       }
       setUserID(UID);
-    }, []); */
+    }, []);
 
+    
+    const [basket, setBasket] = useState([]);
     useEffect(() => {
-      if(userID !== null) {
-        createBasket(userID);
+      if(userID !== null && userID !== undefined && userID !== 'null') {
+        createBasket(userID)
+          .then(response => response)
+          .then((result) => {
+            setBasket(result.items);
+          })
+          .catch(error => console.log('error', error));
         console.log(userID);
       }
     }, [userID]);
 
-    // Basket counter
-    const [basketCount, setBasketCounter] = useState();
-    useEffect(() => {
-        getBasket(userID). // something wrong with the userID?
-        then((basket) => {
-            setBasketCounter(basket.items.length);
+    function updateBasket() {
+      if(userID !== null && userID !== undefined && userID !== 'null') {
+        getBasket(userID) // something wrong with the userID?
+          .then((result) => {
+            setBasket(result.items);
+          })
+          .catch((error) => {
+            console.log(`No basket exists for user ${userID}, creating a new one`);
+            createBasket(userID)
+            .then(response => response)
+            .then((result) => {
+              setBasket(result.items);
+            })
+            .catch(error => console.log('error', error));
           });
-    });
+      }
+    }
+
 
     return (
         <div className="App">
             <div className='App-topbar-container'> 
-                <Topbar setLogin={setLogin} isLoggedIn={isLoggedIn} setVisibility={setVisibility} visibility={visibility} setTopbarText={setTopbarText} topbarText={topbarText} userID={userID} basketCount={basketCount}/>
+                <Topbar setLogin={setLogin} isLoggedIn={isLoggedIn} setVisibility={setVisibility} visibility={visibility} setTopbarText={setTopbarText} topbarText={topbarText} userID={userID} basket={basket}/>
             </div>
             <div className='App-content-container'>
-                {props.page === "ProductPage" ? <ProductPage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
-                {props.page === "BasketPage" ? <BasketPage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
+                {props.page === "ProductPage" ? <ProductPage userID={userID} setVisibility={setVisibility} visibility={visibility} setBasket={setBasket}/> : null}
+                {props.page === "BasketPage" ? <BasketPage userID={userID} setVisibility={setVisibility} visibility={visibility} setBasket={setBasket} basket={basket}/> : null}
+                {props.page === "PaymentPage" ? <PaymentPage userID={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
                 {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
                 {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}
-                {props.page === "Frontpage" ? <Frontpage userId={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
-                <Popup setVisibility={setVisibility} visibility={visibility} userID={userID} setUserID={setUserID} setLogin={setLogin} setTopbarText={setTopbarText} headerText={"Welcome! Log in or sign up to get membership discounts!"}/>
+                {props.page === "Frontpage" ? <Frontpage userID={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
+                <Popup setVisibility={setVisibility} visibility={visibility} userID={userID} setUserID={setUserID} setLogin={setLogin} setTopbarText={setTopbarText} updateBasket={updateBasket} headerText={"Welcome! Log in or sign up to get membership discounts!"}/>
                 {/* <Toolbar /> */}
             </div>
         </div>

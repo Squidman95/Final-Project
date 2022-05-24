@@ -1,16 +1,8 @@
 import PropTypes from "prop-types";
 const SignupPopup = (props) => {
   let {
-    fname,
-    lname,
-    email,
-    password,
-    passwordRe,
-    setfName,
-    setlName,
-    setEmail,
-    setPassword,
-    setPasswordRe,
+    loginInformation ,
+    setLoginInformation
   } = props;
 
   return (
@@ -19,34 +11,34 @@ const SignupPopup = (props) => {
       <label>First Name:</label>
       <input
         type="text"
-        value={fname}
-        onChange={(e) => setfName(e.target.value)}
+        value={loginInformation.fname}
+        onChange={(e) => setLoginInformation({...loginInformation, fname: e.target.value})}
       />
       <label>Last Name:</label>
       <input
         type="text"
-        value={lname}
-        onChange={(e) => setlName(e.target.value)}
+        value={loginInformation.lname}
+        onChange={(e) => setLoginInformation({...loginInformation, lname: e.target.value})}
       />
       <label>Email:</label>
       <input
         type="text"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={loginInformation.email}
+        onChange={(e) => setLoginInformation({...loginInformation, email: e.target.value})}
       />
 
       <label>Password:</label>
       <input
         type="text"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={loginInformation.password}
+        onChange={(e) => setLoginInformation({...loginInformation, password: e.target.value})}
       />
 
       <label>Re-type Password:</label>
       <input
         type="text"
-        value={passwordRe}
-        onChange={(e) => setPasswordRe(e.target.value)}
+        value={loginInformation.passwordRe}
+        onChange={(e) => setLoginInformation({...loginInformation, passwordRe: e.target.value})}
       />
     </div>
   );

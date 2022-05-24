@@ -20,7 +20,7 @@ const Card = (props) => {
             <div className={`Card Card-${imagePosition}`}>
 
                 <img
-                    src={`${process.env.PUBLIC_URL}${image}`}
+                    src={`http://localhost:4000${image}`}//{`${process.env.PUBLIC_URL}${image}`}
                     alt={header}
                     className="card-img-css"
                 />
