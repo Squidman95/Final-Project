@@ -1,93 +1,19 @@
-.PhoneNav-Filter-Items {
-  text-align: left;
-  background-color: var(--primary-0);
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-top: 10%;
-  padding-bottom: 10%;
-  height: 100%;
-  max-width: 100%;
-  transform: translate(-150%);
-  margin-left: -40px;
-  padding-left: 50px;
-  transition: transform 0.5s ease-in-out;
-  box-shadow: 5px 0px 10px 0px #aaa;
-}
-
-
-.PhoneNavPrice {
-  display: flex;
-  flex-direction: column;
-}
-
-.PhoneNavAnimals-grid {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  text-align: center;
-}
-
-.PhoneNavAnimals-animalfilteritem {
-  height: auto;
-  align-items: center;
-  width: 100%;
-  .PhoneNavAnimals-icon {
-    max-height: 2em;
-    pointer-events: all;
-  }
-  &:hover {
-    cursor: pointer;
-    color: var(--primary-light);
-    .PhoneNavAnimals-icon {
-      transform: scale(1.1);
-    }
-  }
-  &:active {
-    cursor: pointer;
-    color: var(--primary-dark);
-    .PhoneNavAnimals-icon {
-      transform: scale(1.1);
-    }
-  }
-}
-
-.PhoneNav-checkbox-container {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  vertical-align: center;
-  .PhoneNav-Filter-Checkbox {
-    width: 1.5em;
-    height: 1.5em;
-    border-radius: 20px;
-    &:checked + label {
-      color: var(--background-0);
-      text-decoration: underline;
-    }
-  }
-}
-
-.PhoneNav-subcategories {
-  padding-left: 10%;
-  display: none;
-}
-
-.PhoneNavPrice {
-  input {
-    width: 20%;
-  }
-}
-
 .PhoneNav {
+  display: flex;
+  position:fixed;
+  top:7.5%;
+  flex-direction: column;
+  width: 100%;
+  z-index: 3;
   #hamburger {
     position: absolute;
     display: block;
-    height: 132px; //was 32px
-    width: 30px;
-    top: 20px;
-    left: 20px;
+    height: 32px; 
+    width: 32px;
+    top: 8px;
+    left: 25px; 
     z-index: 5;
-    opacity: 0;
+    opacity: 0; //set to 100 to easier change it
     &:checked ~ .PhoneNav-Filter-Items {
       transform: translateX(0);
     }
@@ -105,14 +31,126 @@
   }
 }
 
+.PhoneNav-Filter-Items {
+  //text-align: left;
+  background-color: var(--primary-0);
+  padding-bottom: 5%;
+  height: 100vh;
+  width: 100%;
+  transform: translate(-150%);
+  margin-left: auto;
+  margin-right:auto;
+  transition: transform 0.5s ease-in-out;
+  h1 {
+    color: var(--background-0);
+    font-size: 5vw;
+    padding-top: 10%;
+  }
+  label {
+    color: var(--background-0);
+    font-size:5vw;
+  }
+  input[type=checkbox] {
+    vertical-align: middle;
+  }
+}
+
+.PhoneNavPrice {
+  display: flex;
+  flex-direction: column;
+  label {
+    display:block;
+  }
+}
+
+.PhoneNavAnimals-grid {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  //text-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.Animals-animalfilteritem {
+  height: auto;
+  align-items: center;
+  width: 50%;
+  height: 20%;
+  .Animals-icon {
+    
+   // max-height: 4em;
+    pointer-events: all;
+  }
+  &:hover {
+    cursor: pointer;
+    color: var(--primary-light);
+    .Animals-icon {
+      transform: scale(1.1);
+    }
+  }
+  &:active {
+    cursor: pointer;
+    color: var(--primary-dark);
+    .Animals-icon {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.PhoneNavCategories {
+  margin-left: 40%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+.PhoneNav-checkbox-container {
+  display: flex;
+  flex-direction: column;
+  vertical-align: center;
+  text-align: left;
+  margin-left: auto;
+  margin-right:auto;
+  
+  .PhoneNav-Filter-Checkbox {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 20px;
+    &:checked + label {
+      color: var(--background-0);
+      text-decoration: underline;
+    }
+  }
+}
+
+.PhoneNav-subcategories {
+  padding-left: 10%;
+}
+
+.PhoneNav-subcategories-false {
+  display:none;
+}
+
+.PhoneNav-subcategories-true {
+  display:block;
+}
+
+.PhoneNavPrice {
+  input {
+    width: 20%;
+    height: 8vw;
+    font-size: 4vw;
+  }
+}
+
 .PhoneNav-Hamburger-lines {
   display: block;
   height: 23px;
   width: 35px;
-  position: absolute; //was absolute, should maybe be changed back?
-  top: 70px; // was 17px
-  left: 20px;
-  z-index: 2;
+  position: absolute; 
+  top: 15px;    //hamburger lines position from the top
+  left: 27px; //hamburger lines position from the side
+  z-index: 2; //has to be one smaller than for the checkbox
   display: flex;
   flex-direction: column;
   justify-content: space-between;

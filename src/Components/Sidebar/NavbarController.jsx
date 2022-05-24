@@ -73,10 +73,10 @@ const NavbarController = ( props ) => {
 
     function createAnimalFilterItem(animal) {
         return (
-            <div className="SidebarAnimals-animalfilteritem">
+            <div className="Animals-animalfilteritem">
                 <p onClick = {() => { FilterAnimal(animal); }} >
                     <img
-                        className="SidebarAnimals-icon"
+                        className="Animals-icon"
                         src={`${process.env.PUBLIC_URL}assets/images/icons/${animal}-icon.png`}
                         alt={animal}
                     />
@@ -114,6 +114,7 @@ const NavbarController = ( props ) => {
                     maxPrice = {maxPrice}
                     handleMinPriceChange = {handleMinPriceChange}
                     handleMaxPriceChange = {handleMaxPriceChange}
+                    subStateArray = {subStateArray}
                 />
             </div>
 

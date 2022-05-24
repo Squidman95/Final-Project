@@ -1,32 +1,35 @@
-.Sidebar-Filter-Items {
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-bottom: 10%;
-  height: 90%;
-  width: 90%;
-  h1 {
-    color: var(--background-0);
-    font-size: 2vw;
-  }
-  label {
-    color: var(--background-0);
-  }
-  input[type=checkbox] {
-    vertical-align: middle;
-  }
-}
-
 .Sidebar {
   display: flex;
   flex-direction: column;
   text-align: left;
   width: 100%;
+  height: 100%;
   background-color: var(--primary-0);
   #hamburger {
     display: none;
   }
   .Sidebar-Hamburger-lines {
     display: none;
+  }
+}
+
+.Sidebar-Filter-Items {
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 10%;
+  height: 100%;
+  width: 90%;
+  h1 {
+    color: var(--background-0);
+    font-size: 1.5vw;
+  }
+  label {
+    color: var(--background-0);
+    font-size: 1.5vw;
+  }
+  input[type=checkbox] {
+    vertical-align: middle;
+    
   }
 }
 
@@ -42,28 +45,33 @@
   text-align: center;
 }
 
-.SidebarAnimals-animalfilteritem {
+.Animals-animalfilteritem {
   height: auto;
   align-items: center;
   width: 40%;
-  .SidebarAnimals-icon {
-    max-height: 2em;
+  .Animals-icon {
+    max-height: 3em;
     pointer-events: all;
   }
   &:hover {
     cursor: pointer;
     color: var(--primary-light);
-    .SidebarAnimals-icon {
+    .Animals-icon {
       transform: scale(1.1);
     }
   }
   &:active {
     cursor: pointer;
     color: var(--primary-dark);
-    .SidebarAnimals-icon {
+    .Animals-icon {
       transform: scale(1.1);
     }
   }
+}
+
+.SidebarCategories {
+  padding-top: 10%;
+  padding-bottom: 10%;
 }
 
 .Sidebar-checkbox-container {
@@ -75,7 +83,7 @@
     width: 1.5em;
     height: 1.5em;
     border-radius: 20px;
-    &:checked + label {
+    &:checked  {
       color: var(--background-0);
       text-decoration: underline;
     }
@@ -97,6 +105,7 @@
 .SidebarPrice {
   input {
     width: 20%;
+    font-size: 1vw;
   }
 }
 

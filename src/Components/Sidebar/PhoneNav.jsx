@@ -11,19 +11,20 @@ function PhoneNav(props) {
         minPrice,
         maxPrice,
         handleMinPriceChange,
-        handleMaxPriceChange
+        handleMaxPriceChange,
+        subStateArray
     } = props;
 
     return (
         <div className="PhoneNav">
-            
-                <input type="checkbox" name="" id="hamburger" />
-                <div className="PhoneNav-Hamburger-lines">
-                    <span className="line line1"></span>
-                    <span className="line line2"></span>
-                    <span className="line line3"></span>
-                </div>
-            
+
+            <input type="checkbox" name="" id="hamburger" />
+            <div className="PhoneNav-Hamburger-lines">
+                <span className="line line1"></span>
+                <span className="line line2"></span>
+                <span className="line line3"></span>
+            </div>
+
             <div className="PhoneNav-Filter-Items">
 
                 <div className="PhoneNavAnimals">
@@ -37,7 +38,7 @@ function PhoneNav(props) {
                 </div>
 
                 <div className="PhoneNavCategories">
-                    <h1>Categories</h1>
+                    {/* <h1>Categories</h1> */}
 
                     <div className="PhoneNav-checkbox-container">
                         {categories.map((categoryItem, categoryIndex) => {
@@ -49,11 +50,11 @@ function PhoneNav(props) {
                                         type="checkbox"
                                         id={categoryItem}
                                         value={categoryItem}
-                                        onChange={(e) => checkCatHandler(categoryItem, e)}
+                                        onChange={(e) => checkCatHandler(categoryItem, categoryIndex, e)}
                                     />
                                     <label htmlFor={categoryItem}>{categoryItem}</label>
 
-                                    <div className="PhoneNav-subcategories" id={"sub" + categoryItem}>
+                                    <div className={`PhoneNav-subcategories PhoneNav-subcategories-${subStateArray[categoryIndex]}`} id={"sub" + categoryItem}>
                                         {subcategories
                                             .filter((e) => e.category === categoryItem)
                                             .map((item, index) => {
@@ -64,7 +65,7 @@ function PhoneNav(props) {
                                                             type="checkbox"
                                                             id={item.subcategory}
                                                             value={item.subcategory}
-                                                            onChange={(e) => checkSubHandler(item.subcategory, e) }
+                                                            onChange={(e) => checkSubHandler(item.subcategory, e)}
                                                         />
                                                         <label htmlFor={item.subcategory}> {item.subcategory} </label>
                                                     </div>
@@ -80,9 +81,10 @@ function PhoneNav(props) {
                 </div>
 
                 <div className="PhoneNavPrice">
-                    <h1>Price</h1>
+                    {/* <h1>Price</h1> */}
 
                     <div>
+                        <label htmlFor="minPrice"> Min Price</label>
                         <input
                             type="number"
                             id="minPrice"
@@ -90,10 +92,10 @@ function PhoneNav(props) {
                             min="0"
                             onChange={handleMinPriceChange}
                         />
-                        <label htmlFor="minPrice"> Min Price</label>
                     </div>
-                    
+
                     <div>
+                        <label htmlFor="maxPrice"> Max Price</label>
                         <input
                             type="number"
                             id="maxPrice"
@@ -101,7 +103,6 @@ function PhoneNav(props) {
                             min="0"
                             onChange={handleMaxPriceChange}
                         />
-                        <label htmlFor="maxPrice"> Max Price</label>
                     </div>
 
                 </div>
