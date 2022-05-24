@@ -11,12 +11,14 @@ function Sidebar(props) {
         minPrice,
         maxPrice,
         handleMinPriceChange,
-        handleMaxPriceChange
+        handleMaxPriceChange,
+        subStateArray
     } = props;
+
+    
 
     return (
         <div className="Sidebar">
-
             <input type="checkbox" name="" id="hamburger" />
             <div className="Sidebar-Hamburger-lines">
                 <span className="line line1"></span>
@@ -44,16 +46,19 @@ function Sidebar(props) {
                             return (
                                 <div key={categoryIndex}>
 
-                                    <input
-                                        className="Sidebar-Filter-Checkbox"
-                                        type="checkbox"
-                                        id={categoryItem}
-                                        value={categoryItem}
-                                        onChange={(e) => checkCatHandler(categoryItem, e)}
-                                    />
-                                    <label htmlFor={categoryItem}>{categoryItem}</label>
 
-                                    <div className="Sidebar-subcategories" id={"sub" + categoryItem}>
+                                    <label htmlFor={categoryItem}>    
+                                        <input
+                                            className="Sidebar-Filter-Checkbox"
+                                            type="checkbox"
+                                            id={categoryItem}
+                                            value={categoryItem}
+                                            onChange={(e) => checkCatHandler(categoryItem, categoryIndex, e)}
+                                        />
+                                        {categoryItem}
+                                    </label>
+
+                                    <div className={`Sidebar-subcategories Sidebar-subcategories-${subStateArray[categoryIndex]}`} id={"sub" + categoryItem}> 
                                         {subcategories
                                             .filter((e) => e.category === categoryItem)
                                             .map((item, index) => {

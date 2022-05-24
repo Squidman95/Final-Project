@@ -16,15 +16,19 @@ const NavbarController = ( props ) => {
         FilterMinPrice,
         FilterMaxPrice,
     } = props;
+    
 
     const [categories, setCategories] = useState([]);
     const [subcategories, setSubCategories] = useState([]);
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(0);
+    const [subStateArray, setSubStateArray] = useState([]);
+    
 
     useEffect(() => {
         getAllCategories().then(function (categories) {
             setCategories(categories);
+            setSubStateArray(new Array(categories.length).fill('false'));
         });
     }, []);
 
@@ -34,15 +38,18 @@ const NavbarController = ( props ) => {
         });
     }, []);
 
-    function checkCatHandler(item, e) {
-        let id = "sub" + item;
+
+    function checkCatHandler(item, index, e) {
+        //let id = "sub" + item;
         if (e.target.checked === true) {
             FilterCategory(item);
-            document.getElementById(id).style.display = "block  ";
+            //document.getElementById(id).style.display = "block  ";
+            subStateArray[index] = 'true';
         } else {
             FilterCategory(null);
-            document.getElementById(id).style.display = "none";
+            //document.getElementById(id).style.display = "none";
             FilterSubCategory(null);
+            subStateArray[index] = 'false';
         }
     }
 
@@ -92,6 +99,7 @@ const NavbarController = ( props ) => {
                     maxPrice = {maxPrice}
                     handleMinPriceChange = {handleMinPriceChange}
                     handleMaxPriceChange = {handleMaxPriceChange}
+                    subStateArray = {subStateArray}
                 />
             </div>
 

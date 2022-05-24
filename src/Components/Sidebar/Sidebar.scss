@@ -1,8 +1,4 @@
 .Sidebar-Filter-Items {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  background-color: var(--primary-0);
   padding-left: 5%;
   padding-right: 5%;
   padding-bottom: 10%;
@@ -10,12 +6,28 @@
   width: 90%;
   h1 {
     color: var(--background-0);
+    font-size: 2vw;
+  }
+  label {
+    color: var(--background-0);
+  }
+  input[type=checkbox] {
+    vertical-align: middle;
   }
 }
 
-.Sidebar #hamburger,
-.Sidebar-Hamburger-lines {
-  display: none;
+.Sidebar {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  background-color: var(--primary-0);
+  #hamburger {
+    display: none;
+  }
+  .Sidebar-Hamburger-lines {
+    display: none;
+  }
 }
 
 .SidebarPrice {
@@ -33,7 +45,7 @@
 .SidebarAnimals-animalfilteritem {
   height: auto;
   align-items: center;
-  width: 100%;
+  width: 40%;
   .SidebarAnimals-icon {
     max-height: 2em;
     pointer-events: all;
@@ -72,7 +84,14 @@
 
 .Sidebar-subcategories {
   padding-left: 10%;
-  display: none;
+}
+
+.Sidebar-subcategories-false{
+  display:none;
+}
+
+.Sidebar-subcategories-true{
+  display:block;
 }
 
 .SidebarPrice {
@@ -81,6 +100,4 @@
   }
 }
 
-.SidebarAnimals-animalfilteritem {
-  width: 40%;
-}
+

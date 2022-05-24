@@ -21,7 +21,7 @@ function App(props) {
 
     useEffect(() => {
       let UID = localStorage.getItem('UserID');
-      if(UID === null) {
+      if(UID === null || UID === undefined || UID === 'null') {
           UID = uuid();
           localStorage.setItem('UserID', UID);
       }
@@ -43,10 +43,21 @@ function App(props) {
     }, [userID]);
 
     function updateBasket() {
-      getBasket(userID) // something wrong with the userID?
-        .then((result) => {
-          setBasket(result.items);
-        });
+      if(userID !== null && userID !== undefined && userID !== 'null') {
+        getBasket(userID) // something wrong with the userID?
+          .then((result) => {
+            setBasket(result.items);
+          })
+          .catch((error) => {
+            console.log(`No basket exists for user ${userID}, creating a new one`);
+            createBasket(userID)
+            .then(response => response)
+            .then((result) => {
+              setBasket(result.items);
+            })
+            .catch(error => console.log('error', error));
+          });
+      }
     }
 
 
