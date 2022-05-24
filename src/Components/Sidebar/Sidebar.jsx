@@ -18,10 +18,10 @@ function Sidebar(props) {
         <div className="Sidebar">
             
                 <input type="checkbox" name="" id="hamburger" />
-                <div class="Sidebar-Hamburger-lines">
-                    <span class="line line1"></span>
-                    <span class="line line2"></span>
-                    <span class="line line3"></span>
+                <div className="Sidebar-Hamburger-lines">
+                    <span className="line line1"></span>
+                    <span className="line line2"></span>
+                    <span className="line line3"></span>
                 </div>
             
             <div className="Sidebar-Filter-Items">
