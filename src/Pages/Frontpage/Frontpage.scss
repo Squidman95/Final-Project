@@ -4,6 +4,10 @@
     flex-direction: row;
 }
 
+.Frontpage-resultscontainer{
+    background-color: var(--background-0);
+}
+
 
 @media screen and (min-width: 767px) {
     .Frontpage-sidebarcontainer{
