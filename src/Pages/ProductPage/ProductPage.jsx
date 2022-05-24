@@ -27,7 +27,8 @@ const ProductPage = (props) => {
           <div className="leftColumn">
             <img
               className="prodImg"
-              src={`${process.env.PUBLIC_URL}/${product.image}`}
+              // src={`${process.env.PUBLIC_URL}/${product.image}`}
+              src={`http://localhost:4000${product.image}`}
               alt={"Unable to find"}
             />
             <p className="longDescription"> {product.longDescription} </p>
