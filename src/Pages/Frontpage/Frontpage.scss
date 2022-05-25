@@ -10,10 +10,12 @@
 }
 
 .Frontpage-resultscontainer{
-    background-color: var(--background-0);
     height: 50%;
+    
+    .ShowResults{
+        background-color: var(--background-0);
+    }
 }
-
 
 @media screen and (min-width: 767px) {
     .Frontpage-sidebarcontainer{
@@ -25,7 +27,7 @@
     .Frontpage-resultscontainer{
         position:absolute;
         right:0%;
-        width: 80%; 
+        width: 80%;
     }
 }
 
