@@ -23,7 +23,7 @@ const Frontpage = (props) => {
   const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(0); */
   const [productsFilterAnimal, setproductsFilterAnimal] = useState(null);
   const [filterState, setFilterState] = useState('false');
- /*  const [productsFilterCategory, setproductsFilterCategory] = useState(null); */
+  const [productsFilterCategory, setproductsFilterCategory] = useState(null);
   /* const [productsFilterSubCategory, setproductFilterSubCategory] = useState(null); */
 
 
@@ -35,13 +35,11 @@ const Frontpage = (props) => {
   }, []);
 
   useEffect(() => {
-    let localProducts = allProducts;
+    let localProducts = getProducts();
 
-    if (filterState === 'false') {
-      console.log('filterState is false');
-    } else {
-      console.log('filterState is true');
-    }
+    console.log('check3');
+    console.log(filterState);
+
 
     /* if (productsFilterMinPrice < productsFilterMaxPrice && productsFilterMinPrice >= 0 && productsFilterMaxPrice > 0) {
       if (productsFilterMinPrice !== null && productsFilterMinPrice !== undefined) {
@@ -54,24 +52,42 @@ const Frontpage = (props) => {
     } */
 
     if (productsFilterAnimal !== null && productsFilterAnimal !== undefined) {
-      localProducts = getNameFilteredItems(localProducts, productsFilterAnimal);
-      console.log('check6.3');
-      console.log(localProducts);
+      if (nullArray(productsFilterAnimal)) {
+        localProducts = getProducts();
+      } else {
+        console.log('check4');
+        console.log(productsFilterAnimal);
+        localProducts = getNameFilteredItems(localProducts, productsFilterAnimal);
+        console.log('check5');
+        console.log(productsFilterAnimal);
+        console.log(localProducts);
+      }
     }
-/* 
+
+
+
+
     if (productsFilterCategory !== null && productsFilterCategory !== undefined) {
       localProducts = getCategoriesFilterItems(localProducts, productsFilterCategory);
-    } */
+    }
 
     /* if (productsFilterSubCategory !== null && productsFilterSubCategory !== undefined) {
       localProducts = getSubCategoriesFilterItems(localProducts, productsFilterSubCategory);
     } */
 
     setFilteredProducts(localProducts);
-  }, [productsFilterAnimal, filterState, setFilteredProducts]);
+  }, [productsFilterAnimal, filterState, productsFilterCategory, setFilteredProducts]);
 
-  /* productsFilterMaxPrice, productsFilterMinPrice, , productsFilterCategory, productsFilterSubCategory*/
+  /* productsFilterMaxPrice, productsFilterMinPrice, , , productsFilterSubCategory*/
 
+  function getProducts() {
+    return allProducts;
+  }
+
+  function nullArray(arr) {
+    console.log(arr.every(e => e === null));
+    return arr.every(e => e === null);
+  }
 
   function getNameFilteredItems(products, animalName) {
     return products.filter((el) => {
@@ -80,28 +96,22 @@ const Frontpage = (props) => {
       })
     })
   }
-/* 
+
   function getCategoriesFilterItems(products, category) {
     return products.filter(function (el) {
       return el.category === category;
     })
-  } */
-/* 
-  function getSubCategoriesFilterItems(products, subcategory) {
-    return products.filter(function (el) {
-      return el.subcategory === subcategory;
-    })
-  } */
+  }
+  /* 
+    function getSubCategoriesFilterItems(products, subcategory) {
+      return products.filter(function (el) {
+        return el.subcategory === subcategory;
+      })
+    } */
 
   /* function getMinPriceFilteredItems(products, priceMin) {
     return products.filter(function (el) {
       return el.price >= priceMin;
-    });
-  } */
-
-  /* function getCategoriesFilterItems(products, category) {
-    return products.filter(function (el) {
-      return el.category === category;
     });
   } */
 
@@ -124,31 +134,31 @@ const Frontpage = (props) => {
         <NavbarController
           FilterAnimal={setproductsFilterAnimal}
           FilterState={setFilterState}
-          /* FilterCategory={setproductsFilterCategory} */
-          /* FilterSubCategory={setproductFilterSubCategory} */
-          /* FilterMinPrice={setproductsFilterMinPrice}
-          FilterMaxPrice={setproductsFilterMaxPrice} */
+          FilterCategory={setproductsFilterCategory}
+        /* FilterSubCategory={setproductFilterSubCategory} */
+        /* FilterMinPrice={setproductsFilterMinPrice}
+        FilterMaxPrice={setproductsFilterMaxPrice} */
         />
       </div>
 
       <div className="Frontpage-resultscontainer">
-      <div
+        <div
           style={{
             display: allProducts.length === filteredProducts.length ? "block" : "none",
             // show the carousel only when no filter is applied
-          }} 
-      >
+          }}
+        >
           <OfferCarousel
-              products={filteredProducts}
-          />
-      </div>
-      <h2 style={{
-            display: allProducts.length === filteredProducts.length ? "none" : "block",
-            // show 'search result' headline only when a filter has been applied
-          }} >Search result:</h2>
-          <ShowResults
             products={filteredProducts}
           />
+        </div>
+        <h2 style={{
+          display: allProducts.length === filteredProducts.length ? "none" : "block",
+          // show 'search result' headline only when a filter has been applied
+        }} >Search result:</h2>
+        <ShowResults
+          products={filteredProducts}
+        />
       </div>
 
     </div>

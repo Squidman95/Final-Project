@@ -3,8 +3,8 @@ import './NavbarController.scss';
 import Sidebar from './Sidebar';
 import PhoneNav from './PhoneNav';
 import {
-    getAllAnimals
-    /* getAllCategories, */
+    getAllAnimals,
+    getAllCategories,
     /* getAllSubCategories, */
 } from "../../Service/ProductService";
 
@@ -12,7 +12,8 @@ const NavbarController = (props) => {
 
     let {
         FilterAnimal,
-        /* FilterCategory, */
+        FilterState,  //if removed, check that the states are updated!!!
+        FilterCategory,
         /* FilterSubCategory, */
         /* FilterMinPrice,
         FilterMaxPrice, */
@@ -34,27 +35,29 @@ const NavbarController = (props) => {
             FilterAnimal(animalArray);
             console.log('check1');
             console.log(animalArray);
+            FilterState(animal);
         } else {
             animalArray[index] = null;
             FilterAnimal(animalArray);
             console.log('check2');
             console.log(animalArray);
+            FilterState(Math.random());
         }
     }
 
-    /* const [categories, setCategories] = useState([]); */
+    const [categories, setCategories] = useState([]);
     /* const [subcategories, setSubCategories] = useState([]); */
     /* const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(0); */
     /* const [subStateArray, setSubStateArray] = useState([]); */
 
 
-    /* useEffect(() => {
+    useEffect(() => {
         getAllCategories().then(function (categories) {
-            setCategories(categories); */
-    /* setSubStateArray(new Array(categories.length).fill('false')); */
-    /*  });
- }, []); */
+            setCategories(categories);
+            /* setSubStateArray(new Array(categories.length).fill('false')); */
+        });
+    }, []);
 
     /* useEffect(() => {
         getAllSubCategories().then(function (subcategories) {
@@ -63,19 +66,16 @@ const NavbarController = (props) => {
     }, []); */
 
 
-    /* function checkCatHandler(item, index, e) { */
-    //let id = "sub" + item;
-    /* if (e.target.checked === true) {
-        FilterCategory(item); */
-    //document.getElementById(id).style.display = "block  ";
-    /* subStateArray[index] = 'true'; */
-    /*  } else {
-         FilterCategory(null); */
-    //document.getElementById(id).style.display = "none";
-    /*  FilterSubCategory(null);
-     subStateArray[index] = 'false'; */
-    /*  }
- } */
+    function checkCatHandler(item, index, e) {
+        if (e.target.checked === true) {
+            FilterCategory(item);
+            /* subStateArray[index] = 'true'; */
+        } else {
+            FilterCategory(null);
+            /*  FilterSubCategory(null);
+             subStateArray[index] = 'false'; */
+        }
+    }
 
     /* function checkSubHandler(item, e) {
         if (e.target.checked === true) {
@@ -103,8 +103,8 @@ const NavbarController = (props) => {
                 <Sidebar
                     animals={animals}
                     checkAnimalHandler={checkAnimalHandler}
-                /*  categories={categories}
-                 checkCatHandler={checkCatHandler} */
+                    categories={categories}
+                    checkCatHandler={checkCatHandler}
                 /* subcategories={subcategories}
                 checkSubHandler={checkSubHandler} */
                 /* minPrice={minPrice}
