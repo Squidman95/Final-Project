@@ -24,7 +24,7 @@ const Frontpage = (props) => {
   const [productsFilterAnimal, setproductsFilterAnimal] = useState(null);
   const [filterState, setFilterState] = useState('false');
   const [productsFilterCategory, setproductsFilterCategory] = useState(null);
-  /* const [productsFilterSubCategory, setproductFilterSubCategory] = useState(null); */
+  const [productsFilterSubCategory, setproductFilterSubCategory] = useState(null);
 
 
   useEffect(() => {
@@ -64,21 +64,18 @@ const Frontpage = (props) => {
       }
     }
 
-
-
-
     if (productsFilterCategory !== null && productsFilterCategory !== undefined) {
       localProducts = getCategoriesFilterItems(localProducts, productsFilterCategory);
     }
 
-    /* if (productsFilterSubCategory !== null && productsFilterSubCategory !== undefined) {
+    if (productsFilterSubCategory !== null && productsFilterSubCategory !== undefined) {
       localProducts = getSubCategoriesFilterItems(localProducts, productsFilterSubCategory);
-    } */
+    }
 
     setFilteredProducts(localProducts);
-  }, [productsFilterAnimal, filterState, productsFilterCategory, setFilteredProducts]);
+  }, [productsFilterAnimal, filterState, productsFilterCategory, productsFilterSubCategory, setFilteredProducts]);
 
-  /* productsFilterMaxPrice, productsFilterMinPrice, , , productsFilterSubCategory*/
+  /* productsFilterMaxPrice, productsFilterMinPrice, , , */
 
   function getProducts() {
     return allProducts;
@@ -102,18 +99,12 @@ const Frontpage = (props) => {
       return el.category === category;
     })
   }
-  /* 
-    function getSubCategoriesFilterItems(products, subcategory) {
-      return products.filter(function (el) {
-        return el.subcategory === subcategory;
-      })
-    } */
 
-  /* function getMinPriceFilteredItems(products, priceMin) {
+  function getSubCategoriesFilterItems(products, subcategory) {
     return products.filter(function (el) {
-      return el.price >= priceMin;
-    });
-  } */
+      return el.subcategory === subcategory;
+    })
+  }
 
   /* function getMinPriceFilteredItems(products, priceMin) {
     return products.filter(function (el) {
@@ -135,7 +126,7 @@ const Frontpage = (props) => {
           FilterAnimal={setproductsFilterAnimal}
           FilterState={setFilterState}
           FilterCategory={setproductsFilterCategory}
-        /* FilterSubCategory={setproductFilterSubCategory} */
+          FilterSubCategory={setproductFilterSubCategory}
         /* FilterMinPrice={setproductsFilterMinPrice}
         FilterMaxPrice={setproductsFilterMaxPrice} */
         />

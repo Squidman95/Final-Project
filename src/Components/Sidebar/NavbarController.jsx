@@ -5,7 +5,7 @@ import PhoneNav from './PhoneNav';
 import {
     getAllAnimals,
     getAllCategories,
-    /* getAllSubCategories, */
+    getAllSubCategories,
 } from "../../Service/ProductService";
 
 const NavbarController = (props) => {
@@ -14,7 +14,7 @@ const NavbarController = (props) => {
         FilterAnimal,
         FilterState,  //if removed, check that the states are updated!!!
         FilterCategory,
-        /* FilterSubCategory, */
+        FilterSubCategory,
         /* FilterMinPrice,
         FilterMaxPrice, */
     } = props;
@@ -46,44 +46,43 @@ const NavbarController = (props) => {
     }
 
     const [categories, setCategories] = useState([]);
-    /* const [subcategories, setSubCategories] = useState([]); */
+    const [subcategories, setSubCategories] = useState([]);
+    const [subStateArray, setSubStateArray] = useState([]);
     /* const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(0); */
-    /* const [subStateArray, setSubStateArray] = useState([]); */
-
 
     useEffect(() => {
         getAllCategories().then(function (categories) {
             setCategories(categories);
-            /* setSubStateArray(new Array(categories.length).fill('false')); */
+            setSubStateArray(new Array(categories.length).fill('false'));
         });
     }, []);
 
-    /* useEffect(() => {
+    useEffect(() => {
         getAllSubCategories().then(function (subcategories) {
             setSubCategories(subcategories);
         });
-    }, []); */
+    }, []);
 
 
     function checkCatHandler(item, index, e) {
         if (e.target.checked === true) {
             FilterCategory(item);
-            /* subStateArray[index] = 'true'; */
+            subStateArray[index] = 'true';
         } else {
             FilterCategory(null);
-            /*  FilterSubCategory(null);
-             subStateArray[index] = 'false'; */
+            FilterSubCategory(null);
+            subStateArray[index] = 'false';
         }
     }
 
-    /* function checkSubHandler(item, e) {
+    function checkSubHandler(item, e) {
         if (e.target.checked === true) {
             FilterSubCategory(item);
         } else {
             FilterSubCategory(null);
         }
-    } */
+    }
 
     /*  const handleMinPriceChange = (e) => {
          setMinPrice(parseInt(e.target.value));
@@ -105,13 +104,13 @@ const NavbarController = (props) => {
                     checkAnimalHandler={checkAnimalHandler}
                     categories={categories}
                     checkCatHandler={checkCatHandler}
-                /* subcategories={subcategories}
-                checkSubHandler={checkSubHandler} */
+                    subcategories={subcategories}
+                    subStateArray={subStateArray}
+                    checkSubHandler={checkSubHandler}
                 /* minPrice={minPrice}
                 maxPrice={maxPrice}
                 handleMinPriceChange={handleMinPriceChange}
-                handleMaxPriceChange={handleMaxPriceChange} */
-                /* subStateArray={subStateArray} */
+                handleMaxPriceChange={handleMaxPriceChange} */ 
                 />
             </div>
 
