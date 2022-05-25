@@ -2,7 +2,7 @@ import React from "react";
 //import "./PhoneNav.scss";
 
 function PhoneNav(props) {
-    let {
+    /* let {
         createAnimalFilterItem,
         categories,
         checkCatHandler,
@@ -13,7 +13,7 @@ function PhoneNav(props) {
         handleMinPriceChange,
         handleMaxPriceChange,
         subStateArray
-    } = props;
+    } = props; */
 
     return (
         <div className="PhoneNav">
