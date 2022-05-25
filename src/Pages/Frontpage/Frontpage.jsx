@@ -24,7 +24,7 @@ const Frontpage = (props) => {
   /* const [productsFilterMinPrice, setproductsFilterMinPrice] = useState(0);
   const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(0); */
   const [productsFilterAnimal, setproductsFilterAnimal] = useState(null);
-  const [productsFilterCategory, setproductsFilterCategory] = useState(null);
+ /*  const [productsFilterCategory, setproductsFilterCategory] = useState(null); */
   /* const [productsFilterSubCategory, setproductFilterSubCategory] = useState(null); */
 
 
@@ -51,19 +51,19 @@ const Frontpage = (props) => {
     if (productsFilterAnimal !== null && productsFilterAnimal !== undefined) {
       localProducts = getNameFilteredItems(localProducts, productsFilterAnimal);
     }
-
+/* 
     if (productsFilterCategory !== null && productsFilterCategory !== undefined) {
       localProducts = getCategoriesFilterItems(localProducts, productsFilterCategory);
-    }
+    } */
 
     /* if (productsFilterSubCategory !== null && productsFilterSubCategory !== undefined) {
       localProducts = getSubCategoriesFilterItems(localProducts, productsFilterSubCategory);
     } */
 
     setFilteredProducts(localProducts);
-  }, [productsFilterAnimal, productsFilterCategory]);
+  }, [productsFilterAnimal]);
 
-  /* productsFilterMaxPrice, productsFilterMinPrice, , productsFilterSubCategory*/
+  /* productsFilterMaxPrice, productsFilterMinPrice, , productsFilterCategory, productsFilterSubCategory*/
 
 
   function getNameFilteredItems(products, animalName) {
@@ -71,12 +71,12 @@ const Frontpage = (props) => {
       return el.animal === animalName;
     })
   }
-
+/* 
   function getCategoriesFilterItems(products, category) {
     return products.filter(function (el) {
       return el.category === category;
     })
-  }
+  } */
 /* 
   function getSubCategoriesFilterItems(products, subcategory) {
     return products.filter(function (el) {
@@ -90,11 +90,11 @@ const Frontpage = (props) => {
     });
   } */
 
-  function getCategoriesFilterItems(products, category) {
+  /* function getCategoriesFilterItems(products, category) {
     return products.filter(function (el) {
       return el.category === category;
     });
-  }
+  } */
 
   /* function getMinPriceFilteredItems(products, priceMin) {
     return products.filter(function (el) {
@@ -114,7 +114,7 @@ const Frontpage = (props) => {
       <div className="Frontpage-sidebarcontainer">
         <NavbarController
           FilterAnimal={setproductsFilterAnimal}
-          FilterCategory={setproductsFilterCategory}
+          /* FilterCategory={setproductsFilterCategory} */
           /* FilterSubCategory={setproductFilterSubCategory} */
           /* FilterMinPrice={setproductsFilterMinPrice}
           FilterMaxPrice={setproductsFilterMaxPrice} */

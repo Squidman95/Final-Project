@@ -4,33 +4,33 @@ import Sidebar from './Sidebar';
 import PhoneNav from './PhoneNav';
 import {
     getAllCategories,
-    getAllSubCategories,
+    /* getAllSubCategories, */
 } from "../../Service/ProductService";
 
 const NavbarController = (props) => {
 
     let {
         FilterAnimal,
-        FilterCategory,
+        /* FilterCategory, */
         /* FilterSubCategory, */
         /* FilterMinPrice,
         FilterMaxPrice, */
     } = props;
 
 
-    const [categories, setCategories] = useState([]);
+    /* const [categories, setCategories] = useState([]); */
     /* const [subcategories, setSubCategories] = useState([]); */
     /* const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(0); */
     /* const [subStateArray, setSubStateArray] = useState([]); */
 
 
-    useEffect(() => {
+    /* useEffect(() => {
         getAllCategories().then(function (categories) {
-            setCategories(categories);
+            setCategories(categories); */
             /* setSubStateArray(new Array(categories.length).fill('false')); */
-        });
-    }, []);
+       /*  });
+    }, []); */
 
     /* useEffect(() => {
         getAllSubCategories().then(function (subcategories) {
@@ -47,19 +47,19 @@ const NavbarController = (props) => {
     }
 
 
-    function checkCatHandler(item, index, e) {
+    /* function checkCatHandler(item, index, e) { */
         //let id = "sub" + item;
-        if (e.target.checked === true) {
-            FilterCategory(item);
+        /* if (e.target.checked === true) {
+            FilterCategory(item); */
             //document.getElementById(id).style.display = "block  ";
             /* subStateArray[index] = 'true'; */
-        } else {
-            FilterCategory(null);
+       /*  } else {
+            FilterCategory(null); */
             //document.getElementById(id).style.display = "none";
            /*  FilterSubCategory(null);
             subStateArray[index] = 'false'; */
-        }
-    }
+       /*  }
+    } */
 
     /* function checkSubHandler(item, e) {
         if (e.target.checked === true) {
@@ -108,8 +108,8 @@ const NavbarController = (props) => {
             <div className="NavbarController-Sidebar">
                 <Sidebar
                     createAnimalFilterItem={createAnimalFilterItem}
-                    categories={categories}
-                    checkCatHandler={checkCatHandler}
+                   /*  categories={categories}
+                    checkCatHandler={checkCatHandler} */
                     /* subcategories={subcategories}
                     checkSubHandler={checkSubHandler} */
                     /* minPrice={minPrice}
@@ -122,9 +122,9 @@ const NavbarController = (props) => {
 
             <div className="NavbarController-PhoneNav">
                 <PhoneNav
-                    createAnimalFilterItem={createAnimalFilterItem}
+                    /* createAnimalFilterItem={createAnimalFilterItem}
                     categories={categories}
-                    checkCatHandler={checkCatHandler}
+                    checkCatHandler={checkCatHandler} */
                     /* subcategories={subcategories}
                     checkSubHandler={checkSubHandler} */
                     /* minPrice={minPrice}

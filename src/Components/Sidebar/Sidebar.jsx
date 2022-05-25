@@ -4,8 +4,8 @@ import React from "react";
 function Sidebar(props) {
     let {
         createAnimalFilterItem,
-        categories,
-        checkCatHandler,
+        /* categories,
+        checkCatHandler, */
         /* subcategories,
         checkSubHandler, */
         /* minPrice,
@@ -37,10 +37,10 @@ function Sidebar(props) {
                     </div>
                 </div>
 
-                <div className="SidebarCategories">
+               {/*  <div className="SidebarCategories"> */}
                     {/* <h1>Categories</h1> */}
 
-                    <div className="Sidebar-checkbox-container">
+                    {/* <div className="Sidebar-checkbox-container">
                         {categories.map((categoryItem, categoryIndex) => {
                             return (
                                 <div key={categoryIndex}>
@@ -53,7 +53,7 @@ function Sidebar(props) {
                                         onChange={(e) => checkCatHandler(categoryItem, categoryIndex, e)}
                                     />
                                     
-                                    <label htmlFor={categoryItem}>{categoryItem}</label>
+                                    <label htmlFor={categoryItem}>{categoryItem}</label> */}
 
                                     {/* <div className={`Sidebar-subcategories Sidebar-subcategories-${subStateArray[categoryIndex]}`} id={"sub" + categoryItem}>
                                         {subcategories
@@ -74,12 +74,12 @@ function Sidebar(props) {
                                             })}
                                     </div> */}
 
-                                </div>
+                              {/*   </div>
                             );
                         })}
                     </div>
 
-                </div>
+                </div> */}
 
                 {/* <div className="SidebarPrice"> */}
                     {/* <h1>Price</h1> */}
