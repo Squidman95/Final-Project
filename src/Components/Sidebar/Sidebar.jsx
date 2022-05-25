@@ -7,7 +7,7 @@ function Sidebar(props) {
         categories,
         checkCatHandler, 
         subcategories,
-        subStateArray,
+        subShowState,
         checkSubHandler, 
         /* minPrice,
         maxPrice,
@@ -71,7 +71,7 @@ function Sidebar(props) {
                                     
                                     <label htmlFor={categoryItem}>{categoryItem}</label>
 
-                                     <div className={`Sidebar-subcategories Sidebar-subcategories-${subStateArray[categoryIndex]}`} id={"sub" + categoryItem}>
+                                     <div className={`Sidebar-subcategories Sidebar-subcategories-${subShowState[categoryIndex]}`} id={"sub" + categoryItem}>
                                         {subcategories
                                             .filter((e) => e.category === categoryItem)
                                             .map((item, index) => {
@@ -82,6 +82,7 @@ function Sidebar(props) {
                                                             type="checkbox"
                                                             id={item.subcategory}
                                                             value={item.subcategory}
+                                                            
                                                             onChange={(e) => checkSubHandler(item.subcategory, e)}
                                                         />
                                                         <label htmlFor={item.subcategory}> {item.subcategory} </label>

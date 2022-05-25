@@ -40,17 +40,6 @@ const Frontpage = (props) => {
     console.log('check3');
     console.log(filterState);
 
-
-    /* if (productsFilterMinPrice < productsFilterMaxPrice && productsFilterMinPrice >= 0 && productsFilterMaxPrice > 0) {
-      if (productsFilterMinPrice !== null && productsFilterMinPrice !== undefined) {
-        localProducts = getMinPriceFilteredItems(localProducts, productsFilterMinPrice);
-      }
-
-      if (productsFilterMaxPrice !== null && productsFilterMaxPrice !== undefined) {
-        localProducts = getMaxPriceFilteredItems(localProducts, productsFilterMaxPrice);
-      }
-    } */
-
     if (productsFilterAnimal !== null && productsFilterAnimal !== undefined) {
       if (nullArray(productsFilterAnimal)) {
         localProducts = getProducts();
@@ -69,8 +58,30 @@ const Frontpage = (props) => {
     }
 
     if (productsFilterSubCategory !== null && productsFilterSubCategory !== undefined) {
-      localProducts = getSubCategoriesFilterItems(localProducts, productsFilterSubCategory);
+      if (nullArray(productsFilterSubCategory)) {
+        console.log('check1');
+        localProducts = getProducts();
+        console.log(productsFilterSubCategory);
+        console.log(localProducts);
+      } else {
+        console.log('check2');
+        localProducts = getSubCategoriesFilterItems(localProducts, productsFilterSubCategory);
+        console.log(productsFilterSubCategory);
+        console.log(localProducts);
+      }
     }
+
+
+    /* if (productsFilterMinPrice < productsFilterMaxPrice && productsFilterMinPrice >= 0 && productsFilterMaxPrice > 0) {
+      if (productsFilterMinPrice !== null && productsFilterMinPrice !== undefined) {
+        localProducts = getMinPriceFilteredItems(localProducts, productsFilterMinPrice);
+      }
+
+      if (productsFilterMaxPrice !== null && productsFilterMaxPrice !== undefined) {
+        localProducts = getMaxPriceFilteredItems(localProducts, productsFilterMaxPrice);
+      }
+    } */
+
 
     setFilteredProducts(localProducts);
   }, [productsFilterAnimal, filterState, productsFilterCategory, productsFilterSubCategory, setFilteredProducts]);
@@ -101,8 +112,10 @@ const Frontpage = (props) => {
   }
 
   function getSubCategoriesFilterItems(products, subcategory) {
-    return products.filter(function (el) {
-      return el.subcategory === subcategory;
+    return products.filter((el) => {
+      return subcategory.some((e) => {
+        return el.subcategory === e;
+      })
     })
   }
 

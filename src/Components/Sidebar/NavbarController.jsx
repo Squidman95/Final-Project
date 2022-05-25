@@ -19,13 +19,33 @@ const NavbarController = (props) => {
         FilterMaxPrice, */
     } = props;
 
-    const [animalArray, setAnimalArray] = useState([]);
     const [animals, setAnimals] = useState([]);
+    const [animalArray, setAnimalArray] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [subCategories, setSubCategories] = useState([]);
+    const [subCategoriesArray, setSubCategoriesArray] = useState([]);
+    const [subShowState, setSubShowState] = useState([]);
+    /* const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(0); */
 
     useEffect(() => {
         getAllAnimals().then(function (animal) {
             setAnimals(animal);
             setAnimalArray(new Array(animal.length).fill(null));
+        });
+    }, []);
+
+    useEffect(() => {
+        getAllCategories().then(function (categories) {
+            setCategories(categories);
+            setSubShowState(new Array(categories.length).fill('false'));
+        });
+    }, []);
+
+    useEffect(() => {
+        getAllSubCategories().then(function (subcategories) {
+            setSubCategories(subcategories);
+            setSubCategoriesArray(new Array(subcategories.length).fill(null));
         });
     }, []);
 
@@ -45,42 +65,31 @@ const NavbarController = (props) => {
         }
     }
 
-    const [categories, setCategories] = useState([]);
-    const [subcategories, setSubCategories] = useState([]);
-    const [subStateArray, setSubStateArray] = useState([]);
-    /* const [minPrice, setMinPrice] = useState(0);
-    const [maxPrice, setMaxPrice] = useState(0); */
-
-    useEffect(() => {
-        getAllCategories().then(function (categories) {
-            setCategories(categories);
-            setSubStateArray(new Array(categories.length).fill('false'));
-        });
-    }, []);
-
-    useEffect(() => {
-        getAllSubCategories().then(function (subcategories) {
-            setSubCategories(subcategories);
-        });
-    }, []);
-
-
     function checkCatHandler(item, index, e) {
         if (e.target.checked === true) {
             FilterCategory(item);
-            subStateArray[index] = 'true';
+            subShowState[index] = 'true';
         } else {
             FilterCategory(null);
-            FilterSubCategory(null);
-            subStateArray[index] = 'false';
+            // FilterSubCategory(null);
+            subShowState[index] = 'false';
         }
     }
 
     function checkSubHandler(item, e) {
+
+        let index = subCategories.findIndex(el => {
+            return el.subcategory === item;
+        });
+
         if (e.target.checked === true) {
-            FilterSubCategory(item);
+            subCategoriesArray[index] = item;
+            FilterSubCategory(subCategoriesArray);
+            FilterState(item);
         } else {
-            FilterSubCategory(null);
+            subCategoriesArray[index] = null;
+            FilterSubCategory(subCategoriesArray);
+            FilterState(Math.random());
         }
     }
 
@@ -104,13 +113,13 @@ const NavbarController = (props) => {
                     checkAnimalHandler={checkAnimalHandler}
                     categories={categories}
                     checkCatHandler={checkCatHandler}
-                    subcategories={subcategories}
-                    subStateArray={subStateArray}
+                    subcategories={subCategories}
+                    subShowState={subShowState}
                     checkSubHandler={checkSubHandler}
                 /* minPrice={minPrice}
                 maxPrice={maxPrice}
                 handleMinPriceChange={handleMinPriceChange}
-                handleMaxPriceChange={handleMaxPriceChange} */ 
+                handleMaxPriceChange={handleMaxPriceChange} */
                 />
             </div>
 
