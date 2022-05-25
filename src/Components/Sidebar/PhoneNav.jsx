@@ -17,7 +17,7 @@ function PhoneNav(props) {
 
     return (
         <div className="PhoneNav">
-            
+           {/*  
             <input type="checkbox" name="" id="hamburger" />
             <div className="PhoneNav-Hamburger-lines">
                 <span className="line line1"></span>
@@ -37,9 +37,9 @@ function PhoneNav(props) {
                     </div>
                 </div>
 
-                <div className="PhoneNavCategories">
+                <div className="PhoneNavCategories"> */}
                     {/* <h1>Categories</h1> */}
-
+{/* 
                     <div className="PhoneNav-checkbox-container">
                         {categories.map((categoryItem, categoryIndex) => {
                             return (
@@ -78,12 +78,12 @@ function PhoneNav(props) {
                         })}
                     </div>
 
-                </div>
+                </div> */}
 
-                <div className="PhoneNavPrice">
+                {/* <div className="PhoneNavPrice"> */}
                     {/* <h1>Price</h1> */}
 
-                    <div>
+                  {/*   <div>
                         <label htmlFor="minPrice"> Min Price</label>
                         <input
                             type="number"
@@ -106,7 +106,7 @@ function PhoneNav(props) {
                     </div>
 
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }
