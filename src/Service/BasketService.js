@@ -1,5 +1,5 @@
 async function getBasket(customerId) {
-    let response = await fetch(`http://localhost:4000/customers/${customerId}/basket`, {
+    let response = await fetch(`http://localhost:4000/basket/${customerId}`, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -11,7 +11,7 @@ async function getBasket(customerId) {
 
 async function addItemToBasket(customerId, productId) {
     console.log(`Requesting to PUT item ${productId} in basket for customerId ${customerId}`);
-    let response = await fetch(`http://localhost:4000/customers/${customerId}/basket/${productId}`, {
+    let response = await fetch(`http://localhost:4000/basket/${customerId}/${productId}`, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ async function addItemToBasket(customerId, productId) {
 }
 
 async function createBasket(customerId) {
-    let response = await fetch(`http://localhost:4000/customers/${customerId}/basket`, {
+    let response = await fetch(`http://localhost:4000/basket/${customerId}`, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ async function createBasket(customerId) {
 }
 
 async function deleteItemFromBasket(customerId, productId) {
-    let response = await fetch(`http://localhost:4000/customers/${customerId}/basket/${productId}`, {
+    let response = await fetch(`http://localhost:4000/basket/${customerId}/${productId}`, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
