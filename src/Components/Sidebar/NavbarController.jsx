@@ -3,9 +3,10 @@ import './NavbarController.scss';
 import Sidebar from './Sidebar';
 import PhoneNav from './PhoneNav';
 import {
-    getAllCategories,
+    getAllAnimals
+    /* getAllCategories, */
     /* getAllSubCategories, */
-} from "../../Service/ProductService";
+ } from "../../Service/ProductService"; 
 
 const NavbarController = (props) => {
 
@@ -17,6 +18,25 @@ const NavbarController = (props) => {
         FilterMaxPrice, */
     } = props;
 
+    const [animalArray, setAnimalArray] = useState([]);
+    const [animals, setAnimals] = useState([]);
+
+    useEffect(() => {
+        getAllAnimals().then(function (animal) {
+            setAnimals(animal);
+            setAnimalArray(new Array(animal.length).fill(null));
+        });
+    }, []);
+
+    function checkAnimalHandler(animal, index, e) {
+        if (e.target.checked === true) {
+            animalArray[index] = animal;
+            FilterAnimal(animalArray);
+        } else {
+            animalArray[index] = null;
+            FilterAnimal(animalArray);
+        }
+    }
 
     /* const [categories, setCategories] = useState([]); */
     /* const [subcategories, setSubCategories] = useState([]); */
@@ -28,9 +48,9 @@ const NavbarController = (props) => {
     /* useEffect(() => {
         getAllCategories().then(function (categories) {
             setCategories(categories); */
-            /* setSubStateArray(new Array(categories.length).fill('false')); */
-       /*  });
-    }, []); */
+    /* setSubStateArray(new Array(categories.length).fill('false')); */
+    /*  });
+ }, []); */
 
     /* useEffect(() => {
         getAllSubCategories().then(function (subcategories) {
@@ -38,28 +58,20 @@ const NavbarController = (props) => {
         });
     }, []); */
 
-    function checkAnimalHandler(animal, e) {
-        if (e.target.checked === true) {
-            FilterAnimal(animal);
-        } else {
-            FilterAnimal(null);
-        }
-    }
-
 
     /* function checkCatHandler(item, index, e) { */
-        //let id = "sub" + item;
-        /* if (e.target.checked === true) {
-            FilterCategory(item); */
-            //document.getElementById(id).style.display = "block  ";
-            /* subStateArray[index] = 'true'; */
-       /*  } else {
-            FilterCategory(null); */
-            //document.getElementById(id).style.display = "none";
-           /*  FilterSubCategory(null);
-            subStateArray[index] = 'false'; */
-       /*  }
-    } */
+    //let id = "sub" + item;
+    /* if (e.target.checked === true) {
+        FilterCategory(item); */
+    //document.getElementById(id).style.display = "block  ";
+    /* subStateArray[index] = 'true'; */
+    /*  } else {
+         FilterCategory(null); */
+    //document.getElementById(id).style.display = "none";
+    /*  FilterSubCategory(null);
+     subStateArray[index] = 'false'; */
+    /*  }
+ } */
 
     /* function checkSubHandler(item, e) {
         if (e.target.checked === true) {
@@ -69,69 +81,48 @@ const NavbarController = (props) => {
         }
     } */
 
-   /*  const handleMinPriceChange = (e) => {
-        setMinPrice(parseInt(e.target.value));
-        FilterMinPrice(parseInt(e.target.value));
-    };
+    /*  const handleMinPriceChange = (e) => {
+         setMinPrice(parseInt(e.target.value));
+         FilterMinPrice(parseInt(e.target.value));
+     };
+ 
+     const handleMaxPriceChange = (e) => {
+         setMaxPrice(parseInt(e.target.value));
+         FilterMaxPrice(parseInt(e.target.value));
+     }; */
 
-    const handleMaxPriceChange = (e) => {
-        setMaxPrice(parseInt(e.target.value));
-        FilterMaxPrice(parseInt(e.target.value));
-    }; */
-
-    function createAnimalFilterItem(animal) {
-        return (
-            <div className="Sidebar-Animals-animalfilteritem PhoneNav-Animals-animalfilteritem">
-
-                <input
-                    className="Sidebar-Animal-Checkbox PhoneNav-Animal-Checkbox"
-                    type="checkbox"
-                    id={animal}
-                    value={animal}
-                    onChange={(e) => checkAnimalHandler(animal, e)}
-                />
-                <label htmlFor={animal}>
-                    <img
-                        className="Sidebar-Animals-icon PhoneNav-Animals-icon"
-                        src={`${process.env.PUBLIC_URL}assets/images/icons/${animal}-icon.png`}
-                        alt={animal}
-                        
-                    />
-                </label>
-            </div>
-        );
-    }
 
     return (
         <div className="NavbarController">
 
             <div className="NavbarController-Sidebar">
                 <Sidebar
-                    createAnimalFilterItem={createAnimalFilterItem}
-                   /*  categories={categories}
-                    checkCatHandler={checkCatHandler} */
-                    /* subcategories={subcategories}
-                    checkSubHandler={checkSubHandler} */
-                    /* minPrice={minPrice}
-                    maxPrice={maxPrice}
-                    handleMinPriceChange={handleMinPriceChange}
-                    handleMaxPriceChange={handleMaxPriceChange} */
-                    /* subStateArray={subStateArray} */
+                    animals={animals}
+                    checkAnimalHandler={checkAnimalHandler}
+                /*  categories={categories}
+                 checkCatHandler={checkCatHandler} */
+                /* subcategories={subcategories}
+                checkSubHandler={checkSubHandler} */
+                /* minPrice={minPrice}
+                maxPrice={maxPrice}
+                handleMinPriceChange={handleMinPriceChange}
+                handleMaxPriceChange={handleMaxPriceChange} */
+                /* subStateArray={subStateArray} */
                 />
             </div>
 
             <div className="NavbarController-PhoneNav">
                 <PhoneNav
-                    /* createAnimalFilterItem={createAnimalFilterItem}
-                    categories={categories}
-                    checkCatHandler={checkCatHandler} */
-                    /* subcategories={subcategories}
-                    checkSubHandler={checkSubHandler} */
-                    /* minPrice={minPrice}
-                    maxPrice={maxPrice}
-                    handleMinPriceChange={handleMinPriceChange}
-                    handleMaxPriceChange={handleMaxPriceChange} */
-                    /* subStateArray={subStateArray} */
+                /* createAnimalFilterItem={createAnimalFilterItem}
+                categories={categories}
+                checkCatHandler={checkCatHandler} */
+                /* subcategories={subcategories}
+                checkSubHandler={checkSubHandler} */
+                /* minPrice={minPrice}
+                maxPrice={maxPrice}
+                handleMinPriceChange={handleMinPriceChange}
+                handleMaxPriceChange={handleMaxPriceChange} */
+                /* subStateArray={subStateArray} */
                 />
             </div>
 

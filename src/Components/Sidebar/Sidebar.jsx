@@ -1,9 +1,9 @@
 import React from "react";
-//import "./Sidebar.scss";
 
 function Sidebar(props) {
     let {
-        createAnimalFilterItem,
+        animals,
+        checkAnimalHandler
         /* categories,
         checkCatHandler, */
         /* subcategories,
@@ -27,13 +27,29 @@ function Sidebar(props) {
 
             <div className="Sidebar-Filter-Items">
 
-                <div className="SidebarAnimals">
+            <div className="SidebarAnimals">
                     <h1>Animal</h1>
                     <div className="SidebarAnimals-grid">
-                        {createAnimalFilterItem("Dog")}
-                        {createAnimalFilterItem("Cat")}
-                        {createAnimalFilterItem("Rodent")}
-                        {createAnimalFilterItem("Bird")}
+                        {animals.map((animalItem, animalIndex) => {
+                            return (
+                                <div key={animalIndex} className="Sidebar-Animals-animalfilteritem">
+                                    <input
+                                        className="Sidebar-Animal-Checkbox"
+                                        type="checkbox"
+                                        id={animalItem}
+                                        value={animalItem}
+                                        onChange={(e) => checkAnimalHandler(animalItem, animalIndex, e)}
+                                    />
+                                    <label htmlFor={animalItem}>
+                                        <img
+                                            className="Sidebar-Animals-icon"
+                                            src={`${process.env.PUBLIC_URL}assets/images/icons/${animalItem}-icon.png`}
+                                            alt={animalItem}
+                                        />
+                                    </label>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
 

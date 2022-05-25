@@ -1,11 +1,9 @@
-// import React from "react";
 import React, { useEffect, useState } from "react";
 // import Topbar from "../../Components/Topbar/Topbar";
 import { getAllProducts } from "../../Service/ProductService";
 // import Popup from "../../Components/Popup/Popup";
 // import SearchResult from '../../Pages/SearchResultPage/SearchResultPage';
 import ShowResults from "../../Components/ShowResults/ShowResults";
-// import products from '../../Data/ProductData';
 import OfferCarousel from "../../Components/OfferCarousel/OfferCarousel";
 import NavbarController from "../../Components/Sidebar/NavbarController";
 import "./Frontpage.scss";
@@ -50,6 +48,8 @@ const Frontpage = (props) => {
 
     if (productsFilterAnimal !== null && productsFilterAnimal !== undefined) {
       localProducts = getNameFilteredItems(localProducts, productsFilterAnimal);
+      console.log('check6.3');
+      console.log(localProducts);
     }
 /* 
     if (productsFilterCategory !== null && productsFilterCategory !== undefined) {
@@ -67,8 +67,10 @@ const Frontpage = (props) => {
 
 
   function getNameFilteredItems(products, animalName) {
-    return products.filter(function (el) {
-      return el.animal === animalName;
+    return products.filter((el) => {
+      return animalName.some((e) => {
+        return el.animal === e;
+      })
     })
   }
 /* 
