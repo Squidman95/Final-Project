@@ -13,15 +13,15 @@ const NavbarController = (props) => {
         FilterAnimal,
         FilterCategory,
         FilterSubCategory,
-        FilterMinPrice,
-        FilterMaxPrice,
+        /* FilterMinPrice,
+        FilterMaxPrice, */
     } = props;
 
 
     const [categories, setCategories] = useState([]);
     const [subcategories, setSubCategories] = useState([]);
-    const [minPrice, setMinPrice] = useState(0);
-    const [maxPrice, setMaxPrice] = useState(0);
+    /* const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(0); */
     const [subStateArray, setSubStateArray] = useState([]);
 
 
@@ -69,7 +69,7 @@ const NavbarController = (props) => {
         }
     }
 
-    const handleMinPriceChange = (e) => {
+   /*  const handleMinPriceChange = (e) => {
         setMinPrice(parseInt(e.target.value));
         FilterMinPrice(parseInt(e.target.value));
     };
@@ -77,7 +77,7 @@ const NavbarController = (props) => {
     const handleMaxPriceChange = (e) => {
         setMaxPrice(parseInt(e.target.value));
         FilterMaxPrice(parseInt(e.target.value));
-    };
+    }; */
 
     function createAnimalFilterItem(animal) {
         return (
@@ -112,10 +112,10 @@ const NavbarController = (props) => {
                     checkCatHandler={checkCatHandler}
                     subcategories={subcategories}
                     checkSubHandler={checkSubHandler}
-                    minPrice={minPrice}
+                    /* minPrice={minPrice}
                     maxPrice={maxPrice}
                     handleMinPriceChange={handleMinPriceChange}
-                    handleMaxPriceChange={handleMaxPriceChange}
+                    handleMaxPriceChange={handleMaxPriceChange} */
                     subStateArray={subStateArray}
                 />
             </div>
@@ -127,10 +127,10 @@ const NavbarController = (props) => {
                     checkCatHandler={checkCatHandler}
                     subcategories={subcategories}
                     checkSubHandler={checkSubHandler}
-                    minPrice={minPrice}
+                    /* minPrice={minPrice}
                     maxPrice={maxPrice}
                     handleMinPriceChange={handleMinPriceChange}
-                    handleMaxPriceChange={handleMaxPriceChange}
+                    handleMaxPriceChange={handleMaxPriceChange} */
                     subStateArray={subStateArray}
                 />
             </div>

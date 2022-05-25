@@ -21,8 +21,8 @@ const Frontpage = (props) => {
   const [filteredProducts, setFilteredProducts] = useState([]); // SHOULD BE THE SHOWN LIST
 
   // filter variables
-  const [productsFilterMinPrice, setproductsFilterMinPrice] = useState(0);
-  const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(0);
+  /* const [productsFilterMinPrice, setproductsFilterMinPrice] = useState(0);
+  const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(0); */
   const [productsFilterAnimal, setproductsFilterAnimal] = useState(null);
   const [productsFilterCategory, setproductsFilterCategory] = useState(null);
   const [productsFilterSubCategory, setproductFilterSubCategory] = useState(null);
@@ -38,7 +38,7 @@ const Frontpage = (props) => {
   useEffect(() => {
     let localProducts = products;
 
-    if (productsFilterMinPrice < productsFilterMaxPrice && productsFilterMinPrice >= 0 && productsFilterMaxPrice > 0) {
+    /* if (productsFilterMinPrice < productsFilterMaxPrice && productsFilterMinPrice >= 0 && productsFilterMaxPrice > 0) {
       if (productsFilterMinPrice !== null && productsFilterMinPrice !== undefined) {
         localProducts = getMinPriceFilteredItems(localProducts, productsFilterMinPrice);
       }
@@ -46,7 +46,7 @@ const Frontpage = (props) => {
       if (productsFilterMaxPrice !== null && productsFilterMaxPrice !== undefined) {
         localProducts = getMaxPriceFilteredItems(localProducts, productsFilterMaxPrice);
       }
-    }
+    } */
 
     if (productsFilterAnimal !== null && productsFilterAnimal !== undefined) {
       localProducts = getNameFilteredItems(localProducts, productsFilterAnimal);
@@ -61,7 +61,10 @@ const Frontpage = (props) => {
     }
 
     setFilteredProducts(localProducts);
-  }, [productsFilterMaxPrice, productsFilterMinPrice, productsFilterAnimal, productsFilterCategory, productsFilterSubCategory]);
+  }, [productsFilterAnimal, productsFilterCategory, productsFilterSubCategory]);
+
+  /* productsFilterMaxPrice, productsFilterMinPrice, */
+
 
   function getNameFilteredItems(products, animalName) {
     return products.filter(function (el) {
@@ -81,11 +84,11 @@ const Frontpage = (props) => {
     })
   }
 
-  function getMinPriceFilteredItems(products, priceMin) {
+  /* function getMinPriceFilteredItems(products, priceMin) {
     return products.filter(function (el) {
       return el.price >= priceMin;
     });
-  }
+  } */
 
   function getCategoriesFilterItems(products, category) {
     return products.filter(function (el) {
@@ -93,7 +96,7 @@ const Frontpage = (props) => {
     });
   }
 
-  function getMinPriceFilteredItems(products, priceMin) {
+  /* function getMinPriceFilteredItems(products, priceMin) {
     return products.filter(function (el) {
       return el.price >= priceMin;
     });
@@ -103,7 +106,7 @@ const Frontpage = (props) => {
     return products.filter(function (el) {
       return el.price <= priceMax;
     });
-  }
+  } */
 
   return (
     <div className="Frontpage-Content">
@@ -113,8 +116,8 @@ const Frontpage = (props) => {
           FilterAnimal={setproductsFilterAnimal}
           FilterCategory={setproductsFilterCategory}
           FilterSubCategory={setproductFilterSubCategory}
-          FilterMinPrice={setproductsFilterMinPrice}
-          FilterMaxPrice={setproductsFilterMaxPrice}
+          /* FilterMinPrice={setproductsFilterMinPrice}
+          FilterMaxPrice={setproductsFilterMaxPrice} */
         />
       </div>
 
