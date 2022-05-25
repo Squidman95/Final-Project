@@ -118,16 +118,24 @@ const Frontpage = (props) => {
         />
       </div>
 
-      <div className='Frontpage-OfferCarouselContainer'>
-        
+      <div className="Frontpage-resultscontainer">
+      <div
+          style={{
+            display: products.length === filteredProducts.length ? "block" : "none",
+            // show the carousel only when no filter is applied
+          }} 
+      >
+          <OfferCarousel
+              products={filteredProducts}
+          />
       </div>
-      <div className="Frontpage-resultscontainer"> {/* //split them into two divs, without them disapearing */}
-      <OfferCarousel
-          products={filteredProducts}
-        />
-        <ShowResults
-          products={filteredProducts}
-        />
+      <h2 style={{
+            display: products.length === filteredProducts.length ? "none" : "block",
+            // show 'search result' headline only when a filter has been applied
+          }} >Search result:</h2>
+          <ShowResults
+            products={filteredProducts}
+          />
       </div>
 
     </div>
