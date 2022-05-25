@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
-// import products from "../../Data/ProductData";
 import Button from "../../Components/Button/Button";
 import { getBasket, addItemToBasket } from "../../Service/BasketService";
 import { getSingleProduct } from "../../Service/ProductService";
 import "./ProductPage.scss";
-// import Topbar from "../../Components/Topbar/Topbar";
-// import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 const ProductPage = (props) => {

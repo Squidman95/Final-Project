@@ -41,16 +41,16 @@ async function login(fname, lname, email, password) {
     return await response.json();
 }
 
-async function deleteCustomer(userID) {
-    var requestOptions = {
-        method: 'DELETE',
-        redirect: 'follow'
-    };
+// async function deleteCustomer(userID) {
+//     var requestOptions = {
+//         method: 'DELETE',
+//         redirect: 'follow'
+//     };
       
-    fetch(`http://localhost:4000/customers/${userID}`, requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
-}
+//     fetch(`http://localhost:4000/customers/${userID}`, requestOptions)
+//     .then(response => response.text())
+//     .then(result => console.log(result))
+//     .catch(error => console.log('error', error));
+// }
 
-export{createCustomer, login, deleteCustomer}
+export{createCustomer, login}
