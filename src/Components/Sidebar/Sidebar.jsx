@@ -6,13 +6,13 @@ function Sidebar(props) {
         createAnimalFilterItem,
         categories,
         checkCatHandler,
-        subcategories,
-        checkSubHandler,
+        /* subcategories,
+        checkSubHandler, */
         /* minPrice,
         maxPrice,
         handleMinPriceChange,
         handleMaxPriceChange, */
-        subStateArray
+        /* subStateArray */
     } = props;
 
     return (
@@ -55,7 +55,7 @@ function Sidebar(props) {
                                     
                                     <label htmlFor={categoryItem}>{categoryItem}</label>
 
-                                    <div className={`Sidebar-subcategories Sidebar-subcategories-${subStateArray[categoryIndex]}`} id={"sub" + categoryItem}>
+                                    {/* <div className={`Sidebar-subcategories Sidebar-subcategories-${subStateArray[categoryIndex]}`} id={"sub" + categoryItem}>
                                         {subcategories
                                             .filter((e) => e.category === categoryItem)
                                             .map((item, index) => {
@@ -72,7 +72,7 @@ function Sidebar(props) {
                                                     </div>
                                                 );
                                             })}
-                                    </div>
+                                    </div> */}
 
                                 </div>
                             );

@@ -12,31 +12,31 @@ const NavbarController = (props) => {
     let {
         FilterAnimal,
         FilterCategory,
-        FilterSubCategory,
+        /* FilterSubCategory, */
         /* FilterMinPrice,
         FilterMaxPrice, */
     } = props;
 
 
     const [categories, setCategories] = useState([]);
-    const [subcategories, setSubCategories] = useState([]);
+    /* const [subcategories, setSubCategories] = useState([]); */
     /* const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(0); */
-    const [subStateArray, setSubStateArray] = useState([]);
+    /* const [subStateArray, setSubStateArray] = useState([]); */
 
 
     useEffect(() => {
         getAllCategories().then(function (categories) {
             setCategories(categories);
-            setSubStateArray(new Array(categories.length).fill('false'));
+            /* setSubStateArray(new Array(categories.length).fill('false')); */
         });
     }, []);
 
-    useEffect(() => {
+    /* useEffect(() => {
         getAllSubCategories().then(function (subcategories) {
             setSubCategories(subcategories);
         });
-    }, []);
+    }, []); */
 
     function checkAnimalHandler(animal, e) {
         if (e.target.checked === true) {
@@ -52,22 +52,22 @@ const NavbarController = (props) => {
         if (e.target.checked === true) {
             FilterCategory(item);
             //document.getElementById(id).style.display = "block  ";
-            subStateArray[index] = 'true';
+            /* subStateArray[index] = 'true'; */
         } else {
             FilterCategory(null);
             //document.getElementById(id).style.display = "none";
-            FilterSubCategory(null);
-            subStateArray[index] = 'false';
+           /*  FilterSubCategory(null);
+            subStateArray[index] = 'false'; */
         }
     }
 
-    function checkSubHandler(item, e) {
+    /* function checkSubHandler(item, e) {
         if (e.target.checked === true) {
             FilterSubCategory(item);
         } else {
             FilterSubCategory(null);
         }
-    }
+    } */
 
    /*  const handleMinPriceChange = (e) => {
         setMinPrice(parseInt(e.target.value));
@@ -110,13 +110,13 @@ const NavbarController = (props) => {
                     createAnimalFilterItem={createAnimalFilterItem}
                     categories={categories}
                     checkCatHandler={checkCatHandler}
-                    subcategories={subcategories}
-                    checkSubHandler={checkSubHandler}
+                    /* subcategories={subcategories}
+                    checkSubHandler={checkSubHandler} */
                     /* minPrice={minPrice}
                     maxPrice={maxPrice}
                     handleMinPriceChange={handleMinPriceChange}
                     handleMaxPriceChange={handleMaxPriceChange} */
-                    subStateArray={subStateArray}
+                    /* subStateArray={subStateArray} */
                 />
             </div>
 
@@ -125,13 +125,13 @@ const NavbarController = (props) => {
                     createAnimalFilterItem={createAnimalFilterItem}
                     categories={categories}
                     checkCatHandler={checkCatHandler}
-                    subcategories={subcategories}
-                    checkSubHandler={checkSubHandler}
+                    /* subcategories={subcategories}
+                    checkSubHandler={checkSubHandler} */
                     /* minPrice={minPrice}
                     maxPrice={maxPrice}
                     handleMinPriceChange={handleMinPriceChange}
                     handleMaxPriceChange={handleMaxPriceChange} */
-                    subStateArray={subStateArray}
+                    /* subStateArray={subStateArray} */
                 />
             </div>
 

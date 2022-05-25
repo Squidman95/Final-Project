@@ -25,7 +25,7 @@ const Frontpage = (props) => {
   const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(0); */
   const [productsFilterAnimal, setproductsFilterAnimal] = useState(null);
   const [productsFilterCategory, setproductsFilterCategory] = useState(null);
-  const [productsFilterSubCategory, setproductFilterSubCategory] = useState(null);
+  /* const [productsFilterSubCategory, setproductFilterSubCategory] = useState(null); */
 
 
   useEffect(() => {
@@ -56,14 +56,14 @@ const Frontpage = (props) => {
       localProducts = getCategoriesFilterItems(localProducts, productsFilterCategory);
     }
 
-    if (productsFilterSubCategory !== null && productsFilterSubCategory !== undefined) {
+    /* if (productsFilterSubCategory !== null && productsFilterSubCategory !== undefined) {
       localProducts = getSubCategoriesFilterItems(localProducts, productsFilterSubCategory);
-    }
+    } */
 
     setFilteredProducts(localProducts);
-  }, [productsFilterAnimal, productsFilterCategory, productsFilterSubCategory]);
+  }, [productsFilterAnimal, productsFilterCategory]);
 
-  /* productsFilterMaxPrice, productsFilterMinPrice, */
+  /* productsFilterMaxPrice, productsFilterMinPrice, , productsFilterSubCategory*/
 
 
   function getNameFilteredItems(products, animalName) {
@@ -77,12 +77,12 @@ const Frontpage = (props) => {
       return el.category === category;
     })
   }
-
+/* 
   function getSubCategoriesFilterItems(products, subcategory) {
     return products.filter(function (el) {
       return el.subcategory === subcategory;
     })
-  }
+  } */
 
   /* function getMinPriceFilteredItems(products, priceMin) {
     return products.filter(function (el) {
@@ -115,7 +115,7 @@ const Frontpage = (props) => {
         <NavbarController
           FilterAnimal={setproductsFilterAnimal}
           FilterCategory={setproductsFilterCategory}
-          FilterSubCategory={setproductFilterSubCategory}
+          /* FilterSubCategory={setproductFilterSubCategory} */
           /* FilterMinPrice={setproductsFilterMinPrice}
           FilterMaxPrice={setproductsFilterMaxPrice} */
         />
