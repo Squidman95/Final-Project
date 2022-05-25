@@ -3,6 +3,7 @@ import './NavbarController.scss';
 import Sidebar from './Sidebar';
 import PhoneNav from './PhoneNav';
 import {
+    getAllAnimals,
     getAllCategories,
     getAllSubCategories,
 } from "../../Service/ProductService";
@@ -23,12 +24,22 @@ const NavbarController = (props) => {
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(0);
     const [subStateArray, setSubStateArray] = useState([]);
+    const [categoriesArray, setCategoriesArray] = useState([]);
+    const [animalArray, setAnimalArray] = useState([]);
+    const [animals, setAnimals] = useState([]);
 
+    useEffect(() => {
+        getAllAnimals().then(function (animal) {
+            setAnimals(animal);
+            setAnimalArray(new Array(animal.length).fill(null));
+        });
+    }, []);
 
     useEffect(() => {
         getAllCategories().then(function (categories) {
             setCategories(categories);
             setSubStateArray(new Array(categories.length).fill('false'));
+            setCategoriesArray(new Array(categories.length).fill(null));
         });
     }, []);
 
@@ -38,25 +49,36 @@ const NavbarController = (props) => {
         });
     }, []);
 
-    function checkAnimalHandler(animal, e) {
+    function checkAnimalHandler(animal, index, e) {
         if (e.target.checked === true) {
-            FilterAnimal(animal);
+            console.log('check9.1');
+            console.log(animalArray[index]);
+            animalArray[index] = animal;
+            console.log('check9.2');
+            console.log(animalArray[index]);
+            FilterAnimal(animalArray);
         } else {
-            FilterAnimal(null);
+            console.log('check9.3');
+            console.log(animalArray[index]);
+            animalArray[index] = null;
+            FilterAnimal(animalArray);
+            console.log('check9.4');
+            console.log(animalArray[index]);
         }
     }
 
 
     function checkCatHandler(item, index, e) {
-        //let id = "sub" + item;
         if (e.target.checked === true) {
-            FilterCategory(item);
-            //document.getElementById(id).style.display = "block  ";
+            categoriesArray[index] = item;
+            console.log(categoriesArray);
+            FilterCategory(categoriesArray);
             subStateArray[index] = 'true';
         } else {
             FilterCategory(null);
-            //document.getElementById(id).style.display = "none";
             FilterSubCategory(null);
+            categoriesArray[index] = null;
+            console.log(categoriesArray);
             subStateArray[index] = 'false';
         }
     }
@@ -79,7 +101,8 @@ const NavbarController = (props) => {
         FilterMaxPrice(parseInt(e.target.value));
     };
 
-    function createAnimalFilterItem(animal) {
+    function createAnimalFilterItem(animal, index) {
+        
         return (
             <div className="Sidebar-Animals-animalfilteritem PhoneNav-Animals-animalfilteritem">
 
@@ -88,12 +111,12 @@ const NavbarController = (props) => {
                     type="checkbox"
                     id={animal}
                     value={animal}
-                    onChange={(e) => checkAnimalHandler(animal, e)}
+                    onChange={(e) => checkAnimalHandler(animal, index, e)}
                 />
                 <label htmlFor={animal}>
                     <img
                         className="Sidebar-Animals-icon PhoneNav-Animals-icon"
-                        src={`${process.env.PUBLIC_URL}assets/images/icons/${animal}-icon.png`}
+                        src={`${process.env.PUBLIC_URL}assets/images/icons/${animal.animalItem}-icon.png`}
                         alt={animal}
                         
                     />
@@ -107,7 +130,10 @@ const NavbarController = (props) => {
 
             <div className="NavbarController-Sidebar">
                 <Sidebar
-                    createAnimalFilterItem={createAnimalFilterItem}
+                    //createAnimalFilterItem={createAnimalFilterItem}
+                    animals={animals}
+                    //animalArray={animalArray}
+                    checkAnimalHandler={checkAnimalHandler}
                     categories={categories}
                     checkCatHandler={checkCatHandler}
                     subcategories={subcategories}

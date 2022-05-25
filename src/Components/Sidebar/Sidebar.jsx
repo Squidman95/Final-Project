@@ -3,7 +3,10 @@ import React from "react";
 
 function Sidebar(props) {
     let {
-        createAnimalFilterItem,
+        //createAnimalFilterItem,
+        animals,
+        //animalArray,
+        checkAnimalHandler,
         categories,
         checkCatHandler,
         subcategories,
@@ -30,10 +33,31 @@ function Sidebar(props) {
                 <div className="SidebarAnimals">
                     <h1>Animal</h1>
                     <div className="SidebarAnimals-grid">
+                        {animals.map((animalItem, animalIndex) => {
+                            return (
+                                <div key={animalIndex} className="Sidebar-Animals-animalfilteritem">
+                                    <input
+                                        className="Sidebar-Animal-Checkbox"
+                                        type="checkbox"
+                                        id={animalItem}
+                                        value={animalItem}
+                                        onChange={(e) => checkAnimalHandler(animalItem, animalIndex, e)}
+                                    />
+                                    <label htmlFor={animalItem}>
+                                        <img
+                                            className="Sidebar-Animals-icon"
+                                            src={`${process.env.PUBLIC_URL}assets/images/icons/${animalItem}-icon.png`}
+                                            alt={animalItem}
+
+                                        />
+                                    </label>
+                                </div>
+                            );
+                        })}{/* 
                         {createAnimalFilterItem("Dog")}
                         {createAnimalFilterItem("Cat")}
                         {createAnimalFilterItem("Rodent")}
-                        {createAnimalFilterItem("Bird")}
+                        {createAnimalFilterItem("Bird")} */}
                     </div>
                 </div>
 
@@ -52,7 +76,7 @@ function Sidebar(props) {
                                         value={categoryItem}
                                         onChange={(e) => checkCatHandler(categoryItem, categoryIndex, e)}
                                     />
-                                    
+
                                     <label htmlFor={categoryItem}>{categoryItem}</label>
 
                                     <div className={`Sidebar-subcategories Sidebar-subcategories-${subStateArray[categoryIndex]}`} id={"sub" + categoryItem}>

@@ -5,6 +5,8 @@ import "./ShowResults.scss";
 
 const SearchResult = (props) => {
     let { products = [] } = props;
+    console.log('check5');
+    console.log(products);
 
     return (
         <div className="ShowResults">
