@@ -8,7 +8,7 @@ const SearchResult = (props) => {
 
     return (
         <div className="ShowResults">
-            <h2>Search result:</h2>
+            
             <div className="ShowResults-Cards">
                 {products.map((item, index) => {
                     return (
