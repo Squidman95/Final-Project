@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import './NavbarController.scss';
 import Sidebar from './Sidebar';
 import PhoneNav from './PhoneNav';
@@ -7,7 +7,7 @@ import {
     getAllSubCategories,
 } from "../../Service/ProductService";
 
-const NavbarController = ( props ) => {
+const NavbarController = (props) => {
 
     let {
         FilterAnimal,
@@ -16,14 +16,14 @@ const NavbarController = ( props ) => {
         FilterMinPrice,
         FilterMaxPrice,
     } = props;
-    
+
 
     const [categories, setCategories] = useState([]);
     const [subcategories, setSubCategories] = useState([]);
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(0);
     const [subStateArray, setSubStateArray] = useState([]);
-    
+
 
     useEffect(() => {
         getAllCategories().then(function (categories) {
@@ -37,6 +37,14 @@ const NavbarController = ( props ) => {
             setSubCategories(subcategories);
         });
     }, []);
+
+    function checkAnimalHandler(animal, e) {
+        if (e.target.checked === true) {
+            FilterAnimal(animal);
+        } else {
+            FilterAnimal(null);
+        }
+    }
 
 
     function checkCatHandler(item, index, e) {
@@ -73,14 +81,23 @@ const NavbarController = ( props ) => {
 
     function createAnimalFilterItem(animal) {
         return (
-            <div className="Animals-animalfilteritem">
-                <p onClick = {() => { FilterAnimal(animal); }} >
+            <div className="Sidebar-Animals-animalfilteritem PhoneNav-Animals-animalfilteritem">
+
+                <input
+                    className="Sidebar-Animal-Checkbox PhoneNav-Animal-Checkbox"
+                    type="checkbox"
+                    id={animal}
+                    value={animal}
+                    onChange={(e) => checkAnimalHandler(animal, e)}
+                />
+                <label htmlFor={animal}>
                     <img
-                        className="Animals-icon"
+                        className="Sidebar-Animals-icon PhoneNav-Animals-icon"
                         src={`${process.env.PUBLIC_URL}assets/images/icons/${animal}-icon.png`}
                         alt={animal}
+                        
                     />
-                </p>
+                </label>
             </div>
         );
     }
@@ -90,31 +107,31 @@ const NavbarController = ( props ) => {
 
             <div className="NavbarController-Sidebar">
                 <Sidebar
-                    createAnimalFilterItem = {createAnimalFilterItem}
-                    categories = {categories}
-                    checkCatHandler = {checkCatHandler}
-                    subcategories = {subcategories}
-                    checkSubHandler = {checkSubHandler}
-                    minPrice = {minPrice}
-                    maxPrice = {maxPrice}
-                    handleMinPriceChange = {handleMinPriceChange}
-                    handleMaxPriceChange = {handleMaxPriceChange}
-                    subStateArray = {subStateArray}
+                    createAnimalFilterItem={createAnimalFilterItem}
+                    categories={categories}
+                    checkCatHandler={checkCatHandler}
+                    subcategories={subcategories}
+                    checkSubHandler={checkSubHandler}
+                    minPrice={minPrice}
+                    maxPrice={maxPrice}
+                    handleMinPriceChange={handleMinPriceChange}
+                    handleMaxPriceChange={handleMaxPriceChange}
+                    subStateArray={subStateArray}
                 />
             </div>
 
             <div className="NavbarController-PhoneNav">
                 <PhoneNav
-                    createAnimalFilterItem = {createAnimalFilterItem}
-                    categories = {categories}
-                    checkCatHandler = {checkCatHandler}
-                    subcategories = {subcategories}
-                    checkSubHandler = {checkSubHandler}
-                    minPrice = {minPrice}
-                    maxPrice = {maxPrice}
-                    handleMinPriceChange = {handleMinPriceChange}
-                    handleMaxPriceChange = {handleMaxPriceChange}
-                    subStateArray = {subStateArray}
+                    createAnimalFilterItem={createAnimalFilterItem}
+                    categories={categories}
+                    checkCatHandler={checkCatHandler}
+                    subcategories={subcategories}
+                    checkSubHandler={checkSubHandler}
+                    minPrice={minPrice}
+                    maxPrice={maxPrice}
+                    handleMinPriceChange={handleMinPriceChange}
+                    handleMaxPriceChange={handleMaxPriceChange}
+                    subStateArray={subStateArray}
                 />
             </div>
 

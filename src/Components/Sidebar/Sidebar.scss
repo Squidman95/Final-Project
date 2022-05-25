@@ -27,10 +27,6 @@
     color: var(--background-0);
     font-size: 1.5vw;
   }
-  input[type=checkbox] {
-    vertical-align: middle;
-    
-  }
 }
 
 .SidebarPrice {
@@ -45,26 +41,29 @@
   text-align: center;
 }
 
-.Animals-animalfilteritem {
+.Sidebar-Animals-animalfilteritem {
   height: auto;
   align-items: center;
-  width: 40%;
-  .Animals-icon {
+  width: 50%;
+  .Sidebar-Animals-icon {
     max-height: 3em;
     pointer-events: all;
   }
-  &:hover {
-    cursor: pointer;
-    color: var(--primary-light);
-    .Animals-icon {
-      transform: scale(1.1);
+  input[type="checkbox"] {
+    display: none;
+    &:hover + label {
+      cursor: pointer;
+      color: var(--primary-light);
+      .Sidebar-Animals-icon {
+        transform: scale(1.1);
+      }
     }
-  }
-  &:active {
-    cursor: pointer;
-    color: var(--primary-dark);
-    .Animals-icon {
-      transform: scale(1.1);
+    &:checked + label {
+      cursor: pointer;
+      color: var(--primary-dark);
+      .Sidebar-Animals-icon {
+        transform: scale(1.2);
+      }
     }
   }
 }
@@ -73,19 +72,23 @@
   padding-top: 10%;
   padding-bottom: 10%;
 }
+input[type="checkbox"] {
+  vertical-align: middle;
+}
 
 .Sidebar-checkbox-container {
   display: flex;
   flex-direction: column;
   align-items: left;
   vertical-align: center;
+
   .Sidebar-Filter-Checkbox {
     width: 1.5em;
     height: 1.5em;
     border-radius: 20px;
-    &:checked  {
+    &:checked + label {
       color: var(--background-0);
-      text-decoration: underline;
+      //text-decoration: underline;
     }
   }
 }
@@ -94,12 +97,12 @@
   padding-left: 10%;
 }
 
-.Sidebar-subcategories-false{
-  display:none;
+.Sidebar-subcategories-false {
+  display: none;
 }
 
-.Sidebar-subcategories-true{
-  display:block;
+.Sidebar-subcategories-true {
+  display: block;
 }
 
 .SidebarPrice {
@@ -108,5 +111,3 @@
     font-size: 1vw;
   }
 }
-
-

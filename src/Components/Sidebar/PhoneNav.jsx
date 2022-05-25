@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import "./PhoneNav.scss";
+import React from "react";
+//import "./PhoneNav.scss";
 
 function PhoneNav(props) {
     let {
@@ -17,7 +17,7 @@ function PhoneNav(props) {
 
     return (
         <div className="PhoneNav">
-
+            
             <input type="checkbox" name="" id="hamburger" />
             <div className="PhoneNav-Hamburger-lines">
                 <span className="line line1"></span>
