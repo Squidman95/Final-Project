@@ -15,26 +15,33 @@ const Frontpage = (props) => {
 
   // const [visibility, setVisibility] = useState(true); // For the login/signup popup
 
-  const [products, setProducts] = useState([]); // the reference (all products). Should not change
+  const [allProducts, setAllProducts] = useState([]); // the reference (all products). Should not change
   const [filteredProducts, setFilteredProducts] = useState([]); // SHOULD BE THE SHOWN LIST
 
   // filter variables
   /* const [productsFilterMinPrice, setproductsFilterMinPrice] = useState(0);
   const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(0); */
   const [productsFilterAnimal, setproductsFilterAnimal] = useState(null);
+  const [filterState, setFilterState] = useState('false');
  /*  const [productsFilterCategory, setproductsFilterCategory] = useState(null); */
   /* const [productsFilterSubCategory, setproductFilterSubCategory] = useState(null); */
 
 
   useEffect(() => {
     getAllProducts().then(function (products) {
-      setProducts(products);
+      setAllProducts(products);
       setFilteredProducts(products);
     });
   }, []);
 
   useEffect(() => {
-    let localProducts = products;
+    let localProducts = allProducts;
+
+    if (filterState === 'false') {
+      console.log('filterState is false');
+    } else {
+      console.log('filterState is true');
+    }
 
     /* if (productsFilterMinPrice < productsFilterMaxPrice && productsFilterMinPrice >= 0 && productsFilterMaxPrice > 0) {
       if (productsFilterMinPrice !== null && productsFilterMinPrice !== undefined) {
@@ -61,7 +68,7 @@ const Frontpage = (props) => {
     } */
 
     setFilteredProducts(localProducts);
-  }, [productsFilterAnimal]);
+  }, [productsFilterAnimal, filterState, setFilteredProducts]);
 
   /* productsFilterMaxPrice, productsFilterMinPrice, , productsFilterCategory, productsFilterSubCategory*/
 
@@ -116,6 +123,7 @@ const Frontpage = (props) => {
       <div className="Frontpage-sidebarcontainer">
         <NavbarController
           FilterAnimal={setproductsFilterAnimal}
+          FilterState={setFilterState}
           /* FilterCategory={setproductsFilterCategory} */
           /* FilterSubCategory={setproductFilterSubCategory} */
           /* FilterMinPrice={setproductsFilterMinPrice}
@@ -126,7 +134,7 @@ const Frontpage = (props) => {
       <div className="Frontpage-resultscontainer">
       <div
           style={{
-            display: products.length === filteredProducts.length ? "block" : "none",
+            display: allProducts.length === filteredProducts.length ? "block" : "none",
             // show the carousel only when no filter is applied
           }} 
       >
@@ -135,7 +143,7 @@ const Frontpage = (props) => {
           />
       </div>
       <h2 style={{
-            display: products.length === filteredProducts.length ? "none" : "block",
+            display: allProducts.length === filteredProducts.length ? "none" : "block",
             // show 'search result' headline only when a filter has been applied
           }} >Search result:</h2>
           <ShowResults

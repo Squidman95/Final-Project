@@ -6,7 +6,7 @@ import {
     getAllAnimals
     /* getAllCategories, */
     /* getAllSubCategories, */
- } from "../../Service/ProductService"; 
+} from "../../Service/ProductService";
 
 const NavbarController = (props) => {
 
@@ -32,9 +32,13 @@ const NavbarController = (props) => {
         if (e.target.checked === true) {
             animalArray[index] = animal;
             FilterAnimal(animalArray);
+            console.log('check1');
+            console.log(animalArray);
         } else {
             animalArray[index] = null;
             FilterAnimal(animalArray);
+            console.log('check2');
+            console.log(animalArray);
         }
     }
 
