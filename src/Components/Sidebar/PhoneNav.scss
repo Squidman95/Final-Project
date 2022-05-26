@@ -1,53 +1,39 @@
 .PhoneNav {
-  display: flex;
   position: fixed;
-  top: 7.5%;
+  top: 6%;
   flex-direction: column;
   width: 100%;
   z-index: 3;
-  #hamburger {
-    position: absolute;
-    display: block;
-    height:70px;
-    width: 32px;
-    top: 8px;
-    left: 15px;
-    z-index: 5;
-    opacity: 0; //set it to 100 to easier change it
-    &:checked ~ .PhoneNav-Filter-Items {
+  .PhoneNav-Filter-Items {
+    background-color: var(--primary-0);
+    padding-bottom: 5%;
+    height: 100vh;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.5s ease-in-out;
+    h1 {
+      color: var(--background-0);
+      font-size: 5vw;
+      padding-top: 10%;
+    }
+    label {
+      color: var(--background-0);
+      font-size: 5vw;
+    }
+  }
+  #false {
+    display: none;
+    .PhoneNav-Filter-Items {
+      transform: translate(-150%);
+    }
+  }
+  #true {
+    display: inline-block;
+    z-index: 3;
+    .PhoneNav-Filter-Items {
       transform: translateX(0);
     }
-    &:checked ~ .PhoneNav-Hamburger-lines {
-      .line {
-        transform: rotate(35deg);
-      }
-      .line2 {
-        transform: scaleY(0);
-      }
-      .line3 {
-        transform: rotate(-35deg);
-      }
-    }
-  }
-}
-
-.PhoneNav-Filter-Items {
-  background-color: var(--primary-0);
-  padding-bottom: 5%;
-  height: 100vh;
-  width: 100%;
-  transform: translate(-150%);
-  margin-left: auto;
-  margin-right: auto;
-  transition: transform 0.5s ease-in-out;
-  h1 {
-    color: var(--background-0);
-    font-size: 5vw;
-    padding-top: 10%;
-  }
-  label {
-    color: var(--background-0);
-    font-size: 5vw;
   }
 }
 
@@ -77,6 +63,7 @@
     pointer-events: all;
   }
   input[type="checkbox"] {
+    z-index: 4;
     display: none;
     &:hover + label {
       cursor: pointer;
@@ -90,7 +77,8 @@
       color: var(--primary-dark);
       .PhoneNav-Animals-icon {
         transform: scale(1.2);
-        filter: invert(50%) sepia(65%) saturate(325%) hue-rotate(117deg) brightness(86%) contrast(89%);
+        filter: invert(50%) sepia(65%) saturate(325%) hue-rotate(117deg)
+          brightness(86%) contrast(89%);
       }
     }
   }
@@ -141,36 +129,5 @@
     width: 20%;
     height: 8vw;
     font-size: 4vw;
-  }
-}
-
-.PhoneNav-Hamburger-lines {
-  display: block;
-  height: 23px;
-  width: 35px;
-  position: absolute;
-  top: 28px; //hamburger lines position from the top
-  left: 18px; //hamburger lines position from the side
-  z-index: 2; //has to be one smaller than for the checkbox
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  .line {
-    display: block;
-    height: 4px;
-    width: 100%;
-    border-radius: 10px;
-    background: #333;
-  }
-  .line1 {
-    transform-origin: 0% 0%;
-    transition: transform 0.4s ease-in-out;
-  }
-  .line2 {
-    transition: transform 0.2s ease-in-out;
-  }
-  .line3 {
-    transform-origin: 0% 100%;
-    transition: transform 0.4s ease-in-out;
   }
 }

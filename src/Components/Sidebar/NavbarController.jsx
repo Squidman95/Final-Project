@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import './NavbarController.scss';
 import Sidebar from './Sidebar';
 import PhoneNav from './PhoneNav';
+import BurgerMenuButton from "./BurgerMenuButton";
 import {
     getAllAnimals,
     getAllCategories,
@@ -27,6 +28,7 @@ const NavbarController = (props) => {
     const [subShowState, setSubShowState] = useState([]);
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(0);
+    const [sidebarState, setSidebarState] = useState('false');
 
     useEffect(() => {
         getAllAnimals().then(function (animal) {
@@ -48,6 +50,16 @@ const NavbarController = (props) => {
             setSubCategoriesArray(new Array(subcategories.length).fill(null));
         });
     }, []);
+
+    function changeSidebarState() {
+        console.log('check5')
+        console.log(sidebarState);
+        if (sidebarState === 'true') {
+           setSidebarState('false');
+        } else {
+            setSidebarState('true');
+        }
+    }
 
     function checkAnimalHandler(animal, index, e) {
         if (e.target.checked === true) {
@@ -131,8 +143,13 @@ const NavbarController = (props) => {
                     handleMaxPriceChange={handleMaxPriceChange}
                 />
             </div>
+            <div className="NavbarController-BurgerMenuButton">
+                <BurgerMenuButton
+                changeSidebarState={changeSidebarState}
+                />
+            </div>
 
-            <div className="NavbarController-PhoneNav">
+            <div className="NavbarController-PhoneNav" id={sidebarState}>
                 <PhoneNav
                 animals={animals}
                 checkAnimalHandler={checkAnimalHandler}
@@ -145,6 +162,7 @@ const NavbarController = (props) => {
                 maxPrice={maxPrice}
                 handleMinPriceChange={handleMinPriceChange}
                 handleMaxPriceChange={handleMaxPriceChange}
+                sidebarState={sidebarState}
                 />
             </div>
 

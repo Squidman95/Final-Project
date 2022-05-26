@@ -1,15 +1,21 @@
-// .NavbarController-PhoneNav, .NavbarController-Sidebar{
-//     text-align: center;
-// }
-
 .NavbarController {
     height: 100%;
 }
 
 @media screen and (max-width: 768px) {
     @import 'PhoneNav.scss';
+    .NavbarController-BurgerMenuButton {
+        display:inline-block;
+    }
     .NavbarController-PhoneNav{
-        display: inline-block;
+        #true {
+            display: inline-block;
+            z-index: 3;
+        }
+        #false {
+            display: none;
+        }
+        
     }
     .NavbarController-Sidebar{
         display: none;
@@ -18,6 +24,9 @@
 
 @media screen and (min-width: 769px) {
     @import 'Sidebar.scss';
+    .NavbarController-BurgerMenuButton {
+        display: none;
+    }
     .NavbarController-PhoneNav{
         display: none;
     }

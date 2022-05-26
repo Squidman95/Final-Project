@@ -13,20 +13,13 @@ function PhoneNav(props) {
         maxPrice,
         handleMinPriceChange,
         handleMaxPriceChange,
+        sidebarState
     } = props;
 
     return (
-        <div className="PhoneNav">
-
-            <input type="checkbox" name="" id="hamburger" />
-            <div className="PhoneNav-Hamburger-lines">
-                <span className="line line1"></span>
-                <span className="line line2"></span>
-                <span className="line line3"></span>
-            </div>
-
+        <div className="PhoneNav" id={sidebarState}>
+            {console.log("sidebarState PhoneNav" + sidebarState)}
             <div className="PhoneNav-Filter-Items">
-
                 <div className="PhoneNavAnimals">
                     <h1>Animal</h1>
                     <div className="PhoneNavAnimals-grid">

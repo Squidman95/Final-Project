@@ -17,16 +17,7 @@ function Sidebar(props) {
 
     return (
         <div className="Sidebar">
-
-            <input type="checkbox" name="" id="hamburger" />
-            <div className="Sidebar-Hamburger-lines">
-                <span className="line line1"></span>
-                <span className="line line2"></span>
-                <span className="line line3"></span>
-            </div>
-
             <div className="Sidebar-Filter-Items">
-
                 <div className="SidebarAnimals">
                     <h1>Animal</h1>
                     <div className="SidebarAnimals-grid">
