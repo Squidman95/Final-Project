@@ -42,19 +42,15 @@ const Frontpage = (props) => {
     console.log('new rendering');
     let localProducts = getProducts();
 
-    if (nullArray(productsFilterSubCategory) && nullArray(productsFilterAnimal) && nullArray(productsFilterAnimal)) {
-      setAllFilterState(true);
-    } else {
-      setAllFilterState(false);
-    }
-
     localProducts = updateAnimalFilter(localProducts);
+    checkFilterState();
     localProducts = updateCategoryFilter(localProducts);
+    checkFilterState();
 
     if (productsFilterSubCategory !== null && productsFilterSubCategory !== undefined) {
       console.log('check4.0');
       console.log(productsFilterSubCategory);
-      if (allFilterState) {
+      if (checkFilterState()) {
         console.log('check4');
         console.log(localProducts);
         localProducts = getProducts();
@@ -66,9 +62,9 @@ const Frontpage = (props) => {
         console.log(localProducts);
         localProducts = getSubCategoriesFilterItems(localProducts, productsFilterSubCategory);
         console.log(localProducts);
-        //setSubCatFlag(true);
       }
     }
+    
 
     if (productsFilterMinPrice < productsFilterMaxPrice && productsFilterMinPrice >= 0 && productsFilterMaxPrice > 0) {
       if (productsFilterMinPrice !== null && productsFilterMinPrice !== undefined) {
@@ -81,17 +77,25 @@ const Frontpage = (props) => {
     }
 
 
-
+    console.log('check18');
+    console.log(localProducts);
     setFilteredProducts(localProducts);
   }, [productsFilterAnimal, filterState, productsFilterCategory, productsFilterSubCategory, productsFilterMaxPrice, productsFilterMinPrice, setFilteredProducts]);
 
+  function checkFilterState() {
+    if (nullArray(productsFilterSubCategory) && nullArray(productsFilterAnimal) && nullArray(productsFilterAnimal)) {
+      setAllFilterState(true);
+    } else {
+      setAllFilterState(false);
+    }
+  }
 
   function updateAnimalFilter(localProducts) {
     //console.log('animalflag: ' + animalFlag);
 
     if (productsFilterAnimal !== null && productsFilterAnimal !== undefined) {
       console.log('check0');
-      if ( allFilterState ) {
+      if (checkFilterState()) {
         console.log('check1');
         console.log(localProducts);
         localProducts = getProducts();
