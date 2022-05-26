@@ -134,16 +134,17 @@ const NavbarController = (props) => {
 
             <div className="NavbarController-PhoneNav">
                 <PhoneNav
-                /* createAnimalFilterItem={createAnimalFilterItem}
+                animals={animals}
+                checkAnimalHandler={checkAnimalHandler}
                 categories={categories}
-                checkCatHandler={checkCatHandler} */
-                /* subcategories={subcategories}
-                checkSubHandler={checkSubHandler} */
-                /* minPrice={minPrice}
+                checkCatHandler={checkCatHandler}
+                subcategories={subCategories}
+                subShowState={subShowState}
+                checkSubHandler={checkSubHandler}
+                minPrice={minPrice}
                 maxPrice={maxPrice}
                 handleMinPriceChange={handleMinPriceChange}
-                handleMaxPriceChange={handleMaxPriceChange} */
-                /* subStateArray={subStateArray} */
+                handleMaxPriceChange={handleMaxPriceChange}
                 />
             </div>
 

@@ -17,18 +17,13 @@ const Frontpage = (props) => {
   const [filteredProducts, setFilteredProducts] = useState([]); // SHOULD BE THE SHOWN LIST
 
   // filter variables
-
   const [productsFilterAnimal, setproductsFilterAnimal] = useState(null);
   const [filterState, setFilterState] = useState('false');
   const [productsFilterCategory, setproductsFilterCategory] = useState(null);
   const [productsFilterSubCategory, setproductFilterSubCategory] = useState(null);
   const [productsFilterMinPrice, setproductsFilterMinPrice] = useState(0);
-  const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(1000);
+  const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(1000); //needs to be a high number in order to make the maxFilter work
   const [allFilterState, setAllFilterState] = useState(false);
-
-  //const [subCatFlag, setSubCatFlag] = useState(true);
-  //const [animalFlag, setAnimalFlag] = useState(true);
-
 
   useEffect(() => {
     getAllProducts().then(function (products) {
@@ -91,8 +86,6 @@ const Frontpage = (props) => {
   }
 
   function updateAnimalFilter(localProducts) {
-    //console.log('animalflag: ' + animalFlag);
-
     if (productsFilterAnimal !== null && productsFilterAnimal !== undefined) {
       console.log('check0');
       if (checkFilterState()) {
@@ -121,7 +114,6 @@ const Frontpage = (props) => {
     }
     return localProducts;
   }
-
 
   function getProducts() {
     return allProducts;

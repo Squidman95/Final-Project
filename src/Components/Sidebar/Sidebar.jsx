@@ -12,7 +12,7 @@ function Sidebar(props) {
         minPrice,
         maxPrice,
         handleMinPriceChange,
-        handleMaxPriceChange, 
+        handleMaxPriceChange,
     } = props;
 
     return (
@@ -71,7 +71,7 @@ function Sidebar(props) {
 
                                     <label htmlFor={categoryItem}>{categoryItem}</label>
 
-                                    <div className={`Sidebar-subcategories Sidebar-subcategories-${subShowState[categoryIndex]}`} id={"sub" + categoryItem}>
+                                    <div className={`Sidebar-subcategories Sidebar-subcategories-${subShowState[categoryIndex]}`}>
                                         {subcategories
                                             .filter((e) => e.category === categoryItem)
                                             .map((item, index) => {
@@ -98,10 +98,10 @@ function Sidebar(props) {
 
                 </div>
 
-                <div className="SidebarPrice"> 
-                {/* <h1>Price</h1> */}
+                <div className="SidebarPrice">
+                    {/* <h1>Price</h1> */}
 
-                <div>
+                    <div>
                         <input
                             type="number"
                             id="minPrice"
@@ -123,7 +123,7 @@ function Sidebar(props) {
                         <label htmlFor="maxPrice"> Max Price</label>
                     </div>
 
-                </div> 
+                </div>
             </div>
         </div>
     );

@@ -8,12 +8,12 @@
   #hamburger {
     position: absolute;
     display: block;
-    height: 32px;
+    height:70px;
     width: 32px;
     top: 8px;
-    left: 25px;
+    left: 15px;
     z-index: 5;
-    opacity: 0; //set to 100 to easier change it
+    opacity: 0; //set it to 100 to easier change it
     &:checked ~ .PhoneNav-Filter-Items {
       transform: translateX(0);
     }
@@ -90,6 +90,7 @@
       color: var(--primary-dark);
       .PhoneNav-Animals-icon {
         transform: scale(1.2);
+        filter: invert(50%) sepia(65%) saturate(325%) hue-rotate(117deg) brightness(86%) contrast(89%);
       }
     }
   }
@@ -148,8 +149,8 @@
   height: 23px;
   width: 35px;
   position: absolute;
-  top: 15px; //hamburger lines position from the top
-  left: 27px; //hamburger lines position from the side
+  top: 28px; //hamburger lines position from the top
+  left: 18px; //hamburger lines position from the side
   z-index: 2; //has to be one smaller than for the checkbox
   display: flex;
   flex-direction: column;

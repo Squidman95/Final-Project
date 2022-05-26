@@ -1,23 +1,23 @@
 import React from "react";
-//import "./PhoneNav.scss";
 
 function PhoneNav(props) {
-    /* let {
-        createAnimalFilterItem,
+    let {
+        animals,
+        checkAnimalHandler,
         categories,
         checkCatHandler,
         subcategories,
+        subShowState,
         checkSubHandler,
         minPrice,
         maxPrice,
         handleMinPriceChange,
         handleMaxPriceChange,
-        subStateArray
-    } = props; */
+    } = props;
 
     return (
         <div className="PhoneNav">
-           {/*  
+
             <input type="checkbox" name="" id="hamburger" />
             <div className="PhoneNav-Hamburger-lines">
                 <span className="line line1"></span>
@@ -30,16 +30,32 @@ function PhoneNav(props) {
                 <div className="PhoneNavAnimals">
                     <h1>Animal</h1>
                     <div className="PhoneNavAnimals-grid">
-                        {createAnimalFilterItem("Dog")}
-                        {createAnimalFilterItem("Cat")}
-                        {createAnimalFilterItem("Rodent")}
-                        {createAnimalFilterItem("Bird")}
+                        {animals.map((animalItem, animalIndex) => {
+                            return (
+                                <div key={animalIndex} className="PhoneNav-Animals-animalfilteritem">
+                                    <input
+                                        className="PhoneNav-Animal-Checkbox"
+                                        type="checkbox"
+                                        id={animalItem}
+                                        value={animalItem}
+                                        onChange={(e) => checkAnimalHandler(animalItem, animalIndex, e)}
+                                    />
+                                    <label htmlFor={animalItem}>
+                                        <img
+                                            className="PhoneNav-Animals-icon"
+                                            src={`${process.env.PUBLIC_URL}assets/images/icons/${animalItem}-icon.png`}
+                                            alt={animalItem}
+                                        />
+                                    </label>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
 
-                <div className="PhoneNavCategories"> */}
+                <div className="PhoneNavCategories">
                     {/* <h1>Categories</h1> */}
-{/* 
+
                     <div className="PhoneNav-checkbox-container">
                         {categories.map((categoryItem, categoryIndex) => {
                             return (
@@ -54,7 +70,7 @@ function PhoneNav(props) {
                                     />
                                     <label htmlFor={categoryItem}>{categoryItem}</label>
 
-                                    <div className={`PhoneNav-subcategories PhoneNav-subcategories-${subStateArray[categoryIndex]}`} id={"sub" + categoryItem}>
+                                    <div className={`PhoneNav-subcategories PhoneNav-subcategories-${subShowState[categoryIndex]}`}>
                                         {subcategories
                                             .filter((e) => e.category === categoryItem)
                                             .map((item, index) => {
@@ -78,12 +94,12 @@ function PhoneNav(props) {
                         })}
                     </div>
 
-                </div> */}
+                </div>
 
-                {/* <div className="PhoneNavPrice"> */}
+                <div className="PhoneNavPrice">
                     {/* <h1>Price</h1> */}
 
-                  {/*   <div>
+                    <div>
                         <label htmlFor="minPrice"> Min Price</label>
                         <input
                             type="number"
@@ -106,7 +122,7 @@ function PhoneNav(props) {
                     </div>
 
                 </div>
-            </div> */}
+            </div>
         </div>
     );
 }

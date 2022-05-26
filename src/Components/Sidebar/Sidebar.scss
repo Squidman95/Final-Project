@@ -63,7 +63,8 @@
       color: var(--primary-dark);
       .Sidebar-Animals-icon {
         transform: scale(1.2);
-        filter: invert(50%) sepia(65%) saturate(325%) hue-rotate(117deg) brightness(86%) contrast(89%);
+        filter: invert(50%) sepia(65%) saturate(325%) hue-rotate(117deg)
+          brightness(86%) contrast(89%);
       }
     }
   }
@@ -72,9 +73,9 @@
 .SidebarCategories {
   padding-top: 10%;
   padding-bottom: 10%;
-}
-input[type="checkbox"] {
-  vertical-align: middle;
+  input[type="checkbox"] {
+    vertical-align: middle;
+  }
 }
 
 .Sidebar-checkbox-container {
