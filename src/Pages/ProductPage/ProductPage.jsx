@@ -12,7 +12,7 @@ const ProductPage = (props) => {
 
   function addToBasket(itemID) {
     addItemToBasket(userID, itemID).then(() => {
-      getBasket(userID) // something wrong with the userID?
+      getBasket(userID) 
         .then((result) => {
           setBasket(result.items);
         });
@@ -32,7 +32,6 @@ const ProductPage = (props) => {
           <div className="leftColumn">
             <img
               className="prodImg"
-              // src={`${process.env.PUBLIC_URL}/${product.image}`}
               src={`http://localhost:4000${product.image}`}
               alt={"Unable to find"}
             />
@@ -48,7 +47,6 @@ const ProductPage = (props) => {
               <div className="ProductButtonContainer">
                 <Button
                   onClick={() => {
-                    // addItemToBasket(userID, itemID);
                     addToBasket(itemID);
                   }}
                   imageSrc="/assets/images/icons/add-basket-icon.png"
@@ -61,7 +59,6 @@ const ProductPage = (props) => {
                 <Button
                   to="/Basket"
                   onClick={() => {
-                    // addItemToBasket(userID, itemID);
                     addToBasket(itemID);
                   }}
                   imageSrc="/assets/images/icons/horse-icon.png"

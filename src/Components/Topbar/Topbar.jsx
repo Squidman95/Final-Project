@@ -1,7 +1,6 @@
 import React from "react";
 import "./Topbar.scss";
 import Button from "../../Components/Button/Button";
-import { getBasket } from "../../Service/BasketService";
 
 function Topbar(props) {
   let {
@@ -11,11 +10,9 @@ function Topbar(props) {
     visibility,
     setTopbarText,
     topbarText,
-    userID,
     basket,
   } = props;
-  // console.log("Basket in TopBar: ");
-  // console.log(basket);
+
   return (
     <div className="topnav Topbar">
       <div className="Topbar-left-container Topbar-container">
@@ -48,7 +45,6 @@ function Topbar(props) {
                   setVisibility(!visibility);
                 }
               }
-              // isLoggedIn ? setLogin(false) : setVisibility(!visibility)
             }
             btnText={isLoggedIn ? "Log out" : "Log in"}
           />

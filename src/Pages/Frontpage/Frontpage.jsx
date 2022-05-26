@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from "react";
-// import Topbar from "../../Components/Topbar/Topbar";
 import { getAllProducts } from "../../Service/ProductService";
-// import Popup from "../../Components/Popup/Popup";
-// import SearchResult from '../../Pages/SearchResultPage/SearchResultPage';
 import ShowResults from "../../Components/ShowResults/ShowResults";
-import OfferCarousel from "../../Components/OfferCarousel/OfferCarousel";
+import CarouselComponent from "../../Components/Carousel/Carousel";
 import NavbarController from "../../Components/Sidebar/NavbarController";
 import "./Frontpage.scss";
 
 const Frontpage = (props) => {
-  // let { userId } = props;
 
-  // const [visibility, setVisibility] = useState(true); // For the login/signup popup
-
-  const [allProducts, setAllProducts] = useState([]); // the reference (all products). Should not change
-  const [filteredProducts, setFilteredProducts] = useState([]); // SHOULD BE THE SHOWN LIST
+  const [allProducts, setAllProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   // filter variables
   const [productsFilterAnimal, setproductsFilterAnimal] = useState(null);
@@ -22,7 +16,7 @@ const Frontpage = (props) => {
   const [productsFilterCategory, setproductsFilterCategory] = useState(null);
   const [productsFilterSubCategory, setproductFilterSubCategory] = useState(null);
   const [productsFilterMinPrice, setproductsFilterMinPrice] = useState(0);
-  const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(1000); //needs to be a high number in order to make the maxFilter work
+  const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(1000);
   const [allFilterState, setAllFilterState] = useState(false);
 
   useEffect(() => {
@@ -178,23 +172,20 @@ const Frontpage = (props) => {
       </div>
 
       <div className="Frontpage-resultscontainer">
-        <div
-          style={{
-            display: allProducts.length === filteredProducts.length ? "block" : "none",
-            // show the carousel only when no filter is applied
-          }}
-        >
-          <OfferCarousel
-            products={filteredProducts}
+        <div className={`Frontpage-resultscontainer-carousel-container${allProducts.length === filteredProducts.length ? '-show' : '-hide'}`}>
+          <h2>Special offers this week:</h2>
+          <CarouselComponent
+            products={allProducts}
           />
         </div>
-        <h2 style={{
-          display: allProducts.length === filteredProducts.length ? "none" : "block",
-          // show 'search result' headline only when a filter has been applied
-        }} >Search result:</h2>
+        <h2 className={`Frontpage-resultscontainer-searchresultHeader${allProducts.length === filteredProducts.length ? '-hide' : '-show'}`} >
+        Search result:</h2>
         <ShowResults
           products={filteredProducts}
         />
+         <div className={`noResultsMsg${filteredProducts.length === 0 ? '-show' : '-hide'}`} >
+          No products matching the chosen filters. Try something else!
+          </div>
       </div>
     </div>
   );

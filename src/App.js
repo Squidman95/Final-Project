@@ -70,11 +70,8 @@ function App(props) {
                 {props.page === "ProductPage" ? <ProductPage userID={userID} setVisibility={setVisibility} visibility={visibility} setBasket={setBasket}/> : null}
                 {props.page === "BasketPage" ? <BasketPage userID={userID} setVisibility={setVisibility} visibility={visibility} setBasket={setBasket} basket={basket}/> : null}
                 {props.page === "PaymentPage" ? <PaymentPage userID={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
-                {/* {props.page === "SearchResultPage" ? <SearchResultPage /> : null} */}
-                {/* {this.props.page === "LoginPage" ? <PortfolioPage/> : null} */}
                 {props.page === "Frontpage" ? <Frontpage userID={userID} setVisibility={setVisibility} visibility={visibility}/> : null}
                 <Popup setVisibility={setVisibility} visibility={visibility} userID={userID} setUserID={setUserID} setLogin={setLogin} setTopbarText={setTopbarText} updateBasket={updateBasket} headerText={"Welcome! Log in or sign up to get membership discounts!"}/>
-                {/* <Toolbar /> */}
             </div>
         </div>
     );

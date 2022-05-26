@@ -10,12 +10,6 @@ const BasketButton = (props) => {
         <div id="BasketButtonCounter">0</div>
       </div>
     </Link>
-        
-
-      // <a className="ButtonContainer" href="#cart">
-      //   <span>Cart</span>
-      //   <div id="BasketButtonCounter">0</div>
-      // </a>
   );
 };
 
