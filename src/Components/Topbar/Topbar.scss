@@ -53,6 +53,10 @@
 .Topbar-middle-container {
   width: auto;
   justify-content: center;
+  p {
+    color: var(--background-0);
+    font-size: 2vw;
+  }
 }
 
 .Topbar-right-container {
