@@ -53,14 +53,10 @@ const NavbarController = (props) => {
         if (e.target.checked === true) {
             animalArray[index] = animal;
             FilterAnimal(animalArray);
-            console.log('check1');
-            console.log(animalArray);
             FilterState(animal);
         } else {
             animalArray[index] = null;
             FilterAnimal(animalArray);
-            console.log('check2');
-            console.log(animalArray);
             FilterState(Math.random());
         }
     }
@@ -71,16 +67,29 @@ const NavbarController = (props) => {
             subShowState[index] = 'true';
         } else {
             FilterCategory(null);
-            // FilterSubCategory(null);
+            resetSubCatFilter(item);
             subShowState[index] = 'false';
         }
     }
 
-    function checkSubHandler(item, e) {
+    function resetSubCatFilter(category) {
+        subCategories.filter(function (el) {
+            return el.category === category;
+        }).map((e) => {
+            subCategoriesArray[getSubCatIndex(e.subcategory)] = null;
+        })
+        FilterSubCategory(subCategoriesArray);
+    }
 
-        let index = subCategories.findIndex(el => {
+    function getSubCatIndex(item) {
+        return subCategories.findIndex(el => {
             return el.subcategory === item;
         });
+    }
+
+    function checkSubHandler(item, e) {
+
+        let index = getSubCatIndex(item);
 
         if (e.target.checked === true) {
             subCategoriesArray[index] = item;

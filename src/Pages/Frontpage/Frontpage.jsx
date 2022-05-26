@@ -11,8 +11,6 @@ import "./Frontpage.scss";
 const Frontpage = (props) => {
   // let { userId } = props;
 
-  // console.log(`userId: ${userId}`);
-
   // const [visibility, setVisibility] = useState(true); // For the login/signup popup
 
   const [allProducts, setAllProducts] = useState([]); // the reference (all products). Should not change
@@ -37,19 +35,11 @@ const Frontpage = (props) => {
   useEffect(() => {
     let localProducts = getProducts();
 
-    console.log('check3');
-    console.log(filterState);
-
     if (productsFilterAnimal !== null && productsFilterAnimal !== undefined) {
       if (nullArray(productsFilterAnimal)) {
         localProducts = getProducts();
       } else {
-        console.log('check4');
-        console.log(productsFilterAnimal);
         localProducts = getNameFilteredItems(localProducts, productsFilterAnimal);
-        console.log('check5');
-        console.log(productsFilterAnimal);
-        console.log(localProducts);
       }
     }
 
@@ -59,18 +49,11 @@ const Frontpage = (props) => {
 
     if (productsFilterSubCategory !== null && productsFilterSubCategory !== undefined) {
       if (nullArray(productsFilterSubCategory)) {
-        console.log('check1');
         localProducts = getProducts();
-        console.log(productsFilterSubCategory);
-        console.log(localProducts);
       } else {
-        console.log('check2');
         localProducts = getSubCategoriesFilterItems(localProducts, productsFilterSubCategory);
-        console.log(productsFilterSubCategory);
-        console.log(localProducts);
       }
     }
-
 
     /* if (productsFilterMinPrice < productsFilterMaxPrice && productsFilterMinPrice >= 0 && productsFilterMaxPrice > 0) {
       if (productsFilterMinPrice !== null && productsFilterMinPrice !== undefined) {
@@ -82,7 +65,6 @@ const Frontpage = (props) => {
       }
     } */
 
-
     setFilteredProducts(localProducts);
   }, [productsFilterAnimal, filterState, productsFilterCategory, productsFilterSubCategory, setFilteredProducts]);
 
@@ -93,7 +75,6 @@ const Frontpage = (props) => {
   }
 
   function nullArray(arr) {
-    console.log(arr.every(e => e === null));
     return arr.every(e => e === null);
   }
 
@@ -164,7 +145,6 @@ const Frontpage = (props) => {
           products={filteredProducts}
         />
       </div>
-
     </div>
   );
 };

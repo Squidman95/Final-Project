@@ -5,10 +5,10 @@ function Sidebar(props) {
         animals,
         checkAnimalHandler,
         categories,
-        checkCatHandler, 
+        checkCatHandler,
         subcategories,
         subShowState,
-        checkSubHandler, 
+        checkSubHandler,
         /* minPrice,
         maxPrice,
         handleMinPriceChange,
@@ -27,7 +27,7 @@ function Sidebar(props) {
 
             <div className="Sidebar-Filter-Items">
 
-            <div className="SidebarAnimals">
+                <div className="SidebarAnimals">
                     <h1>Animal</h1>
                     <div className="SidebarAnimals-grid">
                         {animals.map((animalItem, animalIndex) => {
@@ -68,10 +68,10 @@ function Sidebar(props) {
                                         value={categoryItem}
                                         onChange={(e) => checkCatHandler(categoryItem, categoryIndex, e)}
                                     />
-                                    
+
                                     <label htmlFor={categoryItem}>{categoryItem}</label>
 
-                                     <div className={`Sidebar-subcategories Sidebar-subcategories-${subShowState[categoryIndex]}`} id={"sub" + categoryItem}>
+                                    <div className={`Sidebar-subcategories Sidebar-subcategories-${subShowState[categoryIndex]}`} id={"sub" + categoryItem}>
                                         {subcategories
                                             .filter((e) => e.category === categoryItem)
                                             .map((item, index) => {
@@ -82,26 +82,26 @@ function Sidebar(props) {
                                                             type="checkbox"
                                                             id={item.subcategory}
                                                             value={item.subcategory}
-                                                            
+
                                                             onChange={(e) => checkSubHandler(item.subcategory, e)}
                                                         />
                                                         <label htmlFor={item.subcategory}> {item.subcategory} </label>
                                                     </div>
                                                 );
                                             })}
-                                    </div> 
+                                    </div>
 
-                                 </div>
+                                </div>
                             );
                         })}
                     </div>
 
-                </div> 
+                </div>
 
                 {/* <div className="SidebarPrice"> */}
-                    {/* <h1>Price</h1> */}
+                {/* <h1>Price</h1> */}
 
-                    {/* <div>
+                {/* <div>
                         <input
                             type="number"
                             id="minPrice"
