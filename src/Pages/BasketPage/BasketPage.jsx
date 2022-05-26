@@ -11,7 +11,7 @@ const BasketPage = (props) => {
   useEffect(() => {
     getBasket(userID)
       .then((result) => {
-        setBasket(result.items); // get and save content to state
+        setBasket(result.items);
       })
       .catch((err) => {
         console.log(err);
@@ -20,7 +20,7 @@ const BasketPage = (props) => {
 
   function removeBasketItem(itemID) {
     deleteItemFromBasket(userID, itemID).then(() => {
-      getBasket(userID) // something wrong with the userID?
+      getBasket(userID)
         .then((result) => {
           setBasket(result.items);
         });
@@ -52,7 +52,7 @@ const BasketPage = (props) => {
               showXbutton="true"
               onClickXbutton={(event) => {
                 event.preventDefault();
-                removeBasketItem(item.id); //removes ALL products with this id, not ideal.
+                removeBasketItem(item.id);
               }}
             />
           );
@@ -66,7 +66,6 @@ const BasketPage = (props) => {
             to="/Payment"
             onClick={() =>
               basket.forEach(function (item) {
-                // empties the basket when checking out
                 removeBasketItem(item.id);
               })
             }
