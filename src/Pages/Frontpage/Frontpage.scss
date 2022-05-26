@@ -22,6 +22,11 @@
     &-show{display:block;}
 }
 
+.noResultsMsg {
+    &-hide{display: none;}
+    &-show{display:block;}
+}
+
 @media screen and (min-width: 767px) {
     .Frontpage-sidebarcontainer{
         position: fixed;
