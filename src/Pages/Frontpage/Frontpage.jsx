@@ -24,9 +24,10 @@ const Frontpage = (props) => {
   const [productsFilterSubCategory, setproductFilterSubCategory] = useState(null);
   const [productsFilterMinPrice, setproductsFilterMinPrice] = useState(0);
   const [productsFilterMaxPrice, setproductsFilterMaxPrice] = useState(1000);
+  const [allFilterState, setAllFilterState] = useState(false);
 
-  const [subCatFlag, setSubCatFlag] = useState(true);
-  const [animalFlag, setAnimalFlag] = useState(true);
+  //const [subCatFlag, setSubCatFlag] = useState(true);
+  //const [animalFlag, setAnimalFlag] = useState(true);
 
 
   useEffect(() => {
@@ -37,45 +38,35 @@ const Frontpage = (props) => {
   }, []);
 
   useEffect(() => {
+
+    console.log('new rendering');
     let localProducts = getProducts();
 
-    if (productsFilterAnimal !== null && productsFilterAnimal !== undefined) {
-      if (nullArray(productsFilterAnimal) && animalFlag) {
-        console.log('check1');
-        console.log(localProducts);
-        localProducts = getProducts();
-        console.log(localProducts);
-        setAnimalFlag(false);
-      } else {
-        console.log('check2');
-        console.log(localProducts);
-        localProducts = getNameFilteredItems(localProducts, productsFilterAnimal);
-        console.log(localProducts);
-        setAnimalFlag(true);
-      }
+    if (nullArray(productsFilterSubCategory) && nullArray(productsFilterAnimal) && nullArray(productsFilterAnimal)) {
+      setAllFilterState(true);
+    } else {
+      setAllFilterState(false);
     }
 
-    if (productsFilterCategory !== null && productsFilterCategory !== undefined) {
-      console.log('check3');
-      console.log(localProducts);
-      localProducts = getCategoriesFilterItems(localProducts, productsFilterCategory);
-      console.log(localProducts);
-    }
+    localProducts = updateAnimalFilter(localProducts);
+    localProducts = updateCategoryFilter(localProducts);
 
     if (productsFilterSubCategory !== null && productsFilterSubCategory !== undefined) {
-      console.log('subcatflag: ' + subCatFlag);
-      if (nullArray(productsFilterSubCategory) && subCatFlag) {
+      console.log('check4.0');
+      console.log(productsFilterSubCategory);
+      if (allFilterState) {
         console.log('check4');
         console.log(localProducts);
         localProducts = getProducts();
         console.log(localProducts);
-        setSubCatFlag(false);
+      } else if (nullArray(productsFilterSubCategory)) {
+        console.log('check4.5');
       } else {
         console.log('check5');
         console.log(localProducts);
         localProducts = getSubCategoriesFilterItems(localProducts, productsFilterSubCategory);
         console.log(localProducts);
-        setSubCatFlag(true);
+        //setSubCatFlag(true);
       }
     }
 
@@ -89,15 +80,57 @@ const Frontpage = (props) => {
       }
     }
 
+
+
     setFilteredProducts(localProducts);
   }, [productsFilterAnimal, filterState, productsFilterCategory, productsFilterSubCategory, productsFilterMaxPrice, productsFilterMinPrice, setFilteredProducts]);
+
+
+  function updateAnimalFilter(localProducts) {
+    //console.log('animalflag: ' + animalFlag);
+
+    if (productsFilterAnimal !== null && productsFilterAnimal !== undefined) {
+      console.log('check0');
+      if ( allFilterState ) {
+        console.log('check1');
+        console.log(localProducts);
+        localProducts = getProducts();
+        console.log(localProducts);
+      } else if (nullArray(productsFilterAnimal)) {
+        console.log('check1.5');
+      } else {
+        console.log('check2');
+        console.log(localProducts);
+        localProducts = getNameFilteredItems(localProducts, productsFilterAnimal);
+        console.log(localProducts);
+      }
+    }
+    return localProducts;
+  }
+
+  function updateCategoryFilter(localProducts) {
+    if (productsFilterCategory !== null && productsFilterCategory !== undefined) {
+      console.log('check3');
+      console.log(localProducts);
+      localProducts = getCategoriesFilterItems(localProducts, productsFilterCategory);
+      console.log(localProducts);
+    }
+    return localProducts;
+  }
+
 
   function getProducts() {
     return allProducts;
   }
 
   function nullArray(arr) {
-    return arr.every(e => e === null);
+    if (arr === undefined || arr === null) {
+      return true;
+    } else if (arr.every(e => e === null)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   function getNameFilteredItems(products, animalName) {
