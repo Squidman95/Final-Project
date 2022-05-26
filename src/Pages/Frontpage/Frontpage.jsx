@@ -182,6 +182,9 @@ const Frontpage = (props) => {
         <ShowResults
           products={filteredProducts}
         />
+        <div className={`noResultsMsg${filteredProducts.length === 0 ? '-show' : '-hide'}`} >
+          No products matching the chosen filters. Try something else!
+          </div>
       </div>
     </div>
   );
