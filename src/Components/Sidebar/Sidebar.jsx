@@ -9,10 +9,10 @@ function Sidebar(props) {
         subcategories,
         subShowState,
         checkSubHandler,
-        /* minPrice,
+        minPrice,
         maxPrice,
         handleMinPriceChange,
-        handleMaxPriceChange, */
+        handleMaxPriceChange, 
     } = props;
 
     return (
@@ -98,10 +98,10 @@ function Sidebar(props) {
 
                 </div>
 
-                {/* <div className="SidebarPrice"> */}
+                <div className="SidebarPrice"> 
                 {/* <h1>Price</h1> */}
 
-                {/* <div>
+                <div>
                         <input
                             type="number"
                             id="minPrice"
@@ -123,7 +123,7 @@ function Sidebar(props) {
                         <label htmlFor="maxPrice"> Max Price</label>
                     </div>
 
-                </div> */}
+                </div> 
             </div>
         </div>
     );

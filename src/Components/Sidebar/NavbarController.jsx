@@ -15,8 +15,8 @@ const NavbarController = (props) => {
         FilterState,  //if removed, check that the states are updated!!!
         FilterCategory,
         FilterSubCategory,
-        /* FilterMinPrice,
-        FilterMaxPrice, */
+        FilterMinPrice,
+        FilterMaxPrice,
     } = props;
 
     const [animals, setAnimals] = useState([]);
@@ -25,8 +25,8 @@ const NavbarController = (props) => {
     const [subCategories, setSubCategories] = useState([]);
     const [subCategoriesArray, setSubCategoriesArray] = useState([]);
     const [subShowState, setSubShowState] = useState([]);
-    /* const [minPrice, setMinPrice] = useState(0);
-    const [maxPrice, setMaxPrice] = useState(0); */
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(0);
 
     useEffect(() => {
         getAllAnimals().then(function (animal) {
@@ -102,15 +102,15 @@ const NavbarController = (props) => {
         }
     }
 
-    /*  const handleMinPriceChange = (e) => {
-         setMinPrice(parseInt(e.target.value));
-         FilterMinPrice(parseInt(e.target.value));
-     };
- 
-     const handleMaxPriceChange = (e) => {
-         setMaxPrice(parseInt(e.target.value));
-         FilterMaxPrice(parseInt(e.target.value));
-     }; */
+    const handleMinPriceChange = (e) => {
+        setMinPrice(parseInt(e.target.value));
+        FilterMinPrice(parseInt(e.target.value));
+    };
+
+    const handleMaxPriceChange = (e) => {
+        setMaxPrice(parseInt(e.target.value));
+        FilterMaxPrice(parseInt(e.target.value));
+    };
 
 
     return (
@@ -125,10 +125,10 @@ const NavbarController = (props) => {
                     subcategories={subCategories}
                     subShowState={subShowState}
                     checkSubHandler={checkSubHandler}
-                /* minPrice={minPrice}
-                maxPrice={maxPrice}
-                handleMinPriceChange={handleMinPriceChange}
-                handleMaxPriceChange={handleMaxPriceChange} */
+                    minPrice={minPrice}
+                    maxPrice={maxPrice}
+                    handleMinPriceChange={handleMinPriceChange}
+                    handleMaxPriceChange={handleMaxPriceChange}
                 />
             </div>
 
