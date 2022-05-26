@@ -173,8 +173,9 @@ const Frontpage = (props) => {
 
       <div className="Frontpage-resultscontainer">
         <div className={`Frontpage-resultscontainer-carousel-container${allProducts.length === filteredProducts.length ? '-show' : '-hide'}`}>
+          <h2>Special offers this week:</h2>
           <CarouselComponent
-            products={filteredProducts}
+            products={allProducts}
           />
         </div>
         <h2 className={`Frontpage-resultscontainer-searchresultHeader${allProducts.length === filteredProducts.length ? '-hide' : '-show'}`} >
