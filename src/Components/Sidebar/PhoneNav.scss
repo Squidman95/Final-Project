@@ -58,28 +58,24 @@
   align-items: center;
   width: 50%;
   //height: 20%;
-  .PhoneNav-Animals-icon {
-    //max-height: 3em;
-    pointer-events: all;
-  }
   input[type="checkbox"] {
-    z-index: 4;
     display: none;
-    &:hover + label {
-      cursor: pointer;
-      color: var(--primary-light);
-      .PhoneNav-Animals-icon {
-        transform: scale(1.1);
-      }
-    }
     &:checked + label {
       cursor: pointer;
       color: var(--primary-dark);
-      .PhoneNav-Animals-icon {
+      .Sidebar-Animals-icon {
         transform: scale(1.2);
         filter: invert(50%) sepia(65%) saturate(325%) hue-rotate(117deg)
           brightness(86%) contrast(89%);
       }
+    }
+  }
+  .PhoneNav-Animals-icon {
+    //max-height: 3em;
+    pointer-events: all;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
     }
   }
 }
@@ -125,7 +121,7 @@
 }
 
 .PhoneNavPrice {
-  input {
+  input[type="number"] {
     width: 20%;
     height: 8vw;
     font-size: 4vw;

@@ -26,14 +26,14 @@ function PhoneNav(props) {
                         {animals.map((animalItem, animalIndex) => {
                             return (
                                 <div key={animalIndex} className="PhoneNav-Animals-animalfilteritem">
-                                    <input
-                                        className="PhoneNav-Animal-Checkbox"
-                                        type="checkbox"
-                                        id={animalItem}
-                                        value={animalItem}
-                                        onChange={(e) => checkAnimalHandler(animalItem, animalIndex, e)}
-                                    />
                                     <label htmlFor={animalItem}>
+                                        <input
+                                            className="PhoneNav-Animal-Checkbox"
+                                            type="checkbox"
+                                            id={animalItem}
+                                            value={animalItem}
+                                            onChange={(e) => checkAnimalHandler(animalItem, animalIndex, e)}
+                                        />
                                         <img
                                             className="PhoneNav-Animals-icon"
                                             src={`${process.env.PUBLIC_URL}assets/images/icons/${animalItem}-icon.png`}
