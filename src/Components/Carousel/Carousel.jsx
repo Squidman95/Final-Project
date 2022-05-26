@@ -6,13 +6,13 @@ import "./Carousel.scss";
 
 const CarouselComponent = (props) => {
   let {
-    imageArray,
-    showIndicators,
-    showArrows,
-    autoPlay,
-    interval,
-    showThumbs,
-    infiniteLoop,
+    products,
+    showIndicators = false,
+    showArrows = true,
+    autoPlay = true,
+    interval = 2000,
+    showThumbs = false,
+    infiniteLoop = true,
   } = props;
 
   return (
@@ -25,7 +25,7 @@ const CarouselComponent = (props) => {
         showThumbs={showThumbs}
         infiniteLoop={infiniteLoop}
       >
-        {imageArray.map((item, index) => {
+        {products.map((item, index) => {
           return (
             <Card
               key={index}

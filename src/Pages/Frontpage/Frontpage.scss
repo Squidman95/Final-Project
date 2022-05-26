@@ -17,6 +17,11 @@
     }
 }
 
+.Frontpage-resultscontainer-carousel-container{
+    &-hide{display: none;}
+    &-show{display:block;}
+}
+
 @media screen and (min-width: 767px) {
     .Frontpage-sidebarcontainer{
         position: fixed;

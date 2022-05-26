@@ -4,7 +4,7 @@ import { getAllProducts } from "../../Service/ProductService";
 // import Popup from "../../Components/Popup/Popup";
 // import SearchResult from '../../Pages/SearchResultPage/SearchResultPage';
 import ShowResults from "../../Components/ShowResults/ShowResults";
-import OfferCarousel from "../../Components/OfferCarousel/OfferCarousel";
+import CarouselComponent from "../../Components/Carousel/Carousel";
 import NavbarController from "../../Components/Sidebar/NavbarController";
 import "./Frontpage.scss";
 
@@ -178,20 +178,13 @@ const Frontpage = (props) => {
       </div>
 
       <div className="Frontpage-resultscontainer">
-        <div
-          style={{
-            display: allProducts.length === filteredProducts.length ? "block" : "none",
-            // show the carousel only when no filter is applied
-          }}
-        >
-          <OfferCarousel
+        <div className={`Frontpage-resultscontainer-carousel-container${allProducts.length === filteredProducts.length ? '-show' : '-hide'}`}>
+          <CarouselComponent
             products={filteredProducts}
           />
         </div>
-        <h2 style={{
-          display: allProducts.length === filteredProducts.length ? "none" : "block",
-          // show 'search result' headline only when a filter has been applied
-        }} >Search result:</h2>
+        <h2 className={`Frontpage-resultscontainer-searchresultHeader${allProducts.length === filteredProducts.length ? '-hide' : '-show'}`} >
+        Search result:</h2>
         <ShowResults
           products={filteredProducts}
         />
