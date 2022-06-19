@@ -122,7 +122,7 @@ const Popup = (props) => {
         >
           &times;
         </span>
-        <div className="content">{props.children}</div>
+        {/* <div className="content">{props.children}</div> */}
         {loginVis && (
           <LoginPopup
             title="Log in :)"
